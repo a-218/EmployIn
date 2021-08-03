@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import SettingsScreen from './SettingScreen';
+import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
 
 
 // fake data for the skills sections
@@ -77,86 +78,75 @@ function HomeScreen() {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
     borderRadius: 60,
-    borderWidth: 5,
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 10,
-    marginTop: 40,
+    borderWidth: moderateScale(5),
+    marginLeft: moderateScale(10),
+    marginRight: moderateScale(10),
+    marginBottom: moderateScale(10),
+    marginTop: moderateScale(40),
   },
   image: {
-    width: 100,
-    height: 100,
+    width: moderateScale(90),
+    height: moderateScale(90),
     borderRadius: 50,
+    marginLeft: scale(10),
   },
   rightresume: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 20,
-    marginBottom: 20,
+    padding: scale(5),
+    marginBottom: moderateScale(15),
+    marginTop: verticalScale(15),
+  },
 
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10
-  },
-  square: {
-    width: 24,
-    height: 25,
-    backgroundColor: 'red',
-    opacity: 0.4
-  },
   personalinfo: {
     alignItems: 'center',
-    marginLeft: 40,
+    marginLeft: moderateScale(45),
   },
   name: {
-    fontSize: 35,
+    fontSize: moderateScale(32),
     fontWeight: 'bold',
-    marginBottom: 10
+    marginBottom: moderateScale(4),
   },
   phone: {
-    fontSize: 18,
-    marginBottom: 10
+    fontSize: moderateScale(18),
+    marginBottom: moderateScale(10),
   },
   bottomresume: {
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: moderateScale(10),
+    marginRight: moderateScale(10),
 
   },
   skills: {
     borderWidth: 5,
-    padding: 15,
+    padding: moderateScale(10),
     borderRadius: 15,
-    marginBottom: 20,
+    marginBottom: moderateScale(20),
   },
   summary: {
     borderWidth: 5,
-    padding: 15,
+    padding: moderateScale(10),
     borderRadius: 15,
-    marginBottom: 20,
+    marginBottom: moderateScale(20),
   },
   experience: {
     borderWidth: 5,
-    padding: 15,
+    padding: moderateScale(10),
     borderRadius: 15,
-    marginBottom: 20,
+    marginBottom: moderateScale(20),
   },
   links: {
     borderWidth: 5,
-    padding: 15,
+    padding: scale(15),
     borderRadius: 15,
-    marginBottom: 20,
+    marginBottom: moderateScale(20),
   },
 })
-
-
-
 
 
 const Tab = createBottomTabNavigator();
@@ -180,13 +170,17 @@ function MyTabs() {
       <Tab.Screen name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name='home' size={size} color={color} />
+          headerShown: false,
+          tabBarIcon: ({ size, color }) =>
+            <MaterialCommunityIcons name='home' size={size} color={color} />
         }} />
       <Tab.Screen
         name="Settings"
         component={SettingsScreen}
         options={{
-          tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name='cog' size={size} color={color} />
+          headerShown: false,
+          tabBarIcon: ({ size, color }) =>
+            <MaterialCommunityIcons name='cog' size={size} color={color} />
         }} />
     </Tab.Navigator>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, Button, ScrollView, TextComponent, LayoutAnimation, Platform, UIManager } from 'react-native';
-
+import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
 // import { FontAwesome5, FontAwesome } from '@expo/vector-icons'
 // import { ListItem, Avatar } from 'react-native-elements/dist/list/ListItem';
 
@@ -142,38 +142,39 @@ const styles = StyleSheet.create({
   },
   titleText: {
     flex: 1,
-    fontSize: 20,
+    fontSize: moderateScale(20),
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20
+    marginBottom: moderateScale(20)
   },
   item: {
     backgroundColor: 'lightblue',
-    padding: 20,
-    borderRadius: 10,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 20,
+    padding: moderateScale(20),
+    borderRadius: moderateScale(10),
+    marginLeft: moderateScale(20),
+    marginRight: moderateScale(20),
+    marginBottom: moderateVerticalScale(20),
   },
   itemText: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: '500'
   },
 
   text: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
     padding: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: moderateScale(20),
+    marginRight: moderateScale(20),
+    flexWrap: 'wrap'
 
   },
   separator: {
     height: 0.9,
     backgroundColor: 'black',
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 10,
-    marginTop: 10,
+    marginLeft: moderateScale(20),
+    marginRight: moderateScale(20),
+    marginBottom: moderateVerticalScale(10),
+    marginTop: moderateVerticalScale(10),
     width: '90%'
   },
   content: {
