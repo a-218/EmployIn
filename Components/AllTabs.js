@@ -1,14 +1,15 @@
 
 import React from 'react';
-import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
+import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
-import StarCandidates from './SettingScreen'
+import StarCandidates from './StarCandidates'
 import InterviewOption from './InterviewOption';
 import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
 import Home from './Home';
 
+import { createStackNavigator } from '@react-navigation/stack'
 
 // fake data for the skills sections
 const DATA = [
@@ -153,7 +154,8 @@ const styles = StyleSheet.create({
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
+
+function NavTabs() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -204,11 +206,13 @@ function MyTabs() {
   );
 }
 
-function SecondBottom() {
+function AllTabs() {
   return (
     <NavigationContainer>
-      <MyTabs />
+      <NavTabs />
     </NavigationContainer>
   );
 }
-export default SecondBottom;
+export default AllTabs;
+
+// rename second bottom to all Tabs

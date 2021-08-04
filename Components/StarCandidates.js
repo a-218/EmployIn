@@ -3,6 +3,8 @@ import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
+import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
+import resumeDetails from './resumeDetails';
 // import { FontAwesome5, FontAwesome } from '@expo/vector-icons'
 // import { ListItem, Avatar } from 'react-native-elements/dist/list/ListItem';
 
@@ -13,7 +15,7 @@ const CONTENT = [
     category_name: 'Job Position 1',
     subcategory: [
       { id: 1, val: 'NAME', image: require("../assets/Joey.jpeg") },
-      { id: 2, val: 'FIRSTNAME sssssssssssssssss', image: require("../assets/Joey.jpeg") }
+      { id: 2, val: 'FIRSTNAME ', image: require("../assets/Joey.jpeg") }
     ]
   },
   {
@@ -59,11 +61,16 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
           item.subcategory.map((item, key) => (
             <TouchableOpacity
               key={key}
-              sytle={styles.content}
-              onPress={() => navigation.navigate('Interviews')}
+              style={styles.content}
             >
               <View style={styles.subsections}>
                 <Image style={styles.subimage} source={item.image} />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate(resumeDetails)}>
+                  <MaterialCommunityIcons name='note' />
+                </TouchableOpacity>
+                <MaterialCommunityIcons name='coffee' />
+                <MaterialCommunityIcons name='book' />
                 <Text style={styles.text}>
                   {item.val}
                 </Text>
@@ -125,7 +132,8 @@ function StarCandidates({ navigation }) {
                 onClickFunction={() => {
                   updateLayout(key)
                 }}
-                navigation={navigation} />
+                navigation={navigation}
+              />
             ))
           }
         </ScrollView>
@@ -180,15 +188,16 @@ const styles = StyleSheet.create({
     marginRight: moderateScale(20),
     marginBottom: moderateVerticalScale(10),
     marginTop: moderateVerticalScale(10),
-    width: '90%'
+    width: '88%'
   },
   content: {
-    flexDirection: 'row'
+    alignItems: 'flex-start',
+
   },
   subimage: {
-
-    width: 100,
-    height: 100,
+    marginLeft: moderateScale(40),
+    width: 80,
+    height: 80,
     borderRadius: 40,
 
   },
@@ -201,3 +210,5 @@ const styles = StyleSheet.create({
 });
 
 export default StarCandidates;
+
+// change this file name from setting screen to star candidates

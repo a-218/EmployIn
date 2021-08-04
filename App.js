@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import SecondBottom from './Components/SecondBottom';
+import AllTabs from './Components/AllTabs';
+
 
 export default function App() {
   return (
-    <SecondBottom />
+    <AllTabs />
   );
 }
 
