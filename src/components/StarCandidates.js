@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, Button, ScrollView, TextComponent, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
+import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
+import resumeDetails from './resumeDetails';
 // import { FontAwesome5, FontAwesome } from '@expo/vector-icons'
 // import { ListItem, Avatar } from 'react-native-elements/dist/list/ListItem';
 
@@ -10,16 +14,16 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Job Position 1',
     subcategory: [
-      { id: 1, val: 'NAME', image: require("../assets/Joey.jpeg") },
-      { id: 2, val: 'FIRSTNAME sssssssssssssssss', image: require("../assets/Joey.jpeg") }
+      { id: 1, val: 'NAME', image: require("../../assets/Joey.jpeg") },
+      { id: 2, val: 'FIRSTNAME ', image: require("../../assets/Joey.jpeg") }
     ]
   },
   {
     isExpanded: false,
     category_name: 'Job Position 2',
     subcategory: [
-      { id: 3, val: 'Joey Trip', image: require("../assets/Joey.jpeg") },
-      { id: 4, val: 'Joey Trip', image: require("../assets/Joey.jpeg") }
+      { id: 3, val: 'Joey Trip', image: require("../../assets/Joey.jpeg") },
+      { id: 4, val: 'Joey Trip', image: require("../../assets/Joey.jpeg") }
     ]
   },
 ]
@@ -27,7 +31,7 @@ const CONTENT = [
 
 // expandable section
 
-const ExpandableComponenet = ({ item, onClickFunction }) => {
+const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
 
   const [layout, setlayout] = useState(0);
 
@@ -57,9 +61,16 @@ const ExpandableComponenet = ({ item, onClickFunction }) => {
           item.subcategory.map((item, key) => (
             <TouchableOpacity
               key={key}
-              sytle={styles.content}>
+              style={styles.content}
+            >
               <View style={styles.subsections}>
                 <Image style={styles.subimage} source={item.image} />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate(resumeDetails)}>
+                  <MaterialCommunityIcons name='note' />
+                </TouchableOpacity>
+                <MaterialCommunityIcons name='coffee' />
+                <MaterialCommunityIcons name='book' />
                 <Text style={styles.text}>
                   {item.val}
                 </Text>
@@ -70,12 +81,12 @@ const ExpandableComponenet = ({ item, onClickFunction }) => {
           ))
         }
       </View>
-    </View>
+    </View >
   )
 }
 
 
-function SettingsScreen() {
+function StarCandidates({ navigation }) {
   if (Platform.OS === 'android') {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
       UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -120,7 +131,9 @@ function SettingsScreen() {
                 item={item}
                 onClickFunction={() => {
                   updateLayout(key)
-                }} />
+                }}
+                navigation={navigation}
+              />
             ))
           }
         </ScrollView>
@@ -175,15 +188,16 @@ const styles = StyleSheet.create({
     marginRight: moderateScale(20),
     marginBottom: moderateVerticalScale(10),
     marginTop: moderateVerticalScale(10),
-    width: '90%'
+    width: '88%'
   },
   content: {
-    flexDirection: 'row'
+    alignItems: 'flex-start',
+
   },
   subimage: {
-
-    width: 100,
-    height: 100,
+    marginLeft: moderateScale(40),
+    width: 80,
+    height: 80,
     borderRadius: 40,
 
   },
@@ -195,4 +209,6 @@ const styles = StyleSheet.create({
 
 });
 
-export default SettingsScreen;
+export default StarCandidates;
+
+// change this file name from setting screen to star candidates
