@@ -10,6 +10,7 @@ import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'reac
 import Tweet from './Tweet'
 
 import { createStackNavigator } from '@react-navigation/stack'
+import { Search, Search2 } from './Screens';
 
 // fake data for the skills sections
 const DATA = [
@@ -153,7 +154,15 @@ const styles = StyleSheet.create({
 
 
 const Tab = createBottomTabNavigator();
+const SearchStack = createStackNavigator();
 
+const SearchStackScreen = () => {
+  <SearchStack.Navigator>
+    <SearchStack.Screen name="Search" component={Search} />
+    <SearchStack.Screen name="Search2" component={Search2} />
+  </SearchStack.Navigator>
+
+};
 
 function NavTabs() {
   return (
@@ -195,7 +204,7 @@ function NavTabs() {
         }} />
       <Tab.Screen
         name="Interviews"
-        component={InterviewOption}
+        component={SearchStackScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
