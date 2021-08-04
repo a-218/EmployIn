@@ -4,8 +4,10 @@ import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
-import SettingsScreen from './SettingScreen';
+import StarCandidates from './SettingScreen'
+import InterviewOption from './InterviewOption';
 import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
+import Home from './Home';
 
 
 // fake data for the skills sections
@@ -28,7 +30,7 @@ const DATA = [
   },
 ];
 
-function HomeScreen() {
+function SearchScreen() {
   return (
     <View style={styles.container}>
       {/* top part of the resume */}
@@ -54,14 +56,14 @@ function HomeScreen() {
           </View>
 
           <View style={styles.summary}>
-            <Text numberOfLines={5} ellipsizeMode='tail'>Summary:
+            <Text numberOfLines={4} ellipsizeMode='tail'>Summary:
               I worked for on-site at Canfor Pulp and Paper as a Process Engineer Co-op. I performed routine process monitoring and optimization, including calibrating pulp analyzers and assisting in troubleshooting equipment. I concluded this work term by outlining the annual losses from inefficiencies in wood chip handling, backed by process control data from the DeltaV Distributed Control System. I then provided several capital projects solutions. Throughout this term, I learned the importance of efficient communication and collaboration.
             </Text>
           </View>
 
           <View style={styles.experience}>
             <Text >Experience:</Text>
-            <Text>
+            <Text numberOfLines={4} ellipsizeMode='tail'>
               I worked for on-site at Canfor Pulp and Paper as a Process Engineer Co-op. I performed routine process monitoring and optimization, including calibrating pulp analyzers and assisting in troubleshooting equipment. I concluded this work term by outlining the annual losses
             </Text>
 
@@ -168,20 +170,36 @@ function MyTabs() {
       }}
     >
       <Tab.Screen name="Home"
-        component={HomeScreen}
+        component={Home}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
             <MaterialCommunityIcons name='home' size={size} color={color} />
         }} />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
+      <Tab.Screen name="Search"
+        component={SearchScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='cog' size={size} color={color} />
+            <MaterialCommunityIcons name='magnify' size={size} color={color} />
         }} />
+      <Tab.Screen
+        name="Candidates"
+        component={StarCandidates}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ size, color }) =>
+            <MaterialCommunityIcons name='star' size={size} color={color} />
+        }} />
+      <Tab.Screen
+        name="Interviews"
+        component={InterviewOption}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ size, color }) =>
+            <MaterialCommunityIcons name='application' size={size} color={color} />
+        }} />
+
     </Tab.Navigator>
   );
 }

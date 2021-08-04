@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, Button, ScrollView, TextComponent, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
 // import { FontAwesome5, FontAwesome } from '@expo/vector-icons'
 // import { ListItem, Avatar } from 'react-native-elements/dist/list/ListItem';
@@ -27,7 +29,7 @@ const CONTENT = [
 
 // expandable section
 
-const ExpandableComponenet = ({ item, onClickFunction }) => {
+const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
 
   const [layout, setlayout] = useState(0);
 
@@ -57,7 +59,9 @@ const ExpandableComponenet = ({ item, onClickFunction }) => {
           item.subcategory.map((item, key) => (
             <TouchableOpacity
               key={key}
-              sytle={styles.content}>
+              sytle={styles.content}
+              onPress={() => navigation.navigate('Interviews')}
+            >
               <View style={styles.subsections}>
                 <Image style={styles.subimage} source={item.image} />
                 <Text style={styles.text}>
@@ -70,12 +74,12 @@ const ExpandableComponenet = ({ item, onClickFunction }) => {
           ))
         }
       </View>
-    </View>
+    </View >
   )
 }
 
 
-function SettingsScreen() {
+function StarCandidates({ navigation }) {
   if (Platform.OS === 'android') {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
       UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -120,7 +124,8 @@ function SettingsScreen() {
                 item={item}
                 onClickFunction={() => {
                   updateLayout(key)
-                }} />
+                }}
+                navigation={navigation} />
             ))
           }
         </ScrollView>
@@ -195,4 +200,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default SettingsScreen;
+export default StarCandidates;
