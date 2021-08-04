@@ -4,7 +4,7 @@ import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList
 
 
 
-function InterviewOption() {
+function CompanyProfile() {
 
   return (
     <SafeAreaView style={styles.container}>
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default InterviewOption;
+export default CompanyProfile;

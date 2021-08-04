@@ -14,16 +14,16 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Job Position 1',
     subcategory: [
-      { id: 1, val: 'NAME', image: require("../assets/Joey.jpeg") },
-      { id: 2, val: 'FIRSTNAME ', image: require("../assets/Joey.jpeg") }
+      { id: 1, val: 'NAME', image: require("../../assets/Joey.jpeg") },
+      { id: 2, val: 'FIRSTNAME ', image: require("../../assets/Joey.jpeg") }
     ]
   },
   {
     isExpanded: false,
     category_name: 'Job Position 2',
     subcategory: [
-      { id: 3, val: 'Joey Trip', image: require("../assets/Joey.jpeg") },
-      { id: 4, val: 'Joey Trip', image: require("../assets/Joey.jpeg") }
+      { id: 3, val: 'Joey Trip', image: require("../../assets/Joey.jpeg") },
+      { id: 4, val: 'Joey Trip', image: require("../../assets/Joey.jpeg") }
     ]
   },
 ]

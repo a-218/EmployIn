@@ -7,7 +7,7 @@ import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-
 import StarCandidates from './StarCandidates'
 import InterviewOption from './InterviewOption';
 import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
-import Home from './Home';
+import Tweet from './Tweet'
 
 import { createStackNavigator } from '@react-navigation/stack'
 
@@ -38,7 +38,7 @@ function SearchScreen() {
       <SafeAreaView >
         <View style={styles.rightresume}>
           <Image
-            style={styles.image} source={require("../assets/Joey.jpeg")} />
+            style={styles.image} source={require("../../assets/Joey.jpeg")} />
           <View style={styles.personalinfo}>
             <Text style={styles.name}>Joey Trib</Text>
             <Text style={styles.phone}>778-123-4567</Text>
@@ -172,7 +172,7 @@ function NavTabs() {
       }}
     >
       <Tab.Screen name="Home"
-        component={Home}
+        component={Tweet}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
