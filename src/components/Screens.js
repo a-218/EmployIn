@@ -5,8 +5,20 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import resumeDetails from './resumeDetails';
-// import { FontAwesome5, FontAwesome } from '@expo/vector-icons'
-// import { ListItem, Avatar } from 'react-native-elements/dist/list/ListItem';
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   button: {
+//     paddingHorizontal: 20,
+//     paddingVertical: 10,
+//     marginVertical: 10,
+//     borderRadius: 5
+//   }
+// });
 
 
 const CONTENT = [
@@ -14,8 +26,8 @@ const CONTENT = [
     isExpanded: false,
     category_name: 'Job Position 1',
     subcategory: [
-      { id: 1, val: 'NAME', image: require("../../assets/Joey.jpeg") },
-      { id: 2, val: 'FIRSTNAME ', image: require("../../assets/Joey.jpeg") }
+      { id: 1, val: 'NAME', image: require("../../assets/Joey.jpeg"), experience: 'sdfsdfsdfdsf' },
+      { id: 2, val: 'FIRS ', image: require("../../assets/Joey.jpeg"), experience: 'sdsdsdsdsdsd' }
     ]
   },
   {
@@ -27,6 +39,65 @@ const CONTENT = [
     ]
   },
 ]
+
+const ScreenContainer = ({ children }) => (
+  <View style={styles.container}>{children}</View>
+);
+
+// export const Home2 = ({ navigation }) => (
+//   <ScreenContainer>
+//     <Text>Master List Screen</Text>
+//     <Button
+//       title="React Native by Example"
+//       onPress={() =>
+//         navigation.push("Details", { name: "React Native by Example " })
+//       }
+//     />
+//     <Button
+//       title="React Native School"
+//       onPress={() =>
+//         navigation.push("Details", { name: "React Native School" })
+//       }
+//     />
+
+//   </ScreenContainer>
+// );
+
+
+// export const New2 = ({ navigation }) => (
+//   <ScreenContainer>
+//     <Text>Details Screen</Text>
+
+//     <Button
+//       title="React Native School"
+//       onPress={() =>
+//         navigation.push("Details", { name: "React Native School" })
+//       }
+//     />
+//   </ScreenContainer>
+// );
+
+// export const Details = ({ route }) => (
+//   <ScreenContainer>
+//     <Text>Details Screen</Text>
+//     {route.params.name && <Text>{route.params.name}</Text>}
+//   </ScreenContainer>
+// );
+
+
+
+
+
+// //// SCREENADDING HTE NEW CANDIDATE
+
+export const Individual = ({ route, navigation, item }) => (
+  <ScreenContainer>
+    {console.log(route.params['experience'])}
+    <Text>fdfdfdfdfd{item}</Text>
+    <Text>Details Scresssssssssssssssssen</Text>
+  </ScreenContainer>
+);
+
 
 
 // expandable section
@@ -52,7 +123,7 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
           {item.category_name}
         </Text>
       </TouchableOpacity>
-
+      {console.log(item)}
       <View style={{
         height: layout,
         overflow: 'hidden'
@@ -62,19 +133,28 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
             <TouchableOpacity
               key={key}
               style={styles.content}
+              onPress={() =>
+                navigation.navigate("Details", item)
+              }
             >
               <View style={styles.subsections}>
                 <Image style={styles.subimage} source={item.image} />
-                <TouchableOpacity
-                  onPress={() => navigation.push('resumeDetails')}>
-                  <MaterialCommunityIcons name='note' />
-                </TouchableOpacity>
-                <MaterialCommunityIcons name='coffee' />
-                <MaterialCommunityIcons name='book' />
-                <Text style={styles.text}>
-                  {item.val}
-                </Text>
-
+                {console.log(item.image)}
+                <View style={styles.callEmail}>
+                  <Text style={styles.text}>
+                    {item.val}
+                  </Text>
+                  <TouchableOpacity
+                    style={styles.customButton1}
+                    onPress={() => { }}  >
+                    <Text style={styles.customBtnText}>Call</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.customButton2}
+                    onPress={() => { }}  >
+                    <Text style={styles.customBtnText}>Email</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
               <View style={styles.separator} />
             </TouchableOpacity>
@@ -86,7 +166,7 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
 }
 
 
-function StarCandidates({ navigation }) {
+function Candidates({ navigation }) {
   if (Platform.OS === 'android') {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
       UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -115,6 +195,7 @@ function StarCandidates({ navigation }) {
   }
 
   return (
+
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={styles.header}>
@@ -141,8 +222,10 @@ function StarCandidates({ navigation }) {
       </View>
 
     </SafeAreaView >
+
   );
 }
+
 
 
 const styles = StyleSheet.create({
@@ -176,9 +259,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: moderateScale(16),
     padding: 20,
-    marginLeft: moderateScale(20),
-    marginRight: moderateScale(20),
-    flexWrap: 'wrap'
+    textAlign: 'left',
+
+
 
   },
   separator: {
@@ -200,16 +283,41 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 40,
 
+
   },
   subsections: {
     flexDirection: 'row',
     justifyContent: 'space-around'
-  }
+  },
+  callEmail: {
 
+    flexDirection: 'row',
+    alignItems: 'center',
+
+    fontSize: moderateScale(16),
+    padding: 20,
+    marginLeft: moderateScale(20),
+    marginRight: moderateScale(20),
+    flexWrap: 'wrap',
+
+  },
+  customButton1: {
+
+    backgroundColor: "#5DA9E9",
+    paddingHorizontal: 20,
+    paddingVertical: 5,
+    borderRadius: 30
+  },
+
+  customButton2: {
+    marginLeft: 15,
+    backgroundColor: "#5DA9E9",
+    paddingHorizontal: 20,
+    paddingVertical: 5,
+    borderRadius: 30
+  }
 
 });
 
 
-
-// change this file name from setting screen to star candidates 
-//Th file is implemented in screens.js
+export default Candidates;

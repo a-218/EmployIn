@@ -10,6 +10,7 @@ import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'reac
 import Tweet from './Tweet'
 
 import { createStackNavigator } from '@react-navigation/stack'
+import Candidates, { Home2, Details, New2, resumeDetails, Individual } from './Screens';
 
 // fake data for the skills sections
 const DATA = [
@@ -153,7 +154,57 @@ const styles = StyleSheet.create({
 
 
 const Tab = createBottomTabNavigator();
+const Home2Stack = createStackNavigator();
+const NewStack = createStackNavigator();
 
+const CandidateStack = createStackNavigator();
+
+const CandidateScreen = () => (
+  <CandidateStack.Navigator>
+    <CandidateStack.Screen
+      name="Candidates"
+      component={Candidates}
+      options={{
+        headerShown: false
+      }} />
+    <CandidateStack.Screen
+      name="Details"
+      component={Individual}
+      options={({ route, navigation }) => ({
+
+        otherParam: route.params
+      })}
+    />
+  </CandidateStack.Navigator>
+);
+
+
+const NewStackScreen = () => (
+  <NewStack.Navigator>
+    <NewStack.Screen name="NewScreen2" component={New2} />
+    <NewStack.Screen
+      name="Details"
+      component={Details}
+      options={({ route }) => ({
+        title: route.params.name
+      })}
+    />
+  </NewStack.Navigator>
+);
+
+
+const Home2StackScreen = () => (
+  <Home2Stack.Navigator>
+    <Home2Stack.Screen name="Home2" component={Home2} />
+    <Home2Stack.Screen
+      name="Details"
+      component={Details}
+      options={({ route }) => ({
+        title: route.params.name
+      })}
+    />
+  </Home2Stack.Navigator>
+);
 
 function NavTabs() {
   return (
@@ -186,21 +237,15 @@ function NavTabs() {
             <MaterialCommunityIcons name='magnify' size={size} color={color} />
         }} />
       <Tab.Screen
-        name="Candidates"
-        component={StarCandidates}
+        name="Applicants"
+        component={CandidateScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
             <MaterialCommunityIcons name='star' size={size} color={color} />
         }} />
-      <Tab.Screen
-        name="Interviews"
-        component={InterviewOption}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='application' size={size} color={color} />
-        }} />
+
+
 
     </Tab.Navigator>
   );
