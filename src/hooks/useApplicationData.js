@@ -7,7 +7,7 @@ import industry from "./getDB/industry";
 import job_application from "./getDB/job_application";
 import job_posting from "./getDB/job_posting";
 
-export default async function useApplicationData() {
+export default function useApplicationData() {
   // Initialize all databases
   const { applicantIndustryDBState } = applicant_industry(ip);
   const { applicantLinksDBState } = applicant_links(ip);

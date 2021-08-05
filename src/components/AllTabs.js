@@ -12,6 +12,10 @@ import Tweet from './Tweet'
 import { createStackNavigator } from '@react-navigation/stack'
 import Candidates, { Home2, Details, New2, resumeDetails, Individual } from './Screens';
 
+import useApplicationData from '../hooks/useApplicationData';
+import Profile from './Profile';
+
+
 // fake data for the skills sections
 const DATA = [
   {
@@ -32,7 +36,13 @@ const DATA = [
   },
 ];
 
+
+
 function SearchScreen() {
+
+  const { applicantIndustryDBState } = useApplicationData();
+  const { applicantDBState } = useApplicationData();
+  console.log('inside search screen ', applicantDBState)
   return (
     <View style={styles.container}>
       {/* top part of the resume */}
@@ -159,6 +169,7 @@ const NewStack = createStackNavigator();
 
 const CandidateStack = createStackNavigator();
 
+// This specific sfunction is for Stack Navigation into resume details
 const CandidateScreen = () => (
   <CandidateStack.Navigator>
     <CandidateStack.Screen
@@ -168,7 +179,7 @@ const CandidateScreen = () => (
         headerShown: false
       }} />
     <CandidateStack.Screen
-      name="Details"
+      name="Individual"
       component={Individual}
       options={({ route, navigation }) => ({
 
@@ -179,32 +190,32 @@ const CandidateScreen = () => (
 );
 
 
-const NewStackScreen = () => (
-  <NewStack.Navigator>
-    <NewStack.Screen name="NewScreen2" component={New2} />
-    <NewStack.Screen
-      name="Details"
-      component={Details}
-      options={({ route }) => ({
-        title: route.params.name
-      })}
-    />
-  </NewStack.Navigator>
-);
+// const NewStackScreen = () => (
+//   <NewStack.Navigator>
+//     <NewStack.Screen name="NewScreen2" component={New2} />
+//     <NewStack.Screen
+//       name="Details"
+//       component={Details}
+//       options={({ route }) => ({
+//         title: route.params.name
+//       })}
+//     />
+//   </NewStack.Navigator>
+// );
 
 
-const Home2StackScreen = () => (
-  <Home2Stack.Navigator>
-    <Home2Stack.Screen name="Home2" component={Home2} />
-    <Home2Stack.Screen
-      name="Details"
-      component={Details}
-      options={({ route }) => ({
-        title: route.params.name
-      })}
-    />
-  </Home2Stack.Navigator>
-);
+// const Home2StackScreen = () => (
+//   <Home2Stack.Navigator>
+//     <Home2Stack.Screen name="Home2" component={Home2} />
+//     <Home2Stack.Screen
+//       name="Details"
+//       component={Details}
+//       options={({ route }) => ({
+//         title: route.params.name
+//       })}
+//     />
+//   </Home2Stack.Navigator>
+// );
 
 function NavTabs() {
   return (
@@ -234,7 +245,7 @@ function NavTabs() {
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='magnify' size={size} color={color} />
+            <MaterialCommunityIcons name='briefcase' size={size} color={color} />
         }} />
       <Tab.Screen
         name="Applicants"
@@ -242,9 +253,16 @@ function NavTabs() {
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='star' size={size} color={color} />
+            <MaterialCommunityIcons name='book-account' size={size} color={color} />
         }} />
-
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ size, color }) =>
+            <MaterialCommunityIcons name='account' size={size} color={color} />
+        }} />
 
 
     </Tab.Navigator>
