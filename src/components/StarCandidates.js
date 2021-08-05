@@ -66,7 +66,7 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
               <View style={styles.subsections}>
                 <Image style={styles.subimage} source={item.image} />
                 <TouchableOpacity
-                  onPress={() => navigation.navigate(resumeDetails)}>
+                  onPress={() => navigation.push('resumeDetails')}>
                   <MaterialCommunityIcons name='note' />
                 </TouchableOpacity>
                 <MaterialCommunityIcons name='coffee' />
@@ -209,6 +209,7 @@ const styles = StyleSheet.create({
 
 });
 
-export default StarCandidates;
 
-// change this file name from setting screen to star candidates
+
+// change this file name from setting screen to star candidates 
+//Th file is implemented in screens.js
