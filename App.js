@@ -5,6 +5,5 @@ import AllTabs from "./src/components/AllTabs";
 import useApplicationData from "./src/hooks/useApplicationData";
 
 export default function App() {
-  useApplicationData();
   return <AllTabs />;
 }
