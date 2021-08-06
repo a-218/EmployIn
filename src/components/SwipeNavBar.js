@@ -6,87 +6,101 @@ import axios from 'axios'
 
 import Swipes from './Swipes'
 
+import useApplicationData from '../hooks/useApplicationData'
+
 export default function SWipeNavBar() {
   const [users, setUsers] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
+  const { applicantDBState } = useApplicationData()
+  console.log(applicantDBState)
+  const data = applicantDBState
 
-  const data = [
-    {
-      name: 'chandler',
-      phonenumber: '1234',
-      email: 'abc@gmail.com',
-      skills: 'whatever',
-      summary: 'work in acting',
-      experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-      externallinks: 'https://github.com'
-    },
 
-    {
-      name: 'James',
-      phonenumber: '1234567',
-      email: '123@gmail.com',
-      skills: 'whatever2',
-      summary: 'work in cooking',
-      experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-      externallinks: 'https://github.com'
-    },
+  const { applicantLinksDBState } = useApplicationData()
+  console.log(applicantLinksDBState)
 
-    {
-      name: 'Robert',
-      phonenumber: '5555554',
-      email: 'youyoyouuo@gmail.com',
-      skills: 'good at omthin',
-      summary: 'looking fiir jobs ',
-      experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-      externallinks: 'https://github.com'
-    },
+  console.log('the data over herer', data)
+  // const data = [
+  //   {
+  //     name: 'chandler',
+  //     phonenumber: '1234',
+  //     email: 'abc@gmail.com',
+  //     skills: 'whatever',
+  //     summary: 'work in acting',
+  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
+  //     externallinks: 'https://github.com'
+  //   },
 
-    {
-      name: 'Jasmine',
-      phonenumber: '777777',
-      email: 'helloworld@gmail.com',
-      skills: 'whatever, dancing',
-      summary: 'dancer',
-      experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-      externallinks: 'https://twitter.com'
-    },
+  //   {
+  //     name: 'James',
+  //     phonenumber: '1234567',
+  //     email: '123@gmail.com',
+  //     skills: 'whatever2',
+  //     summary: 'work in cooking',
+  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
+  //     externallinks: 'https://github.com'
+  //   },
 
-    {
-      name: 'David',
-      phonenumber: '1234',
-      email: 'David@gmail.com',
-      skills: 'waving to people',
-      summary: 'I need a job in airplanes',
-      experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-      externallinks: 'https://twitter.com'
-    },
+  //   {
+  //     name: 'Robert',
+  //     phonenumber: '5555554',
+  //     email: 'youyoyouuo@gmail.com',
+  //     skills: 'good at omthin',
+  //     summary: 'looking fiir jobs ',
+  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
+  //     externallinks: 'https://github.com'
+  //   },
 
-    {
-      name: 'Courtney',
-      phonenumber: '85858585',
-      email: 'goodbye@gmail.com',
-      skills: 'guitar',
-      summary: 'work in acting',
-      experience: 'awdawdawdadawdawdawdawd',
-      externallinks: 'https://github.com'
-    },
+  //   {
+  //     name: 'Jasmine',
+  //     phonenumber: '777777',
+  //     email: 'helloworld@gmail.com',
+  //     skills: 'whatever, dancing',
+  //     summary: 'dancer',
+  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
+  //     externallinks: 'https://twitter.com'
+  //   },
 
-    {
-      name: 'XXXX',
-      phonenumber: '85858585',
-      email: 'goodbye@gmail.com',
-      skills: 'guitar',
-      summary: 'work in acting',
-      experience: 'awdawdawdadawdawdawdawd',
-      externallinks: 'https://github.com'
-    },
+  //   {
+  //     name: 'David',
+  //     phonenumber: '1234',
+  //     email: 'David@gmail.com',
+  //     skills: 'waving to people',
+  //     summary: 'I need a job in airplanes',
+  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
+  //     externallinks: 'https://twitter.com'
+  //   },
 
-  ]
+  //   {
+  //     name: 'Courtney',
+  //     phonenumber: '85858585',
+  //     email: 'goodbye@gmail.com',
+  //     skills: 'guitar',
+  //     summary: 'work in acting',
+  //     experience: 'awdawdawdadawdawdawdawd',
+  //     externallinks: 'https://github.com'
+  //   },
 
-  // async function fetchUsers() {
+  //   {
+  //     name: 'XXXX',
+  //     phonenumber: '85858585',
+  //     email: 'goodbye@gmail.com',
+  //     skills: 'guitar',
+  //     summary: 'work in acting',
+  //     experience: 'awdawdawdadawdawdawdawd',
+  //     externallinks: 'https://github.com'
+  //   },
+
+  // ]
+
+
+
+  // function fetchUsers() {
   //   try {
-  //     const { data } = await axios.get('https://randomuser.me/api/?gender=female&results=50')
-  //     setUsers(data.results)
+  //     const { applicantDBState } = useApplicationData()
+  //     console.log(applicantDBState)
+  //     const { data } = applicantDBState
+  //     // setUsers(data.results)
   //   } catch (error) {
   //     console.log(error)
   //     Alert.alert('Error getting users', '', [{ text: 'Retry', onPress: () => fetchUsers() }])
@@ -98,6 +112,8 @@ export default function SWipeNavBar() {
   // }, [])
 
   useEffect(() => {
+
+
     setUsers(data)
   }, [])
 

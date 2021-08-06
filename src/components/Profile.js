@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, Button, ScrollView, TextComponent, LayoutAnimation, Platform, UIManager, ImageBackground } from 'react-native';
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import { BorderlessButton } from 'react-native-gesture-handler';
+
+
+
+
 function Profile({ navigation, props }) {
   const image = { uri: "https://reactjs.org/logo-og.png" };
-
-
-
   return (
     <View>
       <ScrollView style={{ backgroundColor: 'white' }}>
