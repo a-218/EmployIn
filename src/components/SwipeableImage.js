@@ -3,12 +3,15 @@ import { View, Image, StyleSheet, Text } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 
 
+
+
 export function SearchScreen({ user }) {
+
   return (
     <View style={styles.container}>
       <View style={styles.rightresume}>
 
-        <Image style={styles.image} source={require("../../assets/icon.png")} />
+        <Image style={styles.image} source={require("../../assets/Joey.jpeg")} />
 
         <View style={styles.personalinfo}>
           <Text style={styles.name}>{user.name}</Text>
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
 
   container: {
     height: '100%',
-    backgroundColor: '#605770',
+    backgroundColor: 'white',
     borderRadius: 60,
     borderWidth: 5,
   },
