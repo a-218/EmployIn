@@ -14,6 +14,8 @@ import Candidates, { Home2, Details, New2, resumeDetails, Individual } from './S
 
 import useApplicationData from '../hooks/useApplicationData';
 import Profile from './Profile';
+import { SearchScreen } from './SwipeableImage';
+import SWipeNavBar from './SwipeNavBar';
 
 
 // fake data for the skills sections
@@ -38,59 +40,60 @@ const DATA = [
 
 
 
-function SearchScreen() {
+// function SearchScreen() {
 
-  const { applicantIndustryDBState } = useApplicationData();
-  const { applicantDBState } = useApplicationData();
-  console.log('inside search screen ', applicantDBState)
-  return (
-    <View style={styles.container}>
-      {/* top part of the resume */}
-      <SafeAreaView >
-        <View style={styles.rightresume}>
-          <Image
-            style={styles.image} source={require("../../assets/Joey.jpeg")} />
-          <View style={styles.personalinfo}>
-            <Text style={styles.name}>Joey Trib</Text>
-            <Text style={styles.phone}>778-123-4567</Text>
-            <Text style={styles.email}>123456@gmail.com</Text>
-          </View>
-        </View>
-        {/* Other parts of resume lke summary */}
-        <View style={styles.bottomresume}>
-          <View style={styles.skills}>
-            <Text>Skills: Javascript</Text>
-            <FlatList
-              numColumns={2}
-              data={DATA}
-              renderItem={({ item }) => <Text style={styles.item}>{item.skill}</Text>}
-            />
-          </View>
+//   return (
+//     <View style={styles.container}>
+//       {/* top part of the resume */}
+//       <SafeAreaView >
+//         <View style={styles.rightresume}>
+//           <Image
+//             style={styles.image} source={require("../../assets/Joey.jpeg")} />
+//           <View style={styles.personalinfo}>
+//             <Text style={styles.name}>{applicantDBState.map(applicant => {
+//               <div>{applicant.name} </div>
+//             })}</Text>
+//             <Text style={styles.phone}>{applicantDBState[0].name}</Text>
+//             <Text style={styles.email}>{ }</Text>
+//           </View>
+//         </View>
+//         {/* Other parts of resume lke summary */}
+//         <View style={styles.bottomresume}>
+//           <View style={styles.skills}>
+//             <Text>Skills: Javascript</Text>
+//             <FlatList
+//               numColumns={2}
+//               data={DATA}
+//               renderItem={({ item }) => <Text style={styles.item}>{item.skill}</Text>}
+//             />
+//           </View>
 
-          <View style={styles.summary}>
-            <Text numberOfLines={4} ellipsizeMode='tail'>Summary:
-              I worked for on-site at Canfor Pulp and Paper as a Process Engineer Co-op. I performed routine process monitoring and optimization, including calibrating pulp analyzers and assisting in troubleshooting equipment. I concluded this work term by outlining the annual losses from inefficiencies in wood chip handling, backed by process control data from the DeltaV Distributed Control System. I then provided several capital projects solutions. Throughout this term, I learned the importance of efficient communication and collaboration.
-            </Text>
-          </View>
+//           <View style={styles.summary}>
+//             <Text numberOfLines={4} ellipsizeMode='tail'>Summary:
+//               { }
+//             </Text>
+//           </View>
 
-          <View style={styles.experience}>
-            <Text >Experience:</Text>
-            <Text numberOfLines={4} ellipsizeMode='tail'>
-              I worked for on-site at Canfor Pulp and Paper as a Process Engineer Co-op. I performed routine process monitoring and optimization, including calibrating pulp analyzers and assisting in troubleshooting equipment. I concluded this work term by outlining the annual losses
-            </Text>
+//           <View style={styles.experience}>
+//             <Text >Experience:</Text>
+//             <Text numberOfLines={4} ellipsizeMode='tail'>
+//               { }
+//             </Text>
 
-          </View>
+//           </View>
 
-          <View style={styles.links}>
-            <Text>External Links</Text>
-            <Text style={styles.linkedin}>https://www.linkedin.com/in/alexli0218</Text>
-          </View>
-        </View>
+//           <View style={styles.links}>
+//             <Text>External Links</Text>
+//             <Text style={styles.linkedin}></Text>
+//           </View>
+//         </View>
 
-      </SafeAreaView>
-    </View >
-  );
-}
+//       </SafeAreaView>
+//     </View >
+//   );
+// }
+
+
 
 
 const styles = StyleSheet.create({
@@ -241,7 +244,7 @@ function NavTabs() {
             <MaterialCommunityIcons name='home' size={size} color={color} />
         }} />
       <Tab.Screen name="Search"
-        component={SearchScreen}
+        component={SWipeNavBar}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>

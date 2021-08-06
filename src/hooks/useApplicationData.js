@@ -16,7 +16,7 @@ export default function useApplicationData() {
   const { industryDBState } = industry(ip);
   const { jobApplicationDBState } = job_application(ip);
   const { jobPostingDBState } = job_posting(ip);
-
+  console.log('################################', { applicantDBState })
   // Return all database to be used
   return {
     applicantIndustryDBState,
