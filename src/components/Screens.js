@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
-import resumeDetails from './resumeDetails';
+
 
 // const styles = StyleSheet.create({
 //   container: {
@@ -134,7 +134,7 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
               key={key}
               style={styles.content}
               onPress={() =>
-                navigation.navigate("Details", item)
+                navigation.navigate("Individual", item)
               }
             >
               <View style={styles.subsections}>

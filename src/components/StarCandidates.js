@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
-import resumeDetails from './resumeDetails';
+
 // import { FontAwesome5, FontAwesome } from '@expo/vector-icons'
 // import { ListItem, Avatar } from 'react-native-elements/dist/list/ListItem';
 
