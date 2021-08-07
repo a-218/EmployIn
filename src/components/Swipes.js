@@ -7,7 +7,7 @@ import SwipeableImage from './SwipeableImage'
 export default function Swipes({ data, currentIndex, handleLike, handlePass, swipesRef }) {
   const [willLike, setWillLike] = useState(false)
   const [willPass, setWillPass] = useState(false)
-
+  console.log('over here before likes')
   const renderLeftActions = () => {
     return (
       <RectButton style={styles.container}>
@@ -24,7 +24,9 @@ export default function Swipes({ data, currentIndex, handleLike, handlePass, swi
   }
 
   return (
+
     <Swipeable
+
       ref={swipesRef}
       friction={2}
       leftThreshold={40}

@@ -18,6 +18,10 @@ import { SearchScreen } from './SwipeableImage';
 import SWipeNavBar from './SwipeNavBar';
 
 
+// import { ApplicantProvider } from './Context';
+import { JobProvider } from './JobProvider';
+
+
 // fake data for the skills sections
 const DATA = [
   {
@@ -275,7 +279,9 @@ function NavTabs() {
 function AllTabs() {
   return (
     <NavigationContainer>
-      <NavTabs />
+      <JobProvider>
+        <NavTabs />
+      </JobProvider>
     </NavigationContainer>
   );
 }

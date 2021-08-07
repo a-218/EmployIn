@@ -46,7 +46,7 @@ const DATA = [
 
 
 function Tweet({ navigation, props }) {
-
+  console.log('%%%%%%%%%%%%%%%%%%%%%')
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
