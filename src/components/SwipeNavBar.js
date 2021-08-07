@@ -9,7 +9,7 @@ import useApplicationData from '../hooks/useApplicationData'
 //import { ApplicantProvider, useApplicant } from './Context'
 
 import { JobContext } from './JobProvider'
-
+import BottomBar from './Bottombar'
 export default function SWipeNavBar() {
   const [users, setUsers] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -17,8 +17,8 @@ export default function SWipeNavBar() {
   //  console.log(applicantDBState)
   const data = applicantDBState
 
-
-  const { applicantLinksDBState } = useApplicationData()
+  const swipesRef = useRef(null)
+  //  const { applicantLinksDBState } = useApplicationData()
   //console.log(applicantLinksDBState)
 
   //console.log('the data over herer', data)
@@ -80,6 +80,13 @@ export default function SWipeNavBar() {
     setCurrentIndex(nextIndex)
   }
 
+  function handleLikePress() {
+    swipesRef.current.openLeft()
+  }
+  function handlePassPress() {
+    swipesRef.current.openRight()
+  }
+
 
   return (
     <View style={styles.container}>
@@ -90,6 +97,7 @@ export default function SWipeNavBar() {
               currentIndex === i && (
                 <Swipes
                   key={i}
+                  ref={swipesRef}
                   currentIndex={currentIndex}
                   data={data}
                   handleLike={handleLike}
@@ -98,6 +106,7 @@ export default function SWipeNavBar() {
               )
           )}
       </View>
+      <BottomBar handleLikePress={handleLikePress} handlePassPress={handlePassPress} />
     </View>
   )
 }
