@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 const JobContext = React.createContext();
 const JobProvider = (props) => {
 
-  const [name, setName] = useState('Tacos');
-  const [calories, setCalories] = useState('80');
+  // const [name, setName] = useState('Tacos');
+  // const [calories, setCalories] = useState('80');
 
   // const [Applicant, setApplicant] = React.useState([{
   //   email: 'something@www.come',
