@@ -108,7 +108,7 @@ function Tweet({ navigation, props }) {
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.header}>
-            <Text style={styles.titleText}></Text>
+            <Text style={styles.titleText}>EmployIn Chatter</Text>
           </View>
         </View>
         <View style={styles.newPost}>
@@ -119,7 +119,7 @@ function Tweet({ navigation, props }) {
             value={text}
             onChangeText={(text) => onChangeText(text)}
           ></TextInput>
-          <View>
+          <View style={styles.shadow}>
             <TouchableOpacity
               style={styles.postButton}
               title="Post"
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     flex: 1,
+    color: "#e3655b",
     fontSize: moderateScale(20),
     fontWeight: "bold",
     textAlign: "center",
@@ -162,7 +163,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowColor: "tomato",
     shadowOffset: {
-      width: 0,
+      width: 3,
       height: 3,
     },
   },
@@ -217,6 +218,14 @@ const styles = StyleSheet.create({
   },
   newPost: {
     flexDirection: "row",
+  },
+  shadow: {
+    shadowColor: "#87baab",
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
   },
 });
 
