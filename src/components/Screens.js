@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
-
+import call from "react-native-phone-call";
+import email from "react-native-email";
 import { JobContext } from './JobProvider'
 import styles from '../styles/ScreensStyle';
 
@@ -98,6 +99,32 @@ export const Individual = ({ route, navigation, item }) => (
 
 const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
 
+
+  ///adding caling function from call button 
+  const dummyNumber = {
+    number: "1234567890", // Dummy phone number, we will pass props into here
+    prompt: false, // Optional boolean property. Determines if the user should be prompt prior to the call
+  };
+
+  function handlePhoneCall() {
+    console.log('it got in here into handlephone call')
+    call(dummyNumber).catch(console.error);
+  }
+  ///////////////////EMAIL BUTTON
+  function handleEmail() {
+    console.log('it got in here into EMAIL MESSAGING ')
+    // This is a dummy variable, we will eventually pass props into here
+    const to = ["jzlowie@gmail.com"]; // string or array of email addresses
+    email(to, {
+      // Optional additional arguments
+      // cc: ["jzlowie@gmail.com", "jzlowie@yahoo.com"], // string or array of email addresses
+      // bcc: "jzlowie@yahoo.com", // string or array of email addresses
+      subject: "Show how to use",
+      body: "Some body right here",
+    }).catch(console.error);
+  }
+
+  ///////
   console.log('INTHE EXAPANDLABE COMPONENT inse$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', item)
 
   const [layout, setlayout] = useState(0);
@@ -142,12 +169,12 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
                   </Text>
                   <TouchableOpacity
                     style={styles.customButton1}
-                    onPress={() => { }}  >
+                    onPress={() => handlePhoneCall()}  >
                     <Text style={styles.customBtnText}>Call</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={styles.customButton2}
-                    onPress={() => { }}  >
+                    onPress={() => handleEmail()}  >
                     <Text style={styles.customBtnText}>Email</Text>
                   </TouchableOpacity>
                 </View>
