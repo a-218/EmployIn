@@ -116,8 +116,10 @@ function Tweet({ navigation, props }) {
             value={text}
             onChangeText={(text) => onChangeText(text)}
           ></TextInput>
-          <View style={styles.postButton}>
-            <Button title="Post" color="#11B5E4" onPress={() => addNewPost()} />
+          <View >
+            <TouchableOpacity style={styles.postButton} title="Post" color="#11B5E4" onPress={() => addNewPost()}>
+              <Text style={{ color: 'white', fontWeight: "bold" }}>Post</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -188,16 +190,20 @@ const styles = StyleSheet.create({
   postButton: {
     // flex: 1,
     height: 40,
+    width: 60,
     margin: 12,
     backgroundColor: "#11B5E4",
     paddingLeft: moderateScale(10),
     paddingRight: moderateScale(10),
     marginRight: moderateScale(20),
     borderRadius: moderateScale(40),
+    alignItems: "center",
+    justifyContent: "center",
   },
   newPost: {
     flexDirection: "row",
   },
+
 });
 
 export default Tweet;
