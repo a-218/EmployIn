@@ -31,8 +31,9 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: moderateScale(16),
-    padding: 20,
+
     textAlign: 'left',
+    flexShrink: 1
 
 
 
@@ -113,8 +114,8 @@ const styles = StyleSheet.create({
   },
 
   personalinfo: {
-    alignItems: 'center',
-    marginLeft: (45),
+
+    paddingLeft: moderateScale(10)
   },
 
   name: {

@@ -10,6 +10,7 @@ function Swipes({ data, currentIndex, handleLike, handlePass, swipesRef }) {
   const [willPass, setWillPass] = useState(false)
   console.log('over here before likes')
   const renderLeftActions = () => {
+
     return (
       <RectButton style={styles.container}>
         <SwipeableImage user={data[currentIndex]}></SwipeableImage>
@@ -17,6 +18,7 @@ function Swipes({ data, currentIndex, handleLike, handlePass, swipesRef }) {
     )
   }
   const renderRightActions = () => {
+
     return (
       <RectButton style={styles.container}>
         <SwipeableImage user={data[currentIndex]}></SwipeableImage>

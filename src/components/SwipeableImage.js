@@ -127,14 +127,15 @@ const styles = StyleSheet.create({
   },
 
   personalinfo: {
-    alignItems: 'center',
-    marginLeft: (45),
+    alignItems: 'flex-start',
+
   },
 
   name: {
-    fontSize: (32),
+    fontSize: (30),
     fontWeight: 'bold',
     marginBottom: (4),
+    flexWrap: 'wrap'
   },
 
   phone: {

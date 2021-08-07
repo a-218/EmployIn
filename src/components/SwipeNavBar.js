@@ -14,9 +14,9 @@ export default function SWipeNavBar() {
   const [users, setUsers] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const { applicantDBState } = useApplicationData()
-  //  console.log(applicantDBState)
-  const data = applicantDBState
 
+  const data = applicantDBState
+  //console.log('outside use application data', data)
   const swipesRef = useRef(null)
   //  const { applicantLinksDBState } = useApplicationData()
   //console.log(applicantLinksDBState)
@@ -40,48 +40,57 @@ export default function SWipeNavBar() {
   //   fetchUsers()
   // }, [])
 
+  const [candidatesState, setCandidatesState] = useState([])
+  const job = useContext(JobContext);
+  const candidates = candidatesState
+
   useEffect(() => {
 
 
-    setUsers(data)
+    setUsers(candidates)
   }, [])
 
-  const [candidatesState, setCandidatesState] = useState([])
-  const job = useContext(JobContext);
 
 
 
   function handleLike() {
+
     // const applicant = useApplicant();
     // console.log(applicant)
-
+    // console.log('data inside handle lieke$$$$$$$$$$$$', data)
+    console.log('data inside handle lieke$$$$$$$$$$$$', currentIndex)
     console.log('like')
+    console.log('1')
 
-    const candidates = candidatesState
+    // setApplicant(candidates)
+    console.log('dddddhdhdhdhdhhdhdhhdd', data[0])
+    nextUser()
+    // const candidates = candidatesState
 
     setCandidatesState((prev) => [...prev, data[currentIndex]])
-    // setApplicant(candidates)
 
+    console.log('sdsdsdsdsdsdsdsdsdsdsdsd', candidates, 'and the current index')
 
-    // console.log("candidates:", candidates)
-
-    nextUser()
     job.setApplicant(candidates)
-
+    console.log('the contextttttttttt', job)
   }
 
   function handlePass() {
     console.log('pass')
+
     nextUser()
   }
 
   function nextUser() {
     const nextIndex = data.length - 1 === currentIndex ? 0 : currentIndex + 1
     setCurrentIndex(nextIndex)
+
   }
 
   function handleLikePress() {
+    console.log('2')
     swipesRef.current.openLeft()
+
   }
   function handlePassPress() {
     swipesRef.current.openRight()
