@@ -21,6 +21,7 @@ import CreateJobPostingScreen from './CreateJobPosting';
 
 // import { ApplicantProvider } from './Context';
 import { JobProvider } from './JobProvider';
+import JobPostingsScreen from './JobPostingsScreen';
 
 
 // fake data for the skills sections
@@ -272,15 +273,21 @@ function NavTabs() {
             <MaterialCommunityIcons name='account' size={size} color={color} />
         }} />
       <Tab.Screen
-        name="Job Posting"
+        name="Create Job Posting"
         component={CreateJobPostingScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
             <MaterialCommunityIcons name='account' size={size} color={color} />
         }} />
-
-
+      <Tab.Screen
+        name="Job Posting"
+        component={JobPostingsScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ size, color }) =>
+            <MaterialCommunityIcons name='account' size={size} color={color} />
+        }} />
     </Tab.Navigator>
   );
 }
