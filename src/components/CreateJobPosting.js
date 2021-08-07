@@ -27,6 +27,10 @@ const CreateJobPostingScreen = ({ navigation }) => {
       name: "Job Posting",
       params: { title: title, industry: industry, description: description, phone: phone }
     })
+    setTitle("");
+    setIndustry("");
+    setDescription("");
+    setPhone("");
 
   }
 

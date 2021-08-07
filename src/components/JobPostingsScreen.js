@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 
@@ -7,30 +7,75 @@ const newPosting = createStackNavigator();
 
 function JobPostingsScreen({ navigation, route }) {
 
-  const [JobPost, setJobPost] = useState({
-    title: '',
-    industry: '',
-    description: '',
-  })
-  const { title, industry, description } = route.params
+  const [jobPosts, setJobPosts] = useState([{
 
-  function addJobs() {
-    console.log('add jobs title', title)
-    const newPost = {
-      title: title,
-      industry: industry,
-      description: description
+    id: '',
+    title: 'Junior Web Developer',
+    description: 'somthing about coding',
+    industry: 'Tech/Web development'
+  }])
+
+  console.log('at the top', jobPosts.length)
+  console.log('the JOB POSTS object', jobPosts)
+
+  console.log('after the form is submitted,', route.params)
+
+  function addNewJobPost() {
+
+    // New object of post
+    if (!route.params) {
+      return
     }
-    setJobPost((prev) => [...prev, newPost])
+    const jobPost = {
+      id: jobPosts[jobPosts.length - 1].id + 1,
+      title: route.params.title,
+      description: route.params.description,
+      industry: route.params.industry
 
+    };
+    // Add new post into state
 
+    setJobPosts((prev) => [...prev, jobPost]);
 
-    return addJobs;
   }
 
+  console.log('beofre top')
 
+  //  const setJobs = Jobs =>setJobPosts([...])
+  useEffect(() => {
+    addNewJobPost()
+  }, [route.params])
 
+  // Loads initial and new tweets
+  function loadJobPosts() {
 
+    const jobPostsCopy = [...jobPosts];
+    // Reverse the posts state so we can append the new posts at the top instead of the bottom
+
+    const loadJobPosts = jobPostsCopy.map((post) => {
+      return (
+        <View style={styles.jobpost} key={post.id}>
+          <Text style={{ ...styles.title, color: 'black' }}>
+            {post.title}
+          </Text>
+
+          <Text style={{ ...styles.description, color: 'black' }}>
+            Industry: {post.industry}
+          </Text>
+
+          <Text style={{ ...styles.description, color: 'black' }}>
+            Job Description:
+          </Text>
+
+          <Text style={{ ...styles.text, color: 'black' }}>
+            {post.description}
+          </Text>
+        </View>
+      );
+    });
+    return loadJobPosts;
+  }
+  console.log('after the top')
   return (
 
 
@@ -39,7 +84,6 @@ function JobPostingsScreen({ navigation, route }) {
       <View >
         <Text style={styles.header}>
           Your Job Postings!
-          {console.log('in the job positing', route.params.description)}
         </Text>
       </View>
       {/* --------------------------------Posting 1-------------------------------------- */}
@@ -108,8 +152,9 @@ function JobPostingsScreen({ navigation, route }) {
           </Text>
         </View>
         {/* --------------------------------New Job Postin -------------------------------------- */}
-        {addJobs()}
+        {loadJobPosts()}
       </ScrollView>
+
     </View>
   );
 }
