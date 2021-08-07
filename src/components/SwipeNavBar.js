@@ -65,7 +65,7 @@ export default function SWipeNavBar() {
     // setApplicant(candidates)
     console.log('dddddhdhdhdhdhhdhdhhdd', data[0])
     nextUser()
-    // const candidates = candidatesState
+    // const candidates = candidatesSt
 
     setCandidatesState((prev) => [...prev, data[currentIndex]])
 
