@@ -113,7 +113,7 @@ function Tweet({ navigation, props }) {
         </View>
         <View style={styles.newPost}>
           <TextInput
-            style={styles.textInput}
+            style={{ ...styles.textInput, color: "tomato" }}
             placeholder="New post"
             placeholderTextColor="#e3655b"
             value={text}
