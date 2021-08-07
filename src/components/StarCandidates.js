@@ -32,7 +32,7 @@ const CONTENT = [
 // expandable section
 
 const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
-
+  console.log("candidatesfffffffffffffffff:", candidates)
   const [layout, setlayout] = useState(0);
 
   useEffect(() => {

@@ -3,19 +3,17 @@ import { View, Image, StyleSheet, Text } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 
 
-
-
 export function SearchScreen({ user }) {
 
   return (
     <View style={styles.container}>
       <View style={styles.rightresume}>
 
-        <Image style={styles.image} source={require("../../assets/Joey.jpeg")} />
+        <Image source={{ uri: user.img_url }} style={styles.image} />
 
         <View style={styles.personalinfo}>
           <Text style={styles.name}>{user.name}</Text>
-          <Text style={styles.phone}>{user.phonenumber}</Text>
+          <Text style={styles.phone}>{user.phone_number}</Text>
           <Text style={styles.email}>{user.email}</Text>
         </View>
 
@@ -54,6 +52,29 @@ export function SearchScreen({ user }) {
   );
 }
 
+export default function SwipeableImage({ user, willLike, willPass }) {
+
+  return (
+    <View >
+
+      {willLike && (
+        <View style={styles.likeBox}>
+          <Text style={{ ...styles.textPrimary, color: '#64EDCC' }}>SAVE</Text>
+        </View>
+      )}
+      {willPass && (
+        <View style={styles.passBox}>
+          <Text style={{ ...styles.textPrimary, color: '#F06795' }}>PASS</Text>
+        </View>
+      )}
+
+      <SearchScreen user={user} />
+
+    </View>
+
+  )
+}
+
 const boxStyle = {
   position: 'absolute',
   top: '50%',
@@ -70,11 +91,16 @@ const styles = StyleSheet.create({
     ...boxStyle,
     left: 40,
     borderColor: 'green',
+    backgroundColor: '#9BC1BC',
+    zIndex: 999,
   },
   passBox: {
     ...boxStyle,
     right: 40,
     borderColor: '#F06795',
+    borderColor: '#690500',
+    backgroundColor: '#ED6A5A',
+    zIndex: 999,
   },
 
   image: {
@@ -149,27 +175,3 @@ const styles = StyleSheet.create({
   },
 
 })
-
-
-export default function SwipeableImage({ user, willLike, willPass }) {
-
-  return (
-    <View >
-
-      {willLike && (
-        <View style={styles.likeBox}>
-          <Text style={{ ...styles.textPrimary, color: '#64EDCC' }}>SAVE</Text>
-        </View>
-      )}
-      {willPass && (
-        <View style={styles.passBox}>
-          <Text style={{ ...styles.textPrimary, color: '#F06795' }}>PASS</Text>
-        </View>
-      )}
-
-      <SearchScreen user={user} />
-
-    </View>
-
-  )
-}

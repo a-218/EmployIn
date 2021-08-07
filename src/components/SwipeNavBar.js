@@ -1,98 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import { StyleSheet, View, Alert } from 'react-native'
 import Constants from 'expo-constants'
 
 import axios from 'axios'
-
 import Swipes from './Swipes'
-
 import useApplicationData from '../hooks/useApplicationData'
 
+//import { ApplicantProvider, useApplicant } from './Context'
+
+import { JobContext } from './JobProvider'
+import BottomBar from './Bottombar'
 export default function SWipeNavBar() {
   const [users, setUsers] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const { applicantDBState } = useApplicationData()
-  console.log(applicantDBState)
+  //  console.log(applicantDBState)
   const data = applicantDBState
 
+  const swipesRef = useRef(null)
+  //  const { applicantLinksDBState } = useApplicationData()
+  //console.log(applicantLinksDBState)
 
-  const { applicantLinksDBState } = useApplicationData()
-  console.log(applicantLinksDBState)
-
-  console.log('the data over herer', data)
-  // const data = [
-  //   {
-  //     name: 'chandler',
-  //     phonenumber: '1234',
-  //     email: 'abc@gmail.com',
-  //     skills: 'whatever',
-  //     summary: 'work in acting',
-  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-  //     externallinks: 'https://github.com'
-  //   },
-
-  //   {
-  //     name: 'James',
-  //     phonenumber: '1234567',
-  //     email: '123@gmail.com',
-  //     skills: 'whatever2',
-  //     summary: 'work in cooking',
-  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-  //     externallinks: 'https://github.com'
-  //   },
-
-  //   {
-  //     name: 'Robert',
-  //     phonenumber: '5555554',
-  //     email: 'youyoyouuo@gmail.com',
-  //     skills: 'good at omthin',
-  //     summary: 'looking fiir jobs ',
-  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-  //     externallinks: 'https://github.com'
-  //   },
-
-  //   {
-  //     name: 'Jasmine',
-  //     phonenumber: '777777',
-  //     email: 'helloworld@gmail.com',
-  //     skills: 'whatever, dancing',
-  //     summary: 'dancer',
-  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-  //     externallinks: 'https://twitter.com'
-  //   },
-
-  //   {
-  //     name: 'David',
-  //     phonenumber: '1234',
-  //     email: 'David@gmail.com',
-  //     skills: 'waving to people',
-  //     summary: 'I need a job in airplanes',
-  //     experience: 'sdfjdsfdsjfdsjfdsfdsfdsfdsfds',
-  //     externallinks: 'https://twitter.com'
-  //   },
-
-  //   {
-  //     name: 'Courtney',
-  //     phonenumber: '85858585',
-  //     email: 'goodbye@gmail.com',
-  //     skills: 'guitar',
-  //     summary: 'work in acting',
-  //     experience: 'awdawdawdadawdawdawdawd',
-  //     externallinks: 'https://github.com'
-  //   },
-
-  //   {
-  //     name: 'XXXX',
-  //     phonenumber: '85858585',
-  //     email: 'goodbye@gmail.com',
-  //     skills: 'guitar',
-  //     summary: 'work in acting',
-  //     experience: 'awdawdawdadawdawdawdawd',
-  //     externallinks: 'https://github.com'
-  //   },
-
-  // ]
-
+  //console.log('the data over herer', data)
 
 
   // function fetchUsers() {
@@ -118,17 +47,27 @@ export default function SWipeNavBar() {
   }, [])
 
   const [candidatesState, setCandidatesState] = useState([])
+  const job = useContext(JobContext);
+
+
 
   function handleLike() {
+    // const applicant = useApplicant();
+    // console.log(applicant)
 
     console.log('like')
 
-    const candidates = [candidatesState]
+    const candidates = candidatesState
 
     setCandidatesState((prev) => [...prev, data[currentIndex]])
+    // setApplicant(candidates)
+
 
     // console.log("candidates:", candidates)
+
     nextUser()
+    job.setApplicant(candidates)
+
   }
 
   function handlePass() {
@@ -141,6 +80,13 @@ export default function SWipeNavBar() {
     setCurrentIndex(nextIndex)
   }
 
+  function handleLikePress() {
+    swipesRef.current.openLeft()
+  }
+  function handlePassPress() {
+    swipesRef.current.openRight()
+  }
+
 
   return (
     <View style={styles.container}>
@@ -151,6 +97,7 @@ export default function SWipeNavBar() {
               currentIndex === i && (
                 <Swipes
                   key={i}
+                  ref={swipesRef}
                   currentIndex={currentIndex}
                   data={data}
                   handleLike={handleLike}
@@ -159,6 +106,7 @@ export default function SWipeNavBar() {
               )
           )}
       </View>
+      <BottomBar handleLikePress={handleLikePress} handlePassPress={handlePassPress} />
     </View>
   )
 }
