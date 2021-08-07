@@ -16,6 +16,7 @@ import useApplicationData from '../hooks/useApplicationData';
 import Profile from './Profile';
 import { SearchScreen } from './SwipeableImage';
 import SWipeNavBar from './SwipeNavBar';
+import CreateJobPostingScreen from './CreateJobPosting';
 
 
 // import { ApplicantProvider } from './Context';
@@ -265,6 +266,14 @@ function NavTabs() {
       <Tab.Screen
         name="Profile"
         component={Profile}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ size, color }) =>
+            <MaterialCommunityIcons name='account' size={size} color={color} />
+        }} />
+      <Tab.Screen
+        name="Job Posting"
+        component={CreateJobPostingScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
