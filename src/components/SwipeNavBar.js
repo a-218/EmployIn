@@ -8,7 +8,7 @@ import useApplicationData from '../hooks/useApplicationData'
 
 
 
-import { JobContext } from './JobProvider'
+import { JobContext } from '../contexts/JobProvider'
 import BottomBar from './Bottombar'
 export default function SWipeNavBar() {
 

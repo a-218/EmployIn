@@ -18,7 +18,7 @@ import { SearchScreen } from './SwipeableImage';
 import SWipeNavBar from './SwipeNavBar';
 import CreateJobPostingScreen from './CreateJobPosting';
 
-import { JobProvider } from './JobProvider';
+import { JobProvider } from '../contexts/JobProvider';
 import JobPostingsScreen from './JobPostingsScreen';
 
 

@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import call from "react-native-phone-call";
 import email from "react-native-email";
-import { JobContext } from './JobProvider'
+import { JobContext } from '../contexts/JobProvider'
 import styles from '../styles/ScreensStyle';
 
 const CONTENT = [
