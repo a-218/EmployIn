@@ -65,7 +65,7 @@ function Tweet({ navigation, props }) {
       // New object of post
       const newPost = {
         id: posts[posts.length - 1].id + 1,
-        name: "Egg Eggerson",
+        name: "John Stamos",
         occupation: "EmployIn Recruiter",
         message: text,
         img_url: defaultImgURL,
@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
     marginBottom: moderateScale(20),
   },
   item: {
+    elevation: 3,
     backgroundColor: "#f5f5f5",
     elevation: 20,
     padding: moderateScale(20),
