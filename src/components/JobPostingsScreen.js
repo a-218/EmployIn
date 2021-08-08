@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
-
+import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native';
 const newPosting = createStackNavigator();
 
 
@@ -54,23 +55,25 @@ function JobPostingsScreen({ navigation, route }) {
 
     const loadJobPosts = jobPostsCopy.map((post) => {
       return (
-        <View style={styles.jobpost} key={post.id}>
-          <Text style={{ ...styles.title, color: 'black' }}>
-            {post.title}
-          </Text>
+        <TouchableOpacity key={post.id} onPress={() => navigation.navigate('Search')}>
+          <View style={styles.jobpost} key={post.id}>
+            <Text style={{ ...styles.title, color: 'black' }}>
+              {post.title}
+            </Text>
 
-          <Text style={{ ...styles.description, color: 'black' }}>
-            Industry: {post.industry}
-          </Text>
+            <Text style={{ ...styles.description, color: 'black' }}>
+              Industry: {post.industry}
+            </Text>
 
-          <Text style={{ ...styles.description, color: 'black' }}>
-            Job Description:
-          </Text>
+            <Text style={{ ...styles.description, color: 'black' }}>
+              Job Description:
+            </Text>
 
-          <Text style={{ ...styles.text, color: 'black' }}>
-            {post.description}
-          </Text>
-        </View>
+            <Text style={{ ...styles.text, color: 'black' }}>
+              {post.description}
+            </Text>
+          </View>
+        </TouchableOpacity>
       );
     });
     return loadJobPosts;
@@ -85,79 +88,95 @@ function JobPostingsScreen({ navigation, route }) {
         <Text style={styles.header}>
           Your Job Postings!
         </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Create Job Posting')}>
+          <MaterialCommunityIcons name='plus' />
+          <Text>New Jobs</Text>
+        </TouchableOpacity>
       </View>
       {/* --------------------------------Posting 1-------------------------------------- */}
       <ScrollView>
-        <View style={styles.jobpost}>
-          <Text style={{ ...styles.title, color: 'black' }}>
-            Full Stack Web Developer
-          </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+          <View style={styles.jobpost}>
+            <Text style={{ ...styles.title, color: 'black' }}>
+              Full Stack Web Developer
+            </Text>
 
-          <Text style={{ ...styles.description, color: 'black' }}>
-            Industry:
-          </Text>
+            <Text style={{ ...styles.description, color: 'black' }}>
+              Industry:
+            </Text>
 
-          <Text style={{ ...styles.description, color: 'black' }}>
-            Job Description:
-          </Text>
+            <Text style={{ ...styles.description, color: 'black' }}>
+              Job Description:
+            </Text>
 
-          <Text style={{ ...styles.text, color: 'black' }}>
-            Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-            Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-          </Text>
+            <Text style={{ ...styles.text, color: 'black' }}>
+              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
+              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
+            </Text>
 
-        </View>
-
+          </View>
+        </TouchableOpacity>
         {/* --------------------------------Posting 2-------------------------------------- */}
+        <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+          <View style={styles.jobpost}>
+            <Text style={{ ...styles.title, color: 'black' }}>
+              Full Stack Web Developer
+            </Text>
 
-        <View style={styles.jobpost}>
-          <Text style={{ ...styles.title, color: 'black' }}>
-            Full Stack Web Developer
-          </Text>
+            <Text style={{ ...styles.description, color: 'black' }}>
+              Industry:
+            </Text>
 
-          <Text style={{ ...styles.description, color: 'black' }}>
-            Industry:
-          </Text>
+            <Text style={{ ...styles.description, color: 'black' }}>
+              Job Description:
+            </Text>
 
-          <Text style={{ ...styles.description, color: 'black' }}>
-            Job Description:
-          </Text>
-
-          <Text style={{ ...styles.text, color: 'black' }}>
-            Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-            Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-            Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-            Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-          </Text>
-        </View>
-
+            <Text style={{ ...styles.text, color: 'black' }}>
+              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
+              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
+              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
+              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
+            </Text>
+          </View>
+        </TouchableOpacity>
         {/* --------------------------------Posting 3-------------------------------------- */}
+        <TouchableOpacity onPress={() => navigation.push('Search')}>
+          <View style={styles.jobpost}>
+            <Text style={{ ...styles.title, color: 'black' }}>
+              Full Stack Web Developer
+            </Text>
 
-        <View style={styles.jobpost}>
-          <Text style={{ ...styles.title, color: 'black' }}>
-            Full Stack Web Developer
-          </Text>
+            <Text style={{ ...styles.description, color: 'black' }}>
+              Industry:
+            </Text>
 
-          <Text style={{ ...styles.description, color: 'black' }}>
-            Industry:
-          </Text>
+            <Text style={{ ...styles.description, color: 'black' }}>
+              Job Description:
+            </Text>
 
-          <Text style={{ ...styles.description, color: 'black' }}>
-            Job Description:
-          </Text>
-
-          <Text style={{ ...styles.text, color: 'black' }}>
-            Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-            Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-          </Text>
-        </View>
+            <Text style={{ ...styles.text, color: 'black' }}>
+              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
+              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
+            </Text>
+          </View>
+        </TouchableOpacity>
         {/* --------------------------------New Job Postin -------------------------------------- */}
+
         {loadJobPosts()}
+
       </ScrollView>
 
     </View>
   );
 }
+
+// const link = () =>{
+//   const navigation = useNavigation();
+//   return (
+
+//     onPress={() => navigation.navigate('Search')});
+// }
 
 export default JobPostingsScreen;
 

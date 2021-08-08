@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
 
 
 const Tab = createBottomTabNavigator();
-const Home2Stack = createStackNavigator();
+const Card2Stack = createStackNavigator();
 const NewStack = createStackNavigator();
 
 const CandidateStack = createStackNavigator();
@@ -198,6 +198,29 @@ const CandidateScreen = () => (
   </CandidateStack.Navigator>
 );
 
+
+const Card2StackScreen = () => (
+  <Card2Stack.Navigator>
+    <Card2Stack.Screen
+      name="Job Posting"
+      component={JobPostingsScreen}
+      options={
+        { headerShown: false }}
+    />
+    <Card2Stack.Screen
+      name="Create Job Posting"
+      component={CreateJobPostingScreen}
+      options={({ route, navigation }) => ({
+        otherParam: route.params
+      })} />
+    <Card2Stack.Screen
+      name="Search"
+      component={SWipeNavBar}
+      options={({ route, navigation }) => ({
+        otherParam: route.params
+      })} />
+  </Card2Stack.Navigator>
+);
 
 // const NewStackScreen = () => (
 //   <NewStack.Navigator>
@@ -226,6 +249,9 @@ const CandidateScreen = () => (
 //   </Home2Stack.Navigator>
 // );
 
+
+
+
 function NavTabs() {
   return (
     <Tab.Navigator
@@ -249,13 +275,13 @@ function NavTabs() {
           tabBarIcon: ({ size, color }) =>
             <MaterialCommunityIcons name='home' size={size} color={color} />
         }} />
-      <Tab.Screen name="Search"
+      {/* <Tab.Screen name="Search"
         component={SWipeNavBar}
         options={{
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
             <MaterialCommunityIcons name='briefcase' size={size} color={color} />
-        }} />
+        }} /> */}
       <Tab.Screen
         name="Applicants"
         component={CandidateScreen}
@@ -272,7 +298,7 @@ function NavTabs() {
           tabBarIcon: ({ size, color }) =>
             <MaterialCommunityIcons name='account' size={size} color={color} />
         }} />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Create Job Posting"
         component={CreateJobPostingScreen}
         options={{
@@ -287,6 +313,14 @@ function NavTabs() {
           headerShown: false,
           tabBarIcon: ({ size, color }) =>
             <MaterialCommunityIcons name='account' size={size} color={color} />
+        }} /> */}
+      <Tab.Screen
+        name="Job Posting2222"
+        component={Card2StackScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ size, color }) =>
+            <MaterialCommunityIcons name='fire' size={size} color={color} />
         }} />
     </Tab.Navigator>
   );
