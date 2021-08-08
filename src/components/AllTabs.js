@@ -18,8 +18,6 @@ import { SearchScreen } from './SwipeableImage';
 import SWipeNavBar from './SwipeNavBar';
 import CreateJobPostingScreen from './CreateJobPosting';
 
-
-// import { ApplicantProvider } from './Context';
 import { JobProvider } from './JobProvider';
 import JobPostingsScreen from './JobPostingsScreen';
 

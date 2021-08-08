@@ -6,12 +6,12 @@ import axios from 'axios'
 import Swipes from './Swipes'
 import useApplicationData from '../hooks/useApplicationData'
 
-//import { ApplicantProvider, useApplicant } from './Context'
+
 
 import { JobContext } from './JobProvider'
 import BottomBar from './Bottombar'
 export default function SWipeNavBar() {
-  const [users, setUsers] = useState([])
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const { applicantDBState } = useApplicationData()
 
@@ -40,40 +40,26 @@ export default function SWipeNavBar() {
   //   fetchUsers()
   // }, [])
 
-  const [candidatesState, setCandidatesState] = useState([])
+
   const job = useContext(JobContext);
-  const candidates = candidatesState
-
-  useEffect(() => {
-
-
-    setUsers(candidates)
-  }, [])
-
-
 
 
   function handleLike() {
 
-    // const applicant = useApplicant();
-    // console.log(applicant)
-    // console.log('data inside handle lieke$$$$$$$$$$$$', data)
-    console.log('data inside handle lieke$$$$$$$$$$$$', currentIndex)
     console.log('like')
-    console.log('1')
 
-    // setApplicant(candidates)
-    console.log('dddddhdhdhdhdhhdhdhhdd', data[0])
+    const newState = [...job.Applicant, data[currentIndex]]
+
+    job.setApplicant(newState)
+
     nextUser()
-    // const candidates = candidatesSt
-
-    setCandidatesState((prev) => [...prev, data[currentIndex]])
-
-    console.log('sdsdsdsdsdsdsdsdsdsdsdsd', candidates, 'and the current index')
-
-    job.setApplicant(candidates)
-    console.log('the contextttttttttt', job)
   }
+
+  // useEffect(() => {
+  //   setCandidatesState(candidates)
+
+  // }, [candidates])
+
 
   function handlePass() {
     console.log('pass')
