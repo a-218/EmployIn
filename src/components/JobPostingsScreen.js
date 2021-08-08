@@ -81,17 +81,14 @@ function JobPostingsScreen({ navigation, route }) {
   console.log('after the top')
   return (
 
-
     <View style={{ flex: 1 }}>
-
-      <View >
+      <View>
         <Text style={styles.header}>
           Your Job Postings!
         </Text>
-        <TouchableOpacity
+        <TouchableOpacity style={styles.button}
           onPress={() => navigation.navigate('Create Job Posting')}>
-          <MaterialCommunityIcons name='plus' />
-          <Text>New Jobs</Text>
+          <MaterialCommunityIcons name='plus' style={styles.buttonText}>New</MaterialCommunityIcons>
         </TouchableOpacity>
       </View>
       {/* --------------------------------Posting 1-------------------------------------- */}
@@ -215,4 +212,22 @@ const styles = StyleSheet.create({
     paddingBottom: '5%',
     fontSize: 15,
   },
+  button: {
+    alignSelf: 'center',
+    width: '40%',
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: "green",
+    padding: 5,
+    borderRadius: 50,
+
+
+  },
+  buttonText: {
+
+    alignSelf: 'center',
+    fontSize: 15,
+
+
+  }
 })
