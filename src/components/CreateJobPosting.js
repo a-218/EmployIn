@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, ScrollView, TextInput, KeyboardAvoidingView, Bu
 
 // Create Component
 
-const CreateJobPostingScreen = () => {
+const CreateJobPostingScreen = ({ navigation }) => {
 
-  const [title, setTitle]= useState('');
-  const [industry, setIndustry]= useState('');
-  const [description, setDescription]= useState('');
-  const [phone, setPhone]= useState('');
+  const [title, setTitle] = useState('');
+  const [industry, setIndustry] = useState('');
+  const [description, setDescription] = useState('');
+  const [phone, setPhone] = useState('');
 
 
   const data = useCallback(() => {
@@ -22,84 +22,95 @@ const CreateJobPostingScreen = () => {
   }, [title, industry, description, phone])
 
   const submit = async () => {
-    await data()
+    await data();
+    navigation.navigate({
+      name: "Job Posting",
+      params: { title: title, industry: industry, description: description, phone: phone }
+    })
+    setTitle("");
+    setIndustry("");
+    setDescription("");
+    setPhone("");
+
   }
 
   return (
-    <KeyboardAvoidingView style={{flex: 1, paddingHorizontal: 6}} enableKeyboardOffset={350}>
+    <KeyboardAvoidingView style={{ flex: 1, paddingHorizontal: 6 }} enableKeyboardOffset={350}>
 
-      <ScrollView contentContainerStyle={{alignItems: 'center'}}>
+      <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
 
         <View style={styles.formContainer}>
 
 
-{/* ------------------------Job Title-------------------------- */}
-            <Text style={styles.label}>Position</Text>
+          {/* ------------------------Job Title-------------------------- */}
+          <Text style={styles.label}>Position</Text>
 
-            <TextInput 
-              style={styles.title} 
-              returnKeyType="next" 
-              multiline numberOfLines={20} 
-              value={title} 
-              onChangeText={(desc) => setTitle(desc)} 
-            />
+          <TextInput
+            style={styles.title}
+            returnKeyType="next"
+            multiline numberOfLines={20}
+            value={title}
+            onChangeText={(desc) => setTitle(desc)}
+          />
 
-{/* ------------------------Job Title-------------------------- */}
+          {/* ------------------------Job Title-------------------------- */}
 
-{/* ------------------------Industry-------------------------- */}
+          {/* ------------------------Industry-------------------------- */}
 
           <Text style={styles.label}>Industry</Text>
 
-          <TextInput 
-            style={styles.industry} 
-            returnKeyType="next" 
-            multiline numberOfLines={20} 
-            value={industry} 
-            onChangeText={(desc) => setIndustry(desc)} 
+          <TextInput
+            style={styles.industry}
+            returnKeyType="next"
+            multiline numberOfLines={20}
+            value={industry}
+            onChangeText={(desc) => setIndustry(desc)}
           />
 
-{/* ------------------------Industry-------------------------- */}
+          {/* ------------------------Industry-------------------------- */}
 
-{/* ------------------------Description-------------------------- */}
+          {/* ------------------------Description-------------------------- */}
           <Text style={styles.label}>Job Description</Text>
 
-          <Text style={{fontSize:13}}>
+          <Text style={{ fontSize: 13 }}>
             (also include salary, time and address)
           </Text>
 
-          <TextInput 
-            style={styles.description} 
-            returnKeyType="next" 
-            multiline numberOfLines={20} 
-            value={description} 
-            onChangeText={(desc) => setDescription(desc)} 
+          <TextInput
+            style={styles.description}
+            returnKeyType="next"
+            multiline numberOfLines={20}
+            value={description}
+            onChangeText={(desc) => setDescription(desc)}
           />
-{/* ------------------------ END Description --------------------- */}
+          {/* ------------------------ END Description --------------------- */}
 
-{/* ------------------------Phone Number-------------------------- */}
+          {/* ------------------------Phone Number-------------------------- */}
           <Text style={styles.label}>Phone Number</Text>
 
-          <Text style={{fontSize:13}}>
+          <Text style={{ fontSize: 13 }}>
             (call us)
+
           </Text>
 
-          <TextInput 
-            style={styles.phone} 
-            returnKeyType="next" 
-            keyboardType={'phone-pad'} 
-            value={phone} 
-            onChangeText={(desc) => setPhone(desc)}  
+          <TextInput
+            style={styles.phone}
+            returnKeyType="next"
+            keyboardType={'phone-pad'}
+            value={phone}
+            onChangeText={(desc) => setPhone(desc)
+            }
           />
-{/* ----------------------- End Phone Number ---------------------- */}
+          {/* ----------------------- End Phone Number ---------------------- */}
 
-{/* ------------------------Submit Button-------------------------- */}
-          
-          <Button title="Create Posting" onPress={submit}/>
+          {/* ------------------------Submit Button-------------------------- */}
 
-{/* --------------------- End Submit Button ----------------------- */}
+          <Button title="Create Posting" onPress={submit} />
+
+          {/* --------------------- End Submit Button ----------------------- */}
         </View>
 
-       </ScrollView>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };
@@ -110,7 +121,7 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 50,
   },
-  label:{
+  label: {
     fontSize: 20,
   },
   container: {
@@ -121,45 +132,45 @@ const styles = StyleSheet.create({
   },
   description: {
     paddingHorizontal: 2,
-    paddingVertical:5,
+    paddingVertical: 5,
     backgroundColor: "#f9f7f6",
     height: 150,
     fontSize: 22,
     borderColor: "#ccc",
     borderWidth: 2,
-    marginVertical:5,
+    marginVertical: 5,
     marginTop: 25,
   },
   phone: {
     paddingHorizontal: 2,
-    paddingVertical:5,
+    paddingVertical: 5,
     backgroundColor: "#f9f7f6",
     fontSize: 22,
     borderColor: "#ccc",
     borderWidth: 2,
-    marginVertical:5,
+    marginVertical: 5,
     marginTop: 25,
   },
   title: {
     height: 45,
     paddingHorizontal: 2,
-    paddingVertical:5,
+    paddingVertical: 5,
     backgroundColor: "#f9f7f6",
     fontSize: 22,
     borderColor: "#ccc",
     borderWidth: 2,
-    marginVertical:5,
+    marginVertical: 5,
     marginTop: 25,
   },
   industry: {
     height: 45,
     paddingHorizontal: 2,
-    paddingVertical:5,
+    paddingVertical: 5,
     backgroundColor: "#f9f7f6",
     fontSize: 22,
     borderColor: "#ccc",
     borderWidth: 2,
-    marginVertical:5,
+    marginVertical: 5,
     marginTop: 25,
   },
 })
