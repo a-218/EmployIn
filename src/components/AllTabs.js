@@ -1,48 +1,68 @@
+import React from "react";
+import {
+  Text,
+  Image,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+  FlatList,
+  Button,
+} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  FontAwesome5,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
+import StarCandidates from "./StarCandidates";
+import InterviewOption from "./InterviewOption";
+import {
+  scale,
+  moderateScale,
+  verticalScale,
+  moderateVerticalScale,
+} from "react-native-size-matters";
+import Tweet from "./Tweet";
 
-import React from 'react';
-import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
-import StarCandidates from './StarCandidates'
-import InterviewOption from './InterviewOption';
-import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
-import Tweet from './Tweet'
+import { createStackNavigator } from "@react-navigation/stack";
+import Candidates, {
+  Home2,
+  Details,
+  New2,
+  resumeDetails,
+  Individual,
+} from "./Screens";
 
-import { createStackNavigator } from '@react-navigation/stack'
-import Candidates, { Home2, Details, New2, resumeDetails, Individual } from './Screens';
+import useApplicationData from "../hooks/useApplicationData";
+import Profile from "./Profile";
+import { SearchScreen } from "./SwipeableImage";
+import SWipeNavBar from "./SwipeNavBar";
+import CreateJobPostingScreen from "./CreateJobPosting";
 
-import useApplicationData from '../hooks/useApplicationData';
-import Profile from './Profile';
-import { SearchScreen } from './SwipeableImage';
-import SWipeNavBar from './SwipeNavBar';
-import CreateJobPostingScreen from './CreateJobPosting';
-
-import { JobProvider } from '../contexts/JobProvider';
-import JobPostingsScreen from './JobPostingsScreen';
-
+import { JobProvider } from "../contexts/JobProvider";
+import JobPostingsScreen from "./JobPostingsScreen";
 
 // fake data for the skills sections
 const DATA = [
   {
     id: 1,
-    skill: 'Javascript',
+    skill: "Javascript",
   },
   {
     id: 2,
-    skill: 'Library ',
+    skill: "Library ",
   },
   {
     id: 3,
-    skill: 'Angular',
+    skill: "Angular",
   },
   {
     id: 4,
-    skill: 'Express',
+    skill: "Express",
   },
 ];
-
-
 
 // function SearchScreen() {
 
@@ -97,13 +117,10 @@ const DATA = [
 //   );
 // }
 
-
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
     borderRadius: 60,
     borderWidth: moderateScale(5),
     marginLeft: moderateScale(10),
@@ -118,20 +135,20 @@ const styles = StyleSheet.create({
     marginLeft: scale(10),
   },
   rightresume: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: scale(5),
     marginBottom: moderateScale(15),
     marginTop: verticalScale(15),
   },
 
   personalinfo: {
-    alignItems: 'center',
+    alignItems: "center",
     marginLeft: moderateScale(45),
   },
   name: {
     fontSize: moderateScale(32),
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: moderateScale(4),
   },
   phone: {
@@ -141,7 +158,6 @@ const styles = StyleSheet.create({
   bottomresume: {
     marginLeft: moderateScale(10),
     marginRight: moderateScale(10),
-
   },
   skills: {
     borderWidth: 5,
@@ -167,8 +183,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginBottom: moderateScale(20),
   },
-})
-
+});
 
 const Tab = createBottomTabNavigator();
 const Card2Stack = createStackNavigator();
@@ -183,40 +198,40 @@ const CandidateScreen = () => (
       name="Candidates"
       component={Candidates}
       options={{
-        headerShown: false
-      }} />
+        headerShown: false,
+      }}
+    />
     <CandidateStack.Screen
       name="Individual"
       component={Individual}
       options={({ route, navigation }) => ({
-
-        otherParam: route.params
+        otherParam: route.params,
       })}
     />
   </CandidateStack.Navigator>
 );
-
 
 const Card2StackScreen = () => (
   <Card2Stack.Navigator>
     <Card2Stack.Screen
       name="Job Posting"
       component={JobPostingsScreen}
-      options={
-        { headerShown: false }}
+      options={{ headerShown: false }}
     />
     <Card2Stack.Screen
       name="Create Job Posting"
       component={CreateJobPostingScreen}
       options={({ route, navigation }) => ({
-        otherParam: route.params
-      })} />
+        otherParam: route.params,
+      })}
+    />
     <Card2Stack.Screen
       name="Search"
       component={SWipeNavBar}
       options={({ route, navigation }) => ({
-        otherParam: route.params
-      })} />
+        otherParam: route.params,
+      })}
+    />
   </Card2Stack.Navigator>
 );
 
@@ -233,7 +248,6 @@ const Card2StackScreen = () => (
 //   </NewStack.Navigator>
 // );
 
-
 // const Home2StackScreen = () => (
 //   <Home2Stack.Navigator>
 //     <Home2Stack.Screen name="Home2" component={Home2} />
@@ -247,32 +261,32 @@ const Card2StackScreen = () => (
 //   </Home2Stack.Navigator>
 // );
 
-
-
-
 function NavTabs() {
   return (
     <Tab.Navigator
       screenOptions={{
-        "tabBarActiveTintColor": "black",
-        "tabBarInactiveTintColor": "tomato",
-        "tabBarActiveBackgroundColor": "lightblue",
-        "tabBarInactiveBackgroundColor": "white",
-        "tabBarStyle": [
+        tabBarActiveTintColor: "#f9aa33",
+        tabBarInactiveTintColor: "#344955",
+        tabBarActiveBackgroundColor: "#fafafa",
+        tabBarInactiveBackgroundColor: "#fafafa",
+        tabBarStyle: [
           {
-            "display": "flex"
+            display: "flex",
           },
-          null
-        ]
+          null,
+        ],
       }}
     >
-      <Tab.Screen name="Home"
+      <Tab.Screen
+        name="Home"
         component={Tweet}
         options={{
           headerShown: false,
-          tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='home' size={size} color={color} />
-        }} />
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="home" size={size} color={color} />
+          ),
+        }}
+      />
       {/* <Tab.Screen name="Search"
         component={SWipeNavBar}
         options={{
@@ -285,17 +299,25 @@ function NavTabs() {
         component={CandidateScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='book-account' size={size} color={color} />
-        }} />
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons
+              name="book-account"
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Profile"
         component={Profile}
         options={{
           headerShown: false,
-          tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='account' size={size} color={color} />
-        }} />
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="account" size={size} color={color} />
+          ),
+        }}
+      />
       {/* <Tab.Screen
         name="Create Job Posting"
         component={CreateJobPostingScreen}
@@ -317,9 +339,11 @@ function NavTabs() {
         component={Card2StackScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='fire' size={size} color={color} />
-        }} />
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="fire" size={size} color={color} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
