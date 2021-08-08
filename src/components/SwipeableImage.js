@@ -16,25 +16,23 @@ export function SearchScreen({ user }) {
 
           <View style={styles.personalinfo}>
             <Text style={styles.name}>{user.name}</Text>
-            {/* <Text style={styles.phone}>{user.phone_number}</Text> */}
-            
-                <Text>
-                  <Icon name="phone" size={18} color="black">
-                    :
-                  </Icon>
-                  <Text style={styles.phone, {color: "#605770"}}>
-                    {user.phone_number}
-                  </Text>
+              <View style={styles.info}>
+                <FontAwesome style={styles.phoneicon} name="phone" size={18} color="black">
+                  :
+                </FontAwesome>
+                <Text style={styles.phone, {color: "#605770"}}>
+                  {user.phone_number}
                 </Text>
+              </View>
 
-                <Text>
-                  <Icon style={styles.icon} name="envelope" size={18} color="black">
-                    :
-                  </Icon>
-                  <Text style={styles.email, {color:"#605770"}} >
-                    {user.email}
-                  </Text>
+              <View style={styles.info}>
+                <FontAwesome style={styles.envelopeicon} name="envelope" size={17} color="black">
+                  :
+                </FontAwesome>
+                <Text style={styles.email, {color: "#605770"}}>
+                  {user.email}
                 </Text>
+              </View>
           </View>
 
         </View>
@@ -120,7 +118,7 @@ const resumeSections = {
   backgroundColor: "#f5f5f5",
   borderWidth: moderateScale(2),
   padding: moderateScale(5),
-  borderRadius: moderateScale(10),
+  borderRadius: moderateScale(15),
   marginBottom: moderateScale(15),
 }
 
@@ -156,6 +154,10 @@ const styles = StyleSheet.create({
   
   personalinfo: {
     alignItems: 'flex-start',
+  },
+  info: {
+    flexDirection: "row",
+
   },
   image: {
     width: moderateScale(85),
@@ -203,7 +205,11 @@ const styles = StyleSheet.create({
   links: {
     ...resumeSections,
   },
-  icon:{
+  phoneicon: {
+    marginLeft: moderateScale(2),
+    marginRight: moderateScale(4)
+  },
+  envelopeicon: {
+    marginRight: moderateScale(5)
   }
-
 })

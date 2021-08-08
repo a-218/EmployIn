@@ -3,6 +3,12 @@ import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } fr
 import { createStackNavigator } from '@react-navigation/stack'
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
+import {
+  scale,
+  moderateScale,
+  verticalScale,
+  moderateVerticalScale,
+} from "react-native-size-matters";
 const newPosting = createStackNavigator();
 
 
@@ -61,11 +67,14 @@ function JobPostingsScreen({ navigation, route }) {
               {post.title}
             </Text>
 
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Industry: {post.industry}
+            <Text style={{ ...styles.description, color: 'blue' }}>
+              Industry: 
+              <Text style={{ ...styles.text, color: 'black' }}>
+                {post.industry}
+              </Text>
             </Text>
 
-            <Text style={{ ...styles.description, color: 'black' }}>
+            <Text style={{ ...styles.description, color: 'blue' }}>
               Job Description:
             </Text>
 
@@ -81,29 +90,26 @@ function JobPostingsScreen({ navigation, route }) {
   console.log('after the top')
   return (
 
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 ,backgroundColor: "#2d3047"}}>
       <View>
-        <Text style={styles.header}>
+        <Text style={{...styles.header, color: 'tomato'}}>
           Your Job Postings!
+
         </Text>
-        <TouchableOpacity style={styles.button}
-          onPress={() => navigation.navigate('Create Job Posting')}>
-          <MaterialCommunityIcons name='plus' style={styles.buttonText}>New</MaterialCommunityIcons>
-        </TouchableOpacity>
       </View>
       {/* --------------------------------Posting 1-------------------------------------- */}
-      <ScrollView>
+      <ScrollView style={{ backgroundColor: "#2d3047"}}>
         <TouchableOpacity onPress={() => navigation.navigate('Search')}>
           <View style={styles.jobpost}>
             <Text style={{ ...styles.title, color: 'black' }}>
               Full Stack Web Developer
             </Text>
 
-            <Text style={{ ...styles.description, color: 'black' }}>
+            <Text style={{ ...styles.description, color: 'blue'}}>
               Industry:
             </Text>
 
-            <Text style={{ ...styles.description, color: 'black' }}>
+            <Text style={{ ...styles.description, color: 'blue' }}>
               Job Description:
             </Text>
 
@@ -112,50 +118,6 @@ function JobPostingsScreen({ navigation, route }) {
               Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
             </Text>
 
-          </View>
-        </TouchableOpacity>
-        {/* --------------------------------Posting 2-------------------------------------- */}
-        <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-          <View style={styles.jobpost}>
-            <Text style={{ ...styles.title, color: 'black' }}>
-              Full Stack Web Developer
-            </Text>
-
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Industry:
-            </Text>
-
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Job Description:
-            </Text>
-
-            <Text style={{ ...styles.text, color: 'black' }}>
-              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-            </Text>
-          </View>
-        </TouchableOpacity>
-        {/* --------------------------------Posting 3-------------------------------------- */}
-        <TouchableOpacity onPress={() => navigation.push('Search')}>
-          <View style={styles.jobpost}>
-            <Text style={{ ...styles.title, color: 'black' }}>
-              Full Stack Web Developer
-            </Text>
-
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Industry:
-            </Text>
-
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Job Description:
-            </Text>
-
-            <Text style={{ ...styles.text, color: 'black' }}>
-              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-            </Text>
           </View>
         </TouchableOpacity>
         {/* --------------------------------New Job Postin -------------------------------------- */}
@@ -163,6 +125,11 @@ function JobPostingsScreen({ navigation, route }) {
         {loadJobPosts()}
 
       </ScrollView>
+
+        <TouchableOpacity style={styles.button}
+          onPress={() => navigation.navigate('Create Job Posting')}>
+          <MaterialCommunityIcons name='folder-plus' style={styles.buttonText}>New</MaterialCommunityIcons>
+        </TouchableOpacity>
 
     </View>
   );
@@ -178,56 +145,59 @@ function JobPostingsScreen({ navigation, route }) {
 export default JobPostingsScreen;
 
 const margin = {
-  marginTop: '5%',
-  marginRight: '5%',
-  marginLeft: '5%',
+  marginLeft: moderateScale(5),
+  marginRight: moderateScale(5),
+  marginTop: moderateScale(5),
 }
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: '15%',
     alignSelf: 'center',
-    fontSize: 20,
+    fontSize: 25,
+    marginBottom: moderateScale(10),
+    marginTop: moderateScale(40),
   },
   jobpost: {
-    ...margin,
     backgroundColor: 'white',
-    borderRadius: 60,
-    borderWidth: 5,
+    borderColor: '#f5f5f5',
+    borderRadius: moderateScale(20),
+    borderWidth: moderateScale(3),
+    marginBottom: moderateVerticalScale(20),
+    marginLeft: moderateScale(20),
+    marginRight: moderateScale(20),
   },
   title: {
     ...margin,
     alignSelf: 'center',
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   description: {
-    marginRight: '5%',
-    marginLeft: '5%',
     fontSize: 20,
+    marginRight: moderateScale(10),
+    marginLeft: moderateScale(15),
   },
   text: {
-    marginRight: '5%',
-    marginLeft: '5%',
-    paddingBottom: '5%',
     fontSize: 15,
+    marginRight: moderateScale(15),
+    marginLeft: moderateScale(15),
+    paddingBottom: moderateScale(15),
   },
   button: {
     alignSelf: 'center',
-    width: '40%',
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: "green",
-    padding: 5,
-    borderRadius: 50,
-
-
+    backgroundColor: "tomato",
+    borderBottomColor: 'red',
+    borderRadius: moderateScale(4),
+    borderBottomWidth: moderateScale(4),
+    height: moderateScale(30),
+    justifyContent: 'space-around',
+    marginTop: moderateScale(5),
+    marginBottom: moderateScale(5),
+    padding: moderateScale(1),
+    width: moderateScale(100),
   },
   buttonText: {
-
     alignSelf: 'center',
-    fontSize: 15,
-
-
+    fontSize: 18,
   }
 })
