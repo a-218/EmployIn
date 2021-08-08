@@ -1,6 +1,16 @@
 # EmployIn
 
-A tinder-like app for employers finding candidates for job positions.
+A tinder-like app for employers finding candidates for job positions. A user can navigate to specific pages through the navigation bar. They can create new posts, swipe on qualified candidates for a job posting, view/call/email candidate profiles, and view personal business profile as well.
+
+## Contributors
+
+- [Leam Murphy](https://github.com/leammurphy)
+- [Alex Li](https://github.com/a-218)
+- [John Lowie](https://github.com/JohnLowie4)
+
+## Demo
+
+(Project in progress, demo will be added later on)
 
 ## Notes
 
@@ -16,6 +26,25 @@ Due to iOS and Android development security features, mobile development with re
 
 The call and email features on the app are only available for users running the app through the expo app on Google play or the app store.
 
+## Dependencies
+
+- @react-navigation/bottom-tabs
+- @react-navigation/native
+- @react-navigation/stack
+- axios
+- expo
+- expo-status-bar
+- express
+- react
+- react-dom
+- react-native
+- react-native-axios
+- react-native-email
+- react-native-gesture-handler
+- react-native-phone-call
+- react-native-size-matters
+- react-native-web
+
 ## Setup
 
 1. Go to the root directory and run `npm install` to install dependencies
@@ -23,10 +52,4 @@ The call and email features on the app are only available for users running the 
 3. Follow the instructions in `ip.example.js` to connect to the server.
 4. Open the terminal and run the following command in the root directory:
    `npm start`
-5. Open and run your favorite mobile emulator/simulator
-
-### Contributors
-
-- [Leam Murphy](https://github.com/leammurphy)
-- [Alex Li](https://github.com/a-218)
-- [John Lowie](https://github.com/JohnLowie4)
+5. Open and run your favorite mobile emulator/simulator or through your phone with the expo app on [Google Play](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_CA&gl=US) or on the [Apple App Store](https://apps.apple.com/ca/app/expo-go/id982107779).

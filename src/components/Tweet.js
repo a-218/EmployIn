@@ -61,17 +61,19 @@ function Tweet({ navigation, props }) {
   const defaultImgURL = "https://randomuser.me/api/portraits/lego/6.jpg";
 
   function addNewPost() {
-    // New object of post
-    const newPost = {
-      id: posts[posts.length - 1].id + 1,
-      name: "Egg Eggerson",
-      occupation: "EmployIn Recruiter",
-      message: text,
-      img_url: defaultImgURL,
-    };
+    if (text !== "") {
+      // New object of post
+      const newPost = {
+        id: posts[posts.length - 1].id + 1,
+        name: "Egg Eggerson",
+        occupation: "EmployIn Recruiter",
+        message: text,
+        img_url: defaultImgURL,
+      };
 
-    // Add new post into state
-    setPosts((prev) => [...prev, newPost]);
+      // Add new post into state
+      setPosts((prev) => [...prev, newPost]);
+    }
 
     // Reset the text in the 'new post' text input
     onChangeText("");
@@ -89,7 +91,7 @@ function Tweet({ navigation, props }) {
             <Image source={{ uri: post.img_url }} style={styles.picture} />
             <View style={styles.namePosition}>
               <Text style={styles.name}>{post.name}</Text>
-              <Text>{post.occupation}</Text>
+              <Text style={{ color: "#512d38" }}>{post.occupation}</Text>
             </View>
           </View>
           <View>
@@ -102,23 +104,29 @@ function Tweet({ navigation, props }) {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#2d3047" }}>
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.header}>
-            <Text style={styles.titleText}>EmployIn Chatter</Text>
+            <Text style={styles.titleText}></Text>
           </View>
         </View>
         <View style={styles.newPost}>
           <TextInput
-            style={styles.textInput}
+            style={{ ...styles.textInput, color: "tomato" }}
             placeholder="New post"
+            placeholderTextColor="#e3655b"
             value={text}
             onChangeText={(text) => onChangeText(text)}
           ></TextInput>
-          <View >
-            <TouchableOpacity style={styles.postButton} title="Post" color="#11B5E4" onPress={() => addNewPost()}>
-              <Text style={{ color: 'white', fontWeight: "bold" }}>Post</Text>
+          <View>
+            <TouchableOpacity
+              style={styles.postButton}
+              title="Post"
+              color="#11B5E4"
+              onPress={() => addNewPost()}
+            >
+              <Text style={{ color: "#2d3047", fontWeight: "bold" }}>Post</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -144,12 +152,19 @@ const styles = StyleSheet.create({
     marginBottom: moderateScale(20),
   },
   item: {
-    backgroundColor: "#11B5E4",
+    backgroundColor: "#f5f5f5",
+    elevation: 20,
     padding: moderateScale(20),
-    borderRadius: moderateScale(10),
+    borderRadius: moderateScale(20),
     marginLeft: moderateScale(20),
     marginRight: moderateScale(20),
     marginBottom: moderateVerticalScale(20),
+    shadowOpacity: 1,
+    shadowColor: "tomato",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
   },
   pictureInfo: {
     flexDirection: "row",
@@ -192,7 +207,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 60,
     margin: 12,
-    backgroundColor: "#11B5E4",
+    backgroundColor: "#e3655b",
     paddingLeft: moderateScale(10),
     paddingRight: moderateScale(10),
     marginRight: moderateScale(20),
@@ -203,7 +218,6 @@ const styles = StyleSheet.create({
   newPost: {
     flexDirection: "row",
   },
-
 });
 
 export default Tweet;
