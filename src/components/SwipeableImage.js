@@ -19,14 +19,18 @@ export function SearchScreen({ user }) {
             {/* <Text style={styles.phone}>{user.phone_number}</Text> */}
             
                 <Text>
-                  <Icon name="phone" size={18} color="#0A8754"/>
+                  <Icon name="phone" size={18} color="black">
+                    :
+                  </Icon>
                   <Text style={styles.phone, {color: "#605770"}}>
                     {user.phone_number}
                   </Text>
                 </Text>
 
                 <Text>
-                  <Icon name="envelope" size={18} color="#009FB7"/>
+                  <Icon style={styles.icon} name="envelope" size={18} color="black">
+                    :
+                  </Icon>
                   <Text style={styles.email, {color:"#605770"}} >
                     {user.email}
                   </Text>
@@ -200,7 +204,6 @@ const styles = StyleSheet.create({
     ...resumeSections,
   },
   icon:{
-    marginRight: moderateScale(10),
   }
 
 })
