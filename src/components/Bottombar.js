@@ -7,10 +7,10 @@ export default function BottomBar({ handleLikePress, handlePassPress }) {
     <View style={styles.container}>
       <View />
       <TouchableOpacity style={styles.button} onPress={handlePassPress}>
-        <FontAwesome name="times" size={27} color="#F06795"></FontAwesome>
+        <FontAwesome name="times-circle" size={35} color="#9B2915"></FontAwesome>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
-        <FontAwesome name="heart" size={27} color="#64EDCC" onPress={handleLikePress}></FontAwesome>
+        <FontAwesome name="check-circle" size={35} color="#77BFA3" onPress={handleLikePress}></FontAwesome>
       </TouchableOpacity>
       <View />
     </View>
@@ -19,7 +19,7 @@ export default function BottomBar({ handleLikePress, handlePassPress }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 75,
+    height: 70,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
