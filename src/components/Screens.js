@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import call from "react-native-phone-call";
 import email from "react-native-email";
-import { JobContext } from './JobProvider'
+import { JobContext } from '../contexts/JobProvider'
 import styles from '../styles/ScreensStyle';
 
 const CONTENT = [
@@ -27,14 +27,7 @@ const CONTENT = [
 
 ]
 
-// {
-//   isExpanded: false,
-//   category_name: 'Job Position 2',
-//   subcategory: [
-//     { id: 3, val: 'Joey Trip', image: require("../../assets/Joey.jpeg") },
-//     { id: 4, val: 'Joey Trip', image: require("../../assets/Joey.jpeg") }
-//   ]
-// },
+
 
 
 const ScreenContainer = ({ children }) => (
@@ -125,7 +118,7 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
   }
 
   ///////
-  console.log('INTHE EXAPANDLABE COMPONENT inse$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', item)
+
 
   const [layout, setlayout] = useState(0);
 
@@ -200,9 +193,6 @@ function Candidates({ navigation }) {
   const job = useContext(JobContext);
 
 
-  console.log('ooooooooooooooooooooooo', job.Applicant[0])
-
-  console.log('xxxxxxxxxxxxxxxxxxxxxx', job.Applicant.length)
 
   const [multiSelect, setmultiSelect] = useState(false);
   //const [listdata, setlistdata] = useState(CONTENT);
@@ -213,13 +203,9 @@ function Candidates({ navigation }) {
 
 
   CONTENT[0].subcategory = []
-  for (i = 0; i < job.Applicant.length; i++) {
+  for (let i = 0; i < job.Applicant.length; i++) {
     CONTENT[0].subcategory.push(job.Applicant[i])
   }
-
-  console.log('@@@@@@@@@@@@@@@AFTER THE DATA MANIPULATION THE CONTENT HERE IS', CONTENT)
-
-
 
   const [listdata, setlistdata] = useState(CONTENT);
   const updateLayout = (index) => {
@@ -240,7 +226,6 @@ function Candidates({ navigation }) {
     setlistdata(array)
   }
 
-  console.log('inside the job applicants', job.setApplicant)
   return (
 
 
