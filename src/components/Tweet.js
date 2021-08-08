@@ -91,7 +91,7 @@ function Tweet({ navigation, props }) {
             <Image source={{ uri: post.img_url }} style={styles.picture} />
             <View style={styles.namePosition}>
               <Text style={styles.name}>{post.name}</Text>
-              <Text style={{ color: "#512d38" }}>{post.occupation}</Text>
+              <Text>{post.occupation}</Text>
             </View>
           </View>
           <View>
@@ -104,7 +104,7 @@ function Tweet({ navigation, props }) {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#FFEBEE" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#eeeeee" }}>
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.header}>
@@ -113,7 +113,7 @@ function Tweet({ navigation, props }) {
         </View>
         <View style={styles.newPost}>
           <TextInput
-            style={{ ...styles.textInput, color: "tomato" }}
+            style={{ ...styles.textInput }}
             placeholder="New post"
             placeholderTextColor="black"
             value={text}
@@ -126,7 +126,7 @@ function Tweet({ navigation, props }) {
               color="black"
               onPress={() => addNewPost()}
             >
-              <Text style={{ color: "black", fontWeight: "bold" }}>Post</Text>
+              <Text style={{ color: "#344955", fontWeight: "bold" }}>Post</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     flex: 1,
-    // color: "tomato",
+    color: "#f9aa33",
     fontSize: moderateScale(20),
     fontWeight: "bold",
     textAlign: "center",
@@ -154,15 +154,15 @@ const styles = StyleSheet.create({
   },
   item: {
     elevation: 3,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#fafafa",
     elevation: 20,
     padding: moderateScale(20),
     borderRadius: moderateScale(20),
     marginLeft: moderateScale(20),
     marginRight: moderateScale(20),
     marginBottom: moderateVerticalScale(20),
-    shadowOpacity: 0.8,
-    shadowColor: "#87baab",
+    shadowOpacity: 1,
+    shadowColor: "grey",
     shadowOffset: {
       width: 3,
       height: 3,
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 60,
     margin: 12,
-    backgroundColor: "#e3655b",
+    backgroundColor: "#f9aa33",
     paddingLeft: moderateScale(10),
     paddingRight: moderateScale(10),
     marginRight: moderateScale(20),
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   shadow: {
-    shadowColor: "#87baab",
+    shadowColor: "grey",
     shadowOpacity: 1,
     shadowOffset: {
       width: 3,
