@@ -1,23 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
-const newPosting = createStackNavigator();
-
+// const newPosting = createStackNavigator();
+import { PostingContext } from '../contexts/PostingProvider';
 
 function JobPostingsScreen({ navigation, route }) {
 
-  const [jobPosts, setJobPosts] = useState([{
+  const [jobPosts, setJobPosts] = useState([
+    {
+      id: 1,
+      title: 'Full Web Developer',
+      description: " Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.,",
+      industry: 'Tech/Web development',
+    },
+    {
+      id: 2,
+      title: 'Junior Stack Developer',
+      description: " Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.,",
+      industry: 'Tech/Web development',
+    },
+    {
+      id: 3,
+      title: 'Back End Developer',
+      description: " Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.,",
+      industry: 'Tech/Web development',
+    },
+  ])
+  //  const [jobPosts, setJobPosts] = useState([{ }])
+  // console.log('at the top', jobPosts.length)
+  // console.log('the JOB POSTS object', jobPosts)
 
-    id: '',
-    title: 'Junior Web Developer',
-    description: 'somthing about coding',
-    industry: 'Tech/Web development'
-  }])
-
-  console.log('at the top', jobPosts.length)
-  console.log('the JOB POSTS object', jobPosts)
+  const newJobPost = useContext(PostingContext)
 
   console.log('after the form is submitted,', route.params)
 
@@ -27,6 +42,14 @@ function JobPostingsScreen({ navigation, route }) {
     if (!route.params) {
       return
     }
+    // const jobPost = {
+    //   id: jobPosts[jobPosts.length - 1].id + 1,
+    //   title: route.params.title,
+    //   description: route.params.description,
+    //   industry: route.params.industry
+
+    // };
+
     const jobPost = {
       id: jobPosts[jobPosts.length - 1].id + 1,
       title: route.params.title,
@@ -35,12 +58,16 @@ function JobPostingsScreen({ navigation, route }) {
 
     };
     // Add new post into state
-
+    //  console.log('job Post over here IdidIDIDIDIDIDIIDIDID', jobPost.id)
     setJobPosts((prev) => [...prev, jobPost]);
+
+    const newState = [...newJobPost.Posting, jobPost]
+    newJobPost.setPosting(newState)
 
   }
 
   console.log('beofre top')
+
 
   //  const setJobs = Jobs =>setJobPosts([...])
   useEffect(() => {
@@ -54,8 +81,10 @@ function JobPostingsScreen({ navigation, route }) {
     // Reverse the posts state so we can append the new posts at the top instead of the bottom
 
     const loadJobPosts = jobPostsCopy.map((post) => {
+
       return (
         <TouchableOpacity key={post.id} onPress={() => navigation.navigate('Search')}>
+          {console.log(post.id)}
           <View style={styles.jobpost} key={post.id}>
             <Text style={{ ...styles.title, color: 'black' }}>
               {post.title}
@@ -78,7 +107,7 @@ function JobPostingsScreen({ navigation, route }) {
     });
     return loadJobPosts;
   }
-  console.log('after the top')
+
   return (
 
     <View style={{ flex: 1 }}>
@@ -93,7 +122,7 @@ function JobPostingsScreen({ navigation, route }) {
       </View>
       {/* --------------------------------Posting 1-------------------------------------- */}
       <ScrollView>
-        <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate('Search')}>
           <View style={styles.jobpost}>
             <Text style={{ ...styles.title, color: 'black' }}>
               Full Stack Web Developer
@@ -113,9 +142,9 @@ function JobPostingsScreen({ navigation, route }) {
             </Text>
 
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         {/* --------------------------------Posting 2-------------------------------------- */}
-        <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate('Search')}>
           <View style={styles.jobpost}>
             <Text style={{ ...styles.title, color: 'black' }}>
               Full Stack Web Developer
@@ -136,9 +165,9 @@ function JobPostingsScreen({ navigation, route }) {
               Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
             </Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         {/* --------------------------------Posting 3-------------------------------------- */}
-        <TouchableOpacity onPress={() => navigation.push('Search')}>
+        {/* <TouchableOpacity onPress={() => navigation.push('Search')}>
           <View style={styles.jobpost}>
             <Text style={{ ...styles.title, color: 'black' }}>
               Full Stack Web Developer
@@ -157,7 +186,7 @@ function JobPostingsScreen({ navigation, route }) {
               Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
             </Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         {/* --------------------------------New Job Postin -------------------------------------- */}
 
         {loadJobPosts()}

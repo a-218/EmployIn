@@ -8,6 +8,7 @@ import call from "react-native-phone-call";
 import email from "react-native-email";
 import { JobContext } from '../contexts/JobProvider'
 import styles from '../styles/ScreensStyle';
+import { PostingContext } from '../contexts/PostingProvider';
 
 const CONTENT = [
   {
@@ -24,6 +25,13 @@ const CONTENT = [
 
     ]
   },
+  {
+    isExpanded: false,
+    category_name: 'Job Position 3',
+    subcategory: [
+
+    ]
+  },
 
 ]
 
@@ -35,7 +43,7 @@ const ScreenContainer = ({ children }) => (
 );
 
 
-// //// SCREENADDING HTE NEW CANDIDATE
+// //// INDIVIDUAL RESUME
 
 export const Individual = ({ route, navigation, item }) => (
   <ScreenContainer>
@@ -137,6 +145,7 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
         onPress={onClickFunction}>
         <Text style={styles.itemText}>
           {item.category_name}
+
         </Text>
       </TouchableOpacity>
 
@@ -195,19 +204,46 @@ function Candidates({ navigation }) {
 
 
   const [multiSelect, setmultiSelect] = useState(false);
-  //const [listdata, setlistdata] = useState(CONTENT);
 
+  ///outputig the job spositn gdata
 
+  const jobPost = useContext(PostingContext)
+
+  console.log('%$$$$$$$$$$$$$$$$$$$$$$$$', jobPost.Posting[0].title)
+  console.log('%$$$$$$$$$$$$$$$$$$$$$$$$', jobPost.Posting[1].title)
+  console.log('%$$$$$$$$$$$$$$$$$$$$$$$$', jobPost.Posting[2].title)
+  console.log('%$$$$$$$$$$$$$$$$$$$$$$$$', jobPost.Posting[jobPost.Posting.length - 1].title)
 
   ///////Maniulating data
 
 
   CONTENT[0].subcategory = []
+
+  for (let i = 0; i < jobPost.Posting.length; i++) {
+    console.log('cONTENT LeNgth', CONTENT.length)
+    console.log('job pospt length', jobPost.Posting.length)
+    CONTENT[i].category_name = jobPost.Posting[i].title
+    if (CONTENT.length !== jobPost.Posting.length) {
+
+      const add = {
+        isExpanded: false,
+        category_name: jobPost.Posting[jobPost.Posting.length - 1].title,
+        subcategory: [
+        ]
+      }
+      CONTENT.push(add)
+      console.log('cONTENT LeNgth', CONTENT)
+    }
+
+  }
+
   for (let i = 0; i < job.Applicant.length; i++) {
     CONTENT[0].subcategory.push(job.Applicant[i])
   }
 
+
   const [listdata, setlistdata] = useState(CONTENT);
+
   const updateLayout = (index) => {
 
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -244,6 +280,7 @@ function Candidates({ navigation }) {
             listdata.map((item, key) => (
               <ExpandableComponenet
                 key={item.category_name}
+
                 item={item}
                 onClickFunction={() => {
                   updateLayout(key)

@@ -20,6 +20,7 @@ import CreateJobPostingScreen from './CreateJobPosting';
 
 import { JobProvider } from '../contexts/JobProvider';
 import JobPostingsScreen from './JobPostingsScreen';
+import { PostingProvider } from '../contexts/PostingProvider';
 
 
 // fake data for the skills sections
@@ -328,7 +329,9 @@ function AllTabs() {
   return (
     <NavigationContainer>
       <JobProvider>
-        <NavTabs />
+        <PostingProvider>
+          <NavTabs />
+        </PostingProvider>
       </JobProvider>
     </NavigationContainer>
   );

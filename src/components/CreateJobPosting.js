@@ -1,5 +1,7 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, KeyboardAvoidingView, Button } from 'react-native';
+
+import { PostingContext } from '../contexts/PostingProvider';
 
 // Create Component
 
