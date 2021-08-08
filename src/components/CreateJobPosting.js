@@ -135,11 +135,13 @@ const CreateJobPostingScreen = ({ navigation }) => {
 
 const textareas = {
   backgroundColor: "#f5f5f5",
-  fontSize: 22,
   borderColor: "#ccc",
   borderWidth: moderateScale(2),
-  borderRadius: moderateScale(10),
-  margin: moderateScale(15),
+  borderRadius: moderateScale(20),
+  fontSize: 22,
+  marginBottom: moderateScale(35),
+  marginLeft: moderateScale(20),
+  marginRight: moderateScale(20),
   zIndex: 999,
 }
 
