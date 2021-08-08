@@ -104,7 +104,7 @@ function Tweet({ navigation, props }) {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#2d3047" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#FFEBEE" }}>
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.header}>
@@ -115,7 +115,7 @@ function Tweet({ navigation, props }) {
           <TextInput
             style={{ ...styles.textInput, color: "tomato" }}
             placeholder="New post"
-            placeholderTextColor="#e3655b"
+            placeholderTextColor="black"
             value={text}
             onChangeText={(text) => onChangeText(text)}
           ></TextInput>
@@ -123,10 +123,10 @@ function Tweet({ navigation, props }) {
             <TouchableOpacity
               style={styles.postButton}
               title="Post"
-              color="#11B5E4"
+              color="black"
               onPress={() => addNewPost()}
             >
-              <Text style={{ color: "#2d3047", fontWeight: "bold" }}>Post</Text>
+              <Text style={{ color: "black", fontWeight: "bold" }}>Post</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     flex: 1,
-    color: "#e3655b",
+    // color: "tomato",
     fontSize: moderateScale(20),
     fontWeight: "bold",
     textAlign: "center",
@@ -161,8 +161,8 @@ const styles = StyleSheet.create({
     marginLeft: moderateScale(20),
     marginRight: moderateScale(20),
     marginBottom: moderateVerticalScale(20),
-    shadowOpacity: 1,
-    shadowColor: "tomato",
+    shadowOpacity: 0.8,
+    shadowColor: "#87baab",
     shadowOffset: {
       width: 3,
       height: 3,
