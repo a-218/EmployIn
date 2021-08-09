@@ -248,6 +248,7 @@ function Candidates({ navigation }) {
 
   const [expanded, setexpanded] = useState(new Array(jobPost.Posting.length).fill(false))
 
+  console.log('sdfsdfsdfdsfsdfdsf', expanded)
 
   const [listdata, setlistdata] = useState(job.Applicant);
 
@@ -291,8 +292,8 @@ function Candidates({ navigation }) {
                 return person.jobPostingID == jobPost.Posting[key].id
               })
 
-              console.log('nnnnnnnnnnnnnnnn', expanded[key])
-              console.log('kkkkkkk', key)
+              console.log('nnnnnnnnnnn', expanded[key])
+              console.log('kkkkd', key)
               return (
 
                 <ExpandableComponenet
@@ -300,6 +301,7 @@ function Candidates({ navigation }) {
                   isExpanded={expanded[key]}
                   item={item}
                   onClickFunction={() => {
+
                     updateLayout(key)
                   }}
                   applicants={jobApplicants}

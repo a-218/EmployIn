@@ -16,7 +16,7 @@ export default function SWipeNavBar({ route }) {
   const { applicantDBState } = useApplicationData()
 
   let data = applicantDBState
-  console.log('RESETS ')
+  console.log('RESETS ', data.length)
   // const newArr = data.map(applicant => {
   //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
   // });
@@ -25,37 +25,24 @@ export default function SWipeNavBar({ route }) {
   //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
   // });
   const newArr = data.map((applicant, i) => {
-    if (i < 5) {
+    if (i < 6) {
       return { ...applicant, jobPostingID: String(1) }
-    } else if (i < 10) {
+    } else if (i < 12) {
       return { ...applicant, jobPostingID: String(2) }
-    } else if (i < 15) {
+    } else if (i < 18) {
       return { ...applicant, jobPostingID: String(3) }
-    } else if (i < 20) {
+    } else if (i < 24) {
       return { ...applicant, jobPostingID: String(4) }
+    } else if (i < 30) {
+      return { ...applicant, jobPostingID: String(5) }
     }
 
   });
 
 
-  // const newArr = [...data]
-
   console.log('BEBEBEBEBEBEBBEBEBE the for loop', newArr)
 
-  // for (let i = 0; i < data.length; i++) {
-  //   if (i < 6) {
-  //     newArr[i] = { jobPostingID: '1' }
-  //   } else if (i < 12) {
-  //     newArr[i] = { jobPostingID: '2' }
-  //   } else if (i < 18) {
-  //     newArr[i] = { jobPostingID: '3' }
-  //   } else if (i < 24) {
-  //     newArr[i] = { jobPostingID: '4' }
-  //   } else {
-  //     newArr[i] = { jobPostingID: '5' }
-  //   }
-  // }
-  // console.log('AFFAFAFAFAFAFFAF the for loop', newArr)
+
 
   let filteredApplicant = newArr.filter(function (currentElement) {
     // the current value is an object, so you can check on its properties
@@ -76,24 +63,6 @@ export default function SWipeNavBar({ route }) {
 
   //console.log('the data over herer', data)
 
-
-  // function fetchUsers() {
-  //   try {
-  //     const { applicantDBState } = useApplicationData()
-  //     console.log(applicantDBState)
-  //     const { data } = applicantDBState
-  //     // setUsers(data.results)
-  //   } catch (error) {
-  //     console.log(error)
-  //     Alert.alert('Error getting users', '', [{ text: 'Retry', onPress: () => fetchUsers() }])
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchUsers()
-  // }, [])
-  ////need to add in job posting id here?
-
   const job = useContext(JobContext);
 
 
@@ -107,11 +76,6 @@ export default function SWipeNavBar({ route }) {
 
     nextUser()
   }
-
-  // useEffect(() => {
-  //   setCandidatesState(candidates)
-
-  // }, [candidates])
 
 
   function handlePass() {
