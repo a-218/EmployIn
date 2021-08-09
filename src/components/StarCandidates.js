@@ -151,7 +151,6 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-
   },
   titleText: {
     flex: 1,
@@ -170,7 +169,7 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: moderateScale(16),
-    fontWeight: '500'
+    fontWeight: '500',
   },
 
   text: {
@@ -179,7 +178,6 @@ const styles = StyleSheet.create({
     marginLeft: moderateScale(20),
     marginRight: moderateScale(20),
     flexWrap: 'wrap'
-
   },
   separator: {
     height: 0.9,
