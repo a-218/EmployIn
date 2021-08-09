@@ -37,7 +37,7 @@ function Profile({ navigation, props }) {
 
   return (
     <View>
-      <ScrollView style={{ backgroundColor: "#2d3047" }}>
+      <ScrollView style={{ backgroundColor: "#eeeeee" }}>
         <View style={styles.back}>
           <Image
             source={require("../../assets/stonks.png")}
@@ -49,7 +49,7 @@ function Profile({ navigation, props }) {
             source={{ uri: "https://randomuser.me/api/portraits/lego/6.jpg" }}
             style={styles.icon}
           />
-          <Text style={{ ...styles.title, color: "#e3655b" }}>EmployIn</Text>
+          <Text style={{ ...styles.title, color: "#f9aa33" }}>EmployIn</Text>
         </View>
         <View style={styles.location}>
           <FontAwesome name="industry" style={styles.wording}>
@@ -92,7 +92,7 @@ function Profile({ navigation, props }) {
           >
             <Text
               style={{
-                color: "#2d3047",
+                color: "#344955",
                 fontWeight: "bold",
                 textAlignVertical: "center",
               }}
@@ -140,16 +140,16 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     textAlign: "right",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#fafafa",
     width: "90%",
-    paddingBottom: 22,
+    paddingBottom: 15,
     borderRadius: moderateScale(20),
     shadowOpacity: 1,
     shadowRadius: 3.84,
     elevation: 20,
     marginTop: 20,
-    marginBottom: 30,
-    shadowColor: "tomato",
+    // marginBottom: 30,
+    shadowColor: "grey",
     shadowOffset: {
       width: 0,
       height: 3,
@@ -174,7 +174,8 @@ const styles = StyleSheet.create({
     height: 40,
     width: "90%",
     margin: 12,
-    backgroundColor: "#e3655b",
+    marginTop: 30,
+    backgroundColor: "#f9aa33",
     paddingLeft: moderateScale(10),
     paddingRight: moderateScale(10),
     borderRadius: moderateScale(40),
@@ -182,7 +183,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   shadow: {
-    shadowColor: "#87baab",
+    shadowColor: "grey",
     shadowOpacity: 1,
     shadowOffset: {
       width: 3,
