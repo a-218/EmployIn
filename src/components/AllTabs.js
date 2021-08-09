@@ -197,16 +197,22 @@ const CandidateScreen = () => (
   </CandidateStack.Navigator>
 );
 
-
+//////changed here card 2 stack
 const Card2StackScreen = () => (
   <Card2Stack.Navigator>
     <Card2Stack.Screen
       name="Job Posting"
       component={JobPostingsScreen}
-      options={
-        { headerShown: false }}
+      options={({ route, navigation }) => (
+        {
+          headerShown: false,
+          route: { route },
+          navigation: { navigation }
+        })}
     />
-    <Card2Stack.Screen
+    {/* options={
+      //   { headerShown: false }} */}
+    < Card2Stack.Screen
       name="Create Job Posting"
       component={CreateJobPostingScreen}
       options={({ route, navigation }) => ({

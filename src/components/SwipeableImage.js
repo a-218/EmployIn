@@ -3,7 +3,9 @@ import { View, Image, StyleSheet, Text } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 
 
-export function SearchScreen({ user }) {
+export function SearchScreen({ user, route, navigation }) {
+
+  console.log('after i press the job posts, it i sover here')
 
   return (
     <View style={styles.container}>

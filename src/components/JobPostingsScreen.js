@@ -77,7 +77,7 @@ function JobPostingsScreen({ navigation, route }) {
   }, [route.params])
 
   // Loads initial and new tweets
-  function loadJobPosts() {
+  function loadJobPosts({ navigation }) {
 
     const jobPostsCopy = [...jobPosts];
     // Reverse the posts state so we can append the new posts at the top instead of the bottom
@@ -85,7 +85,10 @@ function JobPostingsScreen({ navigation, route }) {
     const loadJobPosts = jobPostsCopy.map((post) => {
 
       return (
-        <TouchableOpacity key={post.id} onPress={() => navigation.navigate('Search')}>
+        <TouchableOpacity key={post.id} onPress={() => navigation.navigate('Search', {
+          itemId: post.id,
+          otherParam: 'anything you want here',
+        })}>
           {/* {console.log('this is the post ID ', post.id)} */}
           <View style={styles.jobpost} key={post.id}>
             <Text style={{ ...styles.title, color: 'black' }}>
@@ -191,7 +194,7 @@ function JobPostingsScreen({ navigation, route }) {
         </TouchableOpacity> */}
         {/* --------------------------------New Job Postin -------------------------------------- */}
 
-        {loadJobPosts()}
+        {loadJobPosts({ navigation })}
 
       </ScrollView>
 

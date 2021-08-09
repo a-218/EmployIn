@@ -10,19 +10,65 @@ import useApplicationData from '../hooks/useApplicationData'
 
 import { JobContext } from '../contexts/JobProvider'
 import BottomBar from './Bottombar'
-export default function SWipeNavBar() {
-
+export default function SWipeNavBar({ route }) {
+  console.log('postID is this', route.params)
   const [currentIndex, setCurrentIndex] = useState(0)
   const { applicantDBState } = useApplicationData()
 
   let data = applicantDBState
+  console.log('RESETS ')
+  // const newArr = data.map(applicant => {
+  //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
+  // });
+  //NEED to mdodify newARR into 4 sections with hardcoded jobPOsting ID
+  // const newArr = data.map((applicant,i) => {
+  //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
+  // });
+  const newArr = data.map((applicant, i) => {
+    if (i < 5) {
+      return { ...applicant, jobPostingID: String(1) }
+    } else if (i < 10) {
+      return { ...applicant, jobPostingID: String(2) }
+    } else if (i < 15) {
+      return { ...applicant, jobPostingID: String(3) }
+    } else if (i < 20) {
+      return { ...applicant, jobPostingID: String(4) }
+    }
 
-  const newArr = data.map(applicant => {
-    return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 5)) + 1) }
   });
 
-  data = newArr;
 
+  // const newArr = [...data]
+
+  console.log('BEBEBEBEBEBEBBEBEBE the for loop', newArr)
+
+  // for (let i = 0; i < data.length; i++) {
+  //   if (i < 6) {
+  //     newArr[i] = { jobPostingID: '1' }
+  //   } else if (i < 12) {
+  //     newArr[i] = { jobPostingID: '2' }
+  //   } else if (i < 18) {
+  //     newArr[i] = { jobPostingID: '3' }
+  //   } else if (i < 24) {
+  //     newArr[i] = { jobPostingID: '4' }
+  //   } else {
+  //     newArr[i] = { jobPostingID: '5' }
+  //   }
+  // }
+  // console.log('AFFAFAFAFAFAFFAF the for loop', newArr)
+
+  let filteredApplicant = newArr.filter(function (currentElement) {
+    // the current value is an object, so you can check on its properties
+    return currentElement.jobPostingID === String(route.params.itemId);
+  });
+
+
+
+  // console.log('AFTER FFILTERING ', filteredApplicant)
+
+
+  // data = newArr;
+  data = filteredApplicant;
   //console.log('outside use application data', data)
   const swipesRef = useRef(null)
   //  const { applicantLinksDBState } = useApplicationData()
