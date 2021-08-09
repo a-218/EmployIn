@@ -52,7 +52,7 @@ const CreateJobPostingScreen = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1, backgroundColor: "#2d3047" }}
+      style={{ flex: 1, backgroundColor: "#eeeeee" }}
       enableKeyboardOffset={350}
     >
       <ScrollView
@@ -64,7 +64,7 @@ const CreateJobPostingScreen = ({ navigation }) => {
           {/* ------------------------Job Title-------------------------- */}
           <View style={styles.title}>
             <FontAwesome name="briefcase" style={styles.icon}></FontAwesome>
-            <Text style={styles.label}>Position</Text>
+            <Text style={{ ...styles.label }}>Position</Text>
           </View>
 
           <TextInput
@@ -162,12 +162,14 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 20,
-    color: "tomato",
+    color: "#232f34",
     alignSelf: "center",
+    fontWeight: "bold",
   },
   icon: {
     fontSize: 20,
     textAlign: "center",
+    color: "#232f34",
     marginTop: moderateScale(3),
     marginRight: moderateScale(10),
   },
