@@ -15,7 +15,14 @@ export default function SWipeNavBar() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const { applicantDBState } = useApplicationData()
 
-  const data = applicantDBState
+  let data = applicantDBState
+
+  const newArr = data.map(applicant => {
+    return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 5)) + 1) }
+  });
+
+  data = newArr;
+
   //console.log('outside use application data', data)
   const swipesRef = useRef(null)
   //  const { applicantLinksDBState } = useApplicationData()
@@ -39,7 +46,7 @@ export default function SWipeNavBar() {
   // useEffect(() => {
   //   fetchUsers()
   // }, [])
-
+  ////need to add in job posting id here?
 
   const job = useContext(JobContext);
 

@@ -34,7 +34,7 @@ function JobPostingsScreen({ navigation, route }) {
 
   const newJobPost = useContext(PostingContext)
 
-  console.log('after the form is submitted,', route.params)
+  //  console.log('after the form is submitted,', route.params)
 
   function addNewJobPost() {
 
@@ -64,6 +64,8 @@ function JobPostingsScreen({ navigation, route }) {
     const newState = [...newJobPost.Posting, jobPost]
     newJobPost.setPosting(newState)
 
+
+
   }
 
   console.log('beofre top')
@@ -84,7 +86,7 @@ function JobPostingsScreen({ navigation, route }) {
 
       return (
         <TouchableOpacity key={post.id} onPress={() => navigation.navigate('Search')}>
-          {console.log(post.id)}
+          {/* {console.log('this is the post ID ', post.id)} */}
           <View style={styles.jobpost} key={post.id}>
             <Text style={{ ...styles.title, color: 'black' }}>
               {post.title}

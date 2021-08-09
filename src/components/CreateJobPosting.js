@@ -20,7 +20,7 @@ const CreateJobPostingScreen = ({ navigation }) => {
       description: description,
       phone: phone,
     }
-    console.log("Post job:", jobData)
+    //console.log("Post job:", jobData)
   }, [title, industry, description, phone])
 
   const submit = async () => {
