@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Image, StyleSheet, Text, SafeAreaView } from "react-native";
+import {
+  View,
+  Image,
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  ImageBackground,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { moderateScale } from "react-native-size-matters";
@@ -8,40 +15,47 @@ export function SearchScreen({ user }) {
   return (
     <SafeAreaView style={{ backgroundColor: "#eeeeee" }}>
       <View style={styles.container}>
-        <View style={styles.identity}>
-          <Image source={{ uri: user.img_url }} style={styles.image} />
+        <ImageBackground
+          source={{
+            uri: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
+          }}
+          style={styles.bg}
+        >
+          <View style={styles.identity}>
+            <Image source={{ uri: user.img_url }} style={styles.image} />
 
-          <View style={styles.personalinfo}>
-            <Text style={styles.name}>{user.name}</Text>
-            <View style={styles.info}>
-              <FontAwesome
-                style={styles.phoneicon}
-                name="phone"
-                size={18}
-                color="black"
-              >
-                :
-              </FontAwesome>
-              <Text style={(styles.phone, { color: "#605770" })}>
-                {user.phone_number}
-              </Text>
-            </View>
+            <View style={styles.personalinfo}>
+              <Text style={styles.name}>{user.name}</Text>
+              <View style={styles.info}>
+                <FontAwesome
+                  style={styles.phoneicon}
+                  name="phone"
+                  size={18}
+                  color="black"
+                >
+                  :
+                </FontAwesome>
+                <Text style={(styles.phone, { color: "#605770" })}>
+                  {user.phone_number}
+                </Text>
+              </View>
 
-            <View style={styles.info}>
-              <FontAwesome
-                style={styles.envelopeicon}
-                name="envelope"
-                size={17}
-                color="black"
-              >
-                :
-              </FontAwesome>
-              <Text style={(styles.email, { color: "#605770" })}>
-                {user.email}
-              </Text>
+              <View style={styles.info}>
+                <FontAwesome
+                  style={styles.envelopeicon}
+                  name="envelope"
+                  size={17}
+                  color="black"
+                >
+                  :
+                </FontAwesome>
+                <Text style={(styles.email, { color: "#605770" })}>
+                  {user.email}
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
+        </ImageBackground>
 
         {/* Other parts of resume like summary */}
         <View style={styles.resumecontent}>
@@ -147,12 +161,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#ED6A5A",
     zIndex: 999,
   },
+  bg: {
+    width: "100%",
+    borderRadius: moderateScale(20),
+  },
 
   container: {
     height: "100%",
     backgroundColor: "#f5f5f5",
     borderRadius: moderateScale(20),
-    borderWidth: moderateScale(4),
+    borderWidth: moderateScale(2),
     shadowOpacity: 1,
     shadowColor: "tomato",
     shadowOffset: {
@@ -178,9 +196,10 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     marginBottom: moderateScale(5),
+    width: 225,
   },
   phone: {
-    fontSize: 188,
+    fontSize: 18,
     marginBottom: moderateScale(5),
   },
   email: {
