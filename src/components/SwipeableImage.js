@@ -13,54 +13,54 @@ import { moderateScale } from "react-native-size-matters";
 
 export function SearchScreen({ user }) {
   return (
-    <SafeAreaView style={{ backgroundColor: "#eeeeee" }}>
+    <SafeAreaView
+      style={{
+        backgroundColor: "white",
+        borderRadius: moderateScale(20),
+      }}
+    >
       <View style={styles.container}>
-        <ImageBackground
-          source={{
-            uri: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
-          }}
-          style={styles.bg}
-        >
-          <View style={styles.identity}>
-            <Image source={{ uri: user.img_url }} style={styles.image} />
+        <View style={styles.identity}>
+          <Image source={{ uri: user.img_url }} style={styles.image} />
 
-            <View style={styles.personalinfo}>
-              <Text style={styles.name}>{user.name}</Text>
-              <View style={styles.info}>
-                <FontAwesome
-                  style={styles.phoneicon}
-                  name="phone"
-                  size={18}
-                  color="black"
-                >
-                  :
-                </FontAwesome>
-                <Text style={(styles.phone, { color: "#605770" })}>
-                  {user.phone_number}
-                </Text>
-              </View>
+          <View style={styles.personalinfo}>
+            <Text style={{ ...styles.name }}>{user.name}</Text>
+            <View style={styles.info}>
+              <FontAwesome
+                style={styles.phoneicon}
+                name="phone"
+                size={18}
+                color="black"
+              >
+                :
+              </FontAwesome>
+              <Text style={(styles.phone, { color: "black" })}>
+                {user.phone_number}
+              </Text>
+            </View>
 
-              <View style={styles.info}>
-                <FontAwesome
-                  style={styles.envelopeicon}
-                  name="envelope"
-                  size={17}
-                  color="black"
-                >
-                  :
-                </FontAwesome>
-                <Text style={(styles.email, { color: "#605770" })}>
-                  {user.email}
-                </Text>
-              </View>
+            <View style={styles.info}>
+              <FontAwesome
+                style={styles.envelopeicon}
+                name="envelope"
+                size={17}
+                color="black"
+              >
+                :
+              </FontAwesome>
+              <Text style={(styles.email, { color: "black" })}>
+                {user.email}
+              </Text>
             </View>
           </View>
-        </ImageBackground>
+        </View>
 
         {/* Other parts of resume like summary */}
         <View style={styles.resumecontent}>
           <View style={styles.skills}>
-            <Text style={{ color: "#605770", fontSize: 18 }}>Skills:</Text>
+            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+              Skills:
+            </Text>
             <Text
               numberOfLines={4}
               ellipsizeMode="tail"
@@ -71,7 +71,9 @@ export function SearchScreen({ user }) {
           </View>
 
           <View style={styles.summary}>
-            <Text style={{ color: "#605770", fontSize: 18 }}>Summary:</Text>
+            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+              Summary:
+            </Text>
             <Text
               numberOfLines={4}
               ellipsizeMode="tail"
@@ -82,7 +84,9 @@ export function SearchScreen({ user }) {
           </View>
 
           <View style={styles.experience}>
-            <Text style={{ color: "#605770", fontSize: 18 }}>Experience:</Text>
+            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+              Experience:
+            </Text>
             <Text
               numberOfLines={4}
               ellipsizeMode="tail"
@@ -93,7 +97,9 @@ export function SearchScreen({ user }) {
           </View>
 
           <View style={styles.links}>
-            <Text style={{ color: "#605770", fontSize: 18 }}>Links:</Text>
+            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+              Links:
+            </Text>
             <Text
               numberOfLines={4}
               ellipsizeMode="tail"
@@ -140,11 +146,17 @@ const boxStyle = {
 };
 
 const resumeSections = {
-  backgroundColor: "#f5f5f5",
+  backgroundColor: "#fafafa",
   borderWidth: moderateScale(2),
   padding: moderateScale(5),
   borderRadius: moderateScale(15),
   marginBottom: moderateScale(15),
+  shadowColor: "grey",
+  shadowOpacity: 1,
+  shadowOffset: {
+    width: 3,
+    height: 3,
+  },
 };
 
 const styles = StyleSheet.create({
@@ -163,20 +175,13 @@ const styles = StyleSheet.create({
   },
   bg: {
     width: "100%",
-    borderRadius: moderateScale(20),
   },
 
   container: {
     height: "100%",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#fafafa",
     borderRadius: moderateScale(20),
     borderWidth: moderateScale(2),
-    shadowOpacity: 1,
-    shadowColor: "tomato",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
   },
 
   personalinfo: {
@@ -188,7 +193,7 @@ const styles = StyleSheet.create({
   image: {
     width: moderateScale(85),
     height: moderateScale(85),
-    borderRadius: moderateScale(20),
+    borderRadius: moderateScale(10),
     marginLeft: moderateScale(10),
     marginRight: moderateScale(10),
   },

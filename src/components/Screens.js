@@ -1,13 +1,33 @@
-
-import React, { useEffect, useState, useContext } from 'react';
-import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, Button, ScrollView, TextComponent, LayoutAnimation, Platform, UIManager } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { moderateScale, moderateVerticalScale } from 'react-native-size-matters';
-import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
+import React, { useEffect, useState, useContext } from "react";
+import {
+  Text,
+  Image,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+  FlatList,
+  Button,
+  ScrollView,
+  TextComponent,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  moderateScale,
+  moderateVerticalScale,
+} from "react-native-size-matters";
+import {
+  FontAwesome5,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import call from "react-native-phone-call";
 import email from "react-native-email";
-import { JobContext } from '../contexts/JobProvider'
+import { JobContext } from "../contexts/JobProvider";
 // import styles from '../styles/ScreensStyle';
 const CONTENT = [
   {
@@ -22,92 +42,104 @@ const CONTENT = [
   },
 ];
 
-const ScreenContainer = ({ children }) => (
-  <View>{children}</View>
-);
-
-
+const ScreenContainer = ({ children }) => <View>{children}</View>;
 
 // ---------------------------------------View Resume on Click---------------------------------------------------- //
 
 export const Individual = ({ route, navigation, item }) => (
-  <ScrollView >
-    <ScreenContainer >
+  <ScrollView>
+    <ScreenContainer>
       <View style={styles.resumecontainer}>
-
         <View style={styles.identity}>
           {/* {console.log(route.params.img_url)} */}
-          < Image source={{ uri: route.params.img_url }} style={styles.image} />
+          <Image source={{ uri: route.params.img_url }} style={styles.image} />
 
           <View style={styles.personalinfo}>
             <Text style={styles.name}>{route.params.name}</Text>
-              <View style={styles.info}>
-                <FontAwesome style={styles.phoneicon} name="phone" size={18} color="black">
-                        :
-                </FontAwesome>
-                <Text style={styles.phone, {color: "#605770"}}>
-                  {route.params.phone_number}
-                </Text>
-              </View>
-              
-              <View style={styles.info}>
-                <FontAwesome style={styles.envelopeicon} name="envelope" size={17} color="black">
-                      :
-                </FontAwesome>
-                <Text style={styles.email, {color: "#605770"}}>
-                  {route.params.email}
-                </Text>
-              </View>
+            <View style={styles.info}>
+              <FontAwesome
+                style={styles.phoneicon}
+                name="phone"
+                size={18}
+                color="black"
+              >
+                :
+              </FontAwesome>
+              <Text style={styles.phone}>{route.params.phone_number}</Text>
+            </View>
+
+            <View style={styles.info}>
+              <FontAwesome
+                style={styles.envelopeicon}
+                name="envelope"
+                size={17}
+                color="black"
+              >
+                :
+              </FontAwesome>
+              <Text style={styles.email}>{route.params.email}</Text>
+            </View>
           </View>
         </View>
 
         {/* Other parts of resume like summary */}
         <View style={styles.resumecontent}>
-
           <View style={styles.skills}>
-            <Text style={{color: "#605770", fontSize: 18}}>
-              Skills:
-            </Text>
-            <Text numberOfLines={4} ellipsizeMode='tail' style={{color: "black"}}>
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>Skills:</Text>
+            <Text
+              numberOfLines={4}
+              ellipsizeMode="tail"
+              style={{ color: "black" }}
+            >
               {route.params.skills}
             </Text>
           </View>
 
           <View style={styles.summary}>
-            <Text style={{color: "#605770", fontSize: 18}} numberOfLines={4} ellipsizeMode='tail'>
+            <Text
+              style={{ fontSize: 18, fontWeight: "bold" }}
+              numberOfLines={4}
+              ellipsizeMode="tail"
+            >
               Summary:
             </Text>
-            <Text numberOfLines={4} ellipsizeMode='tail' style={{color: "black"}}>
+            <Text
+              numberOfLines={4}
+              ellipsizeMode="tail"
+              style={{ color: "black" }}
+            >
               {route.params.summary}
             </Text>
           </View>
 
           <View style={styles.experience}>
-            <Text style={{color: "#605770", fontSize: 18}}>
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>
               Experience:
             </Text>
-            <Text numberOfLines={4} ellipsizeMode='tail' style={{color: "black"}}>
+            <Text
+              numberOfLines={4}
+              ellipsizeMode="tail"
+              style={{ color: "black" }}
+            >
               {route.params.experience}
             </Text>
           </View>
 
           <View style={styles.links}>
-            <Text style={{color: "#605770", fontSize: 18}}>
-              Links:
-            </Text>
-            <Text numberOfLines={4} ellipsizeMode='tail' style={{color: "black"}}>
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>Links:</Text>
+            <Text
+              numberOfLines={4}
+              ellipsizeMode="tail"
+              style={{ color: "black" }}
+            >
               {route.params.externallinks}
             </Text>
           </View>
         </View>
       </View>
-
     </ScreenContainer>
   </ScrollView>
 );
-
-
-
 
 // --------------------------------------- Expanded View --------------------------------------------------- //
 
@@ -126,11 +158,11 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
   function handleEmail() {
     console.log("it got in here into EMAIL MESSAGING ");
     // This is a dummy variable, we will eventually pass props into here
-    const to = ["jzlowie@gmail.com"]; // string or array of email addresses
+    const to = ["test@test.com"]; // string or array of email addresses
     email(to, {
       // Optional additional arguments
-      // cc: ["jzlowie@gmail.com", "jzlowie@yahoo.com"], // string or array of email addresses
-      // bcc: "jzlowie@yahoo.com", // string or array of email addresses
+      // cc: ["test@test.com", "test@test.com"], // string or array of email addresses
+      // bcc: "test@test.com", // string or array of email addresses
       subject: "Show how to use",
       body: "Some body right here",
     }).catch(console.error);
@@ -150,66 +182,55 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
 
   return (
     <View>
-      <TouchableOpacity
-        style={styles.dropdown}
-        onPress={onClickFunction}>
-        <Text style={styles.jobtitle}>
-          {item.category_name}
-        </Text>
+      <TouchableOpacity style={styles.dropdown} onPress={onClickFunction}>
+        <Text style={styles.jobtitle}>{item.category_name}</Text>
       </TouchableOpacity>
 
-      <View style={{
-        height: layout,
-        overflow: 'hidden'
-      }}>
-        {
-          item.subcategory.map((item, key) => (
-            <TouchableOpacity
-              key={key}
-              style={styles.individual}
-              onPress={() =>
-                navigation.navigate("Individual", item)
-              }
-            >
-              <View style={styles.subsections}>
+      <View
+        style={{
+          height: layout,
+          overflow: "hidden",
+        }}
+      >
+        {item.subcategory.map((item, key) => (
+          <TouchableOpacity
+            key={key}
+            style={styles.individual}
+            onPress={() => navigation.navigate("Individual", item)}
+          >
+            <View style={styles.subsections}>
+              <View style={styles.imgName}>
+                <Image source={{ uri: item.img_url }} style={styles.subimage} />
 
-                  <View style={styles.imgName}>
-                    <Image source={{ uri: item.img_url }} style={styles.subimage}  />
-
-                    <Text style={styles.candidateName}>
-                      {item.name}
-                    </Text>
-                  </View>
-
-                  <View style={styles.buttons}>
-
-                    <TouchableOpacity
-                      style={styles.callButton}
-                      onPress={() => handlePhoneCall()}  >
-                      <Text style={styles.buttonText}>Call</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                      style={styles.emailButton}
-                      onPress={() => handleEmail()}  >
-                      <Text style={styles.buttonText}>Email</Text>
-                    </TouchableOpacity>
-
-                </View>
+                <Text style={styles.candidateName}>{item.name}</Text>
               </View>
 
-              <View style={styles.candidateSeparator} />
+              <View style={styles.buttons}>
+                <TouchableOpacity
+                  style={styles.callButton}
+                  onPress={() => handlePhoneCall()}
+                >
+                  <Text style={styles.buttonText}>Call</Text>
+                </TouchableOpacity>
 
-            </TouchableOpacity>
-          ))
-        }
+                <TouchableOpacity
+                  style={styles.emailButton}
+                  onPress={() => handleEmail()}
+                >
+                  <Text style={styles.buttonText}>Email</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={styles.candidateSeparator} />
+          </TouchableOpacity>
+        ))}
       </View>
-    </View >
-  )
-}
+    </View>
+  );
+};
 
 // -------------------------------------------Job Candidates Page View-------------------------------------------------- //
-
 
 function Candidates({ navigation }) {
   if (Platform.OS === "android") {
@@ -252,10 +273,7 @@ function Candidates({ navigation }) {
     <SafeAreaView style={{ flex: 1 }}>
       <View>
         <View style={styles.header}>
-          <Text style={styles.headerText}>
-            Job Candidates
-          </Text>
-
+          <Text style={styles.headerText}>Job Candidates</Text>
         </View>
 
         <ScrollView>
@@ -267,6 +285,7 @@ function Candidates({ navigation }) {
                 updateLayout(key);
               }}
               navigation={navigation}
+              style={styles.expandableShadow}
             />
           ))}
         </ScrollView>
@@ -277,46 +296,58 @@ function Candidates({ navigation }) {
 // -------------------------------------------------- Styles ----------------------------------------------------------- //
 
 const resumeSections = {
-  backgroundColor: "#f5f5f5",
+  backgroundColor: "#fafafa",
   borderWidth: moderateScale(2),
   padding: moderateScale(5),
-  borderRadius: moderateScale(15),
+  borderRadius: moderateScale(10),
   marginBottom: moderateScale(15),
-}
+  shadowColor: "grey",
+  shadowOpacity: 1,
+  shadowOffset: {
+    width: 3,
+    height: 3,
+  },
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   header: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   headerText: {
     flex: 1,
     fontSize: moderateScale(20),
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: moderateScale(20),
     marginTop: moderateScale(30),
-    textAlign: 'center',
+    textAlign: "center",
   },
   dropdown: {
-    backgroundColor: 'orange',
-    borderRadius: moderateScale(10),
+    backgroundColor: "orange",
+    borderRadius: moderateScale(20),
     marginBottom: moderateVerticalScale(20),
     marginLeft: moderateScale(20),
     marginRight: moderateScale(20),
     padding: moderateScale(20),
+    shadowColor: "grey",
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
   },
   jobtitle: {
     fontSize: moderateScale(16),
-    fontWeight: '500'
+    fontWeight: "500",
   },
   subsections: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   imgName: {
-    flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
   subimage: {
     borderRadius: moderateScale(40),
@@ -326,21 +357,27 @@ const styles = StyleSheet.create({
     width: moderateScale(60),
   },
   candidateName: {
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
     fontSize: moderateScale(16),
     marginTop: moderateScale(25),
     marginLeft: moderateScale(5),
     width: moderateScale(100),
   },
   buttons: {
-    alignSelf: 'center',
-    flexDirection: 'row',
+    alignSelf: "center",
+    flexDirection: "row",
   },
   callButton: {
     backgroundColor: "#5DA9E9",
     borderRadius: moderateScale(30),
     paddingHorizontal: moderateScale(20),
     paddingVertical: moderateScale(5),
+    shadowColor: "grey",
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
   },
   emailButton: {
     backgroundColor: "#5DA9E9",
@@ -348,42 +385,45 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     paddingHorizontal: moderateScale(20),
     paddingVertical: moderateScale(5),
+    shadowColor: "grey",
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
   },
   candidateSeparator: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: "lightgrey",
     height: 2,
     marginBottom: moderateVerticalScale(5),
     marginLeft: moderateScale(20),
     marginRight: moderateScale(20),
     marginTop: moderateVerticalScale(5),
-    width: '88%'
+    width: "88%",
   },
   individual: {
-    alignItems: 'flex-start',  
+    alignItems: "flex-start",
   },
-
-  
-
 
   resumecontainer: {
     flex: 1,
     marginTop: moderateScale(5),
     marginRight: moderateScale(5),
     marginLeft: moderateScale(5),
-    height: '100%',
-    backgroundColor: "#f5f5f5",
+    height: "100%",
+    backgroundColor: "#fafafa",
     borderRadius: moderateScale(20),
-    borderWidth: moderateScale(1),
+    borderWidth: moderateScale(2),
     shadowOpacity: 1,
-    shadowColor: "tomato",
+    shadowColor: "grey",
     shadowOffset: {
-      width: 0,
+      width: 3,
       height: 3,
     },
   },
-  
+
   personalinfo: {
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
   },
   info: {
     flexDirection: "row",
@@ -391,13 +431,13 @@ const styles = StyleSheet.create({
   image: {
     width: moderateScale(85),
     height: moderateScale(85),
-    borderRadius: moderateScale(20),
+    borderRadius: moderateScale(10),
     marginLeft: moderateScale(10),
     marginRight: moderateScale(10),
   },
   name: {
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: moderateScale(5),
   },
   phone: {
@@ -410,15 +450,15 @@ const styles = StyleSheet.create({
   },
   phoneicon: {
     marginLeft: moderateScale(2),
-    marginRight: moderateScale(4)
+    marginRight: moderateScale(4),
   },
   envelopeicon: {
-    marginRight: moderateScale(5)
+    marginRight: moderateScale(5),
   },
 
   identity: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: moderateScale(10),
     marginTop: moderateScale(10),
   },
