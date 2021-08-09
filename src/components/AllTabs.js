@@ -335,7 +335,7 @@ function NavTabs() {
             <MaterialCommunityIcons name='account' size={size} color={color} />
         }} /> */}
       <Tab.Screen
-        name="Job Posting2222"
+        name="Job Posting"
         component={Card2StackScreen}
         options={{
           headerShown: false,

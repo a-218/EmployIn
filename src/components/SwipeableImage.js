@@ -1,84 +1,113 @@
-import React from 'react'
-import { View, Image, StyleSheet, Text, SafeAreaView, ImageBackground } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import React from "react";
+import {
+  View,
+  Image,
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  ImageBackground,
+} from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/FontAwesome";
 import { moderateScale } from "react-native-size-matters";
 
 export function SearchScreen({ user }) {
-
   return (
-    <SafeAreaView>
-
+    <SafeAreaView
+      style={{
+        backgroundColor: "white",
+        borderRadius: moderateScale(20),
+      }}
+    >
       <View style={styles.container}>
-        <ImageBackground source={{uri: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg" }}style={styles.bg}>
-          
-          <View style={styles.identity}>
+        <View style={styles.identity}>
+          <Image source={{ uri: user.img_url }} style={styles.image} />
 
-            <Image source={{ uri: user.img_url }} style={styles.image} />
-            
-            <View style={styles.personalinfo}>
-              <Text style={styles.name}>{user.name}</Text>
-                <View style={styles.info}>
-                  <FontAwesome style={styles.phoneicon} name="phone" size={18} color="black">
-                    :
-                  </FontAwesome>
-                  <Text style={styles.phone, {color: "#605770"}}>
-                    {user.phone_number}
-                  </Text>
-                </View>
-
-                <View style={styles.info}>
-                  <FontAwesome style={styles.envelopeicon} name="envelope" size={17} color="black">
-                    :
-                  </FontAwesome>
-                  <Text style={styles.email, {color: "#605770"}}>
-                    {user.email}
-                  </Text>
-                </View>
+          <View style={styles.personalinfo}>
+            <Text style={{ ...styles.name }}>{user.name}</Text>
+            <View style={styles.info}>
+              <FontAwesome
+                style={styles.phoneicon}
+                name="phone"
+                size={18}
+                color="black"
+              >
+                :
+              </FontAwesome>
+              <Text style={(styles.phone, { color: "black" })}>
+                {user.phone_number}
+              </Text>
             </View>
 
+            <View style={styles.info}>
+              <FontAwesome
+                style={styles.envelopeicon}
+                name="envelope"
+                size={17}
+                color="black"
+              >
+                :
+              </FontAwesome>
+              <Text style={(styles.email, { color: "black" })}>
+                {user.email}
+              </Text>
+            </View>
           </View>
-        </ImageBackground>
+        </View>
 
         {/* Other parts of resume like summary */}
         <View style={styles.resumecontent}>
-
           <View style={styles.skills}>
-              <Text style={{color: "#605770", fontSize: 18}}>
-                Skills: 
-              </Text>
-            <Text numberOfLines={4} ellipsizeMode='tail' style={{color: "black"}}>
+            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+              Skills:
+            </Text>
+            <Text
+              numberOfLines={4}
+              ellipsizeMode="tail"
+              style={{ color: "black" }}
+            >
               {user.skills}
             </Text>
           </View>
 
           <View style={styles.summary}>
-              <Text style={{color: "#605770", fontSize: 18}}>
-                Summary: 
-              </Text>
-            <Text numberOfLines={4} ellipsizeMode='tail' style={{color: "black"}}>
+            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+              Summary:
+            </Text>
+            <Text
+              numberOfLines={4}
+              ellipsizeMode="tail"
+              style={{ color: "black" }}
+            >
               {user.summary}
             </Text>
           </View>
 
           <View style={styles.experience}>
-              <Text style={{color: "#605770", fontSize: 18}}>
-                Experience:
-              </Text>
-            <Text numberOfLines={4} ellipsizeMode='tail' style={{color: "black"}}>
+            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+              Experience:
+            </Text>
+            <Text
+              numberOfLines={4}
+              ellipsizeMode="tail"
+              style={{ color: "black" }}
+            >
               {user.experience}
             </Text>
           </View>
 
           <View style={styles.links}>
-              <Text style={{color: "#605770", fontSize: 18}}>
-                Links:
-              </Text>
-            <Text numberOfLines={4} ellipsizeMode='tail' style={{color: "black"}}>
+            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+              Links:
+            </Text>
+            <Text
+              numberOfLines={4}
+              ellipsizeMode="tail"
+              style={{ color: "black" }}
+            >
               {user.externallinks}
             </Text>
           </View>
-
         </View>
       </View>
     </SafeAreaView>
@@ -86,96 +115,93 @@ export function SearchScreen({ user }) {
 }
 
 export default function SwipeableImage({ user, willLike, willPass }) {
-
   return (
     <View>
-
       {willLike && (
         <View style={styles.likeBox}>
-          <Text style={{ ...styles.textPrimary, color: 'black', fontSize: 20 }}>SAVE</Text>
+          <Text style={{ ...styles.textPrimary, color: "black", fontSize: 20 }}>
+            SAVE
+          </Text>
         </View>
       )}
       {willPass && (
         <View style={styles.passBox}>
-          <Text style={{ ...styles.textPrimary, color: 'black', fontSize: 20 }}>PASS</Text>
+          <Text style={{ ...styles.textPrimary, color: "black", fontSize: 20 }}>
+            PASS
+          </Text>
         </View>
       )}
 
       <SearchScreen user={user} />
-
     </View>
-
-  )
+  );
 }
 
 const boxStyle = {
-  position: 'absolute',
-  top: '45%',
+  position: "absolute",
+  top: "45%",
   padding: moderateScale(20),
   borderWidth: moderateScale(1),
   borderRadius: moderateScale(10),
-}
+};
 
 const resumeSections = {
-  backgroundColor: "#f5f5f5",
+  backgroundColor: "#fafafa",
   borderWidth: moderateScale(2),
   padding: moderateScale(5),
   borderRadius: moderateScale(15),
   marginBottom: moderateScale(15),
-}
+  shadowColor: "grey",
+  shadowOpacity: 1,
+  shadowOffset: {
+    width: 3,
+    height: 3,
+  },
+};
 
 const styles = StyleSheet.create({
-
   likeBox: {
     ...boxStyle,
     left: moderateScale(20),
-    backgroundColor: '#9BC1BC',
+    backgroundColor: "#9BC1BC",
     zIndex: 999,
   },
   passBox: {
     ...boxStyle,
     right: moderateScale(20),
-    borderColor: '#F06795',
-    backgroundColor: '#ED6A5A',
+    borderColor: "#F06795",
+    backgroundColor: "#ED6A5A",
     zIndex: 999,
   },
-  bg:{
+  bg: {
     width: "100%",
-    borderRadius: moderateScale(20),
   },
-  
+
   container: {
-    height: '100%',
-    backgroundColor: "#f5f5f5",
+    height: "100%",
+    backgroundColor: "#fafafa",
     borderRadius: moderateScale(20),
     borderWidth: moderateScale(2),
-    shadowOpacity: 1,
-    shadowColor: "tomato",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
   },
-  
+
   personalinfo: {
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
   },
   info: {
     flexDirection: "row",
-
   },
   image: {
     width: moderateScale(85),
     height: moderateScale(85),
-    borderRadius: moderateScale(20),
+    borderRadius: moderateScale(10),
     marginLeft: moderateScale(10),
     marginRight: moderateScale(10),
   },
   name: {
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: moderateScale(5),
-    width: 225
+    width: 225,
   },
   phone: {
     fontSize: 18,
@@ -186,10 +212,9 @@ const styles = StyleSheet.create({
     marginBottom: moderateScale(5),
   },
 
-  
   identity: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     // padding: (5),
     marginBottom: moderateScale(10),
     marginTop: moderateScale(10),
@@ -213,9 +238,9 @@ const styles = StyleSheet.create({
   },
   phoneicon: {
     marginLeft: moderateScale(2),
-    marginRight: moderateScale(4)
+    marginRight: moderateScale(4),
   },
   envelopeicon: {
-    marginRight: moderateScale(5)
-  }
-})
+    marginRight: moderateScale(5),
+  },
+});
