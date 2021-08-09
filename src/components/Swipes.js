@@ -32,7 +32,6 @@ function Swipes({ data, currentIndex, handleLike, handlePass, swipesRef }) {
   return (
 
     <Swipeable
-
       ref={swipesRef}
       friction={2}
       leftThreshold={40}

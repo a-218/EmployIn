@@ -3,8 +3,15 @@ import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } fr
 import { createStackNavigator } from '@react-navigation/stack'
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
-// const newPosting = createStackNavigator();
+
 import { PostingContext } from '../contexts/PostingProvider';
+import {
+  scale,
+  moderateScale,
+  verticalScale,
+  moderateVerticalScale,
+} from "react-native-size-matters";
+
 
 function JobPostingsScreen({ navigation, route }) {
 
@@ -27,58 +34,45 @@ function JobPostingsScreen({ navigation, route }) {
       description: " Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.,",
       industry: 'Tech/Web development',
     },
-  ])
-  //  const [jobPosts, setJobPosts] = useState([{ }])
-  // console.log('at the top', jobPosts.length)
-  // console.log('the JOB POSTS object', jobPosts)
+  ]
+  )
+
 
   const newJobPost = useContext(PostingContext)
 
-  //  console.log('after the form is submitted,', route.params)
-
   function addNewJobPost() {
-
     // New object of post
     if (!route.params) {
-      return
+      return;
     }
-    // const jobPost = {
-    //   id: jobPosts[jobPosts.length - 1].id + 1,
-    //   title: route.params.title,
-    //   description: route.params.description,
-    //   industry: route.params.industry
 
-    // };
 
     const jobPost = {
       id: jobPosts[jobPosts.length - 1].id + 1,
       title: route.params.title,
       description: route.params.description,
-      industry: route.params.industry
-
+      industry: route.params.industry,
     };
-    // Add new post into state
-    //  console.log('job Post over here IdidIDIDIDIDIDIIDIDID', jobPost.id)
+
     setJobPosts((prev) => [...prev, jobPost]);
 
     const newState = [...newJobPost.Posting, jobPost]
     newJobPost.setPosting(newState)
 
-
-
   }
 
-  console.log('beofre top')
+  console.log("beofre top");
 
 
-  //  const setJobs = Jobs =>setJobPosts([...])
+
   useEffect(() => {
-    addNewJobPost()
-  }, [route.params])
+    addNewJobPost();
+  }, [route.params]);
 
   // Loads initial and new tweets
   function loadJobPosts({ navigation }) {
 
+    // function loadJobPosts() {
     const jobPostsCopy = [...jobPosts];
     // Reverse the posts state so we can append the new posts at the top instead of the bottom
 
@@ -89,21 +83,22 @@ function JobPostingsScreen({ navigation, route }) {
           itemId: post.id,
           otherParam: 'anything you want here',
         })}>
-          {/* {console.log('this is the post ID ', post.id)} */}
+
           <View style={styles.jobpost} key={post.id}>
-            <Text style={{ ...styles.title, color: 'black' }}>
+            <Text style={{ ...styles.title, color: "black" }}>
               {post.title}
             </Text>
 
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Industry: {post.industry}
+            <Text style={styles.description}>
+              Industry:
+              <Text style={{ ...styles.text, color: "black" }}>
+                {post.industry}
+              </Text>
             </Text>
 
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Job Description:
-            </Text>
+            <Text style={styles.description}>Job Description:</Text>
 
-            <Text style={{ ...styles.text, color: 'black' }}>
+            <Text style={{ ...styles.text, color: "black" }}>
               {post.description}
             </Text>
           </View>
@@ -113,155 +108,111 @@ function JobPostingsScreen({ navigation, route }) {
     return loadJobPosts;
   }
 
+  console.log("after the top");
   return (
-
     <View style={{ flex: 1 }}>
       <View>
-        <Text style={styles.header}>
+        <Text
+          style={{ ...styles.header, color: "#f9aa33", fontWeight: "bold" }}
+        >
           Your Job Postings!
         </Text>
-        <TouchableOpacity style={styles.button}
-          onPress={() => navigation.navigate('Create Job Posting')}>
-          <MaterialCommunityIcons name='plus' style={styles.buttonText}>New</MaterialCommunityIcons>
-        </TouchableOpacity>
       </View>
-      {/* --------------------------------Posting 1-------------------------------------- */}
       <ScrollView>
-        {/* <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-          <View style={styles.jobpost}>
-            <Text style={{ ...styles.title, color: 'black' }}>
-              Full Stack Web Developer
-            </Text>
 
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Industry:
-            </Text>
-
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Job Description:
-            </Text>
-
-            <Text style={{ ...styles.text, color: 'black' }}>
-              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-            </Text>
-
-          </View>
-        </TouchableOpacity> */}
-        {/* --------------------------------Posting 2-------------------------------------- */}
-        {/* <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-          <View style={styles.jobpost}>
-            <Text style={{ ...styles.title, color: 'black' }}>
-              Full Stack Web Developer
-            </Text>
-
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Industry:
-            </Text>
-
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Job Description:
-            </Text>
-
-            <Text style={{ ...styles.text, color: 'black' }}>
-              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-            </Text>
-          </View>
-        </TouchableOpacity> */}
-        {/* --------------------------------Posting 3-------------------------------------- */}
-        {/* <TouchableOpacity onPress={() => navigation.push('Search')}>
-          <View style={styles.jobpost}>
-            <Text style={{ ...styles.title, color: 'black' }}>
-              Full Stack Web Developer
-            </Text>
-
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Industry:
-            </Text>
-
-            <Text style={{ ...styles.description, color: 'black' }}>
-              Job Description:
-            </Text>
-
-            <Text style={{ ...styles.text, color: 'black' }}>
-              Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.
-              Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.
-            </Text>
-          </View>
-        </TouchableOpacity> */}
         {/* --------------------------------New Job Postin -------------------------------------- */}
 
         {loadJobPosts({ navigation })}
 
+        {/* {loadJobPosts()} */}
       </ScrollView>
 
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Create Job Posting")}
+      >
+        <MaterialCommunityIcons name="folder-plus" style={styles.buttonText}>
+          New
+        </MaterialCommunityIcons>
+      </TouchableOpacity>
     </View>
   );
 }
 
-// const link = () =>{
-//   const navigation = useNavigation();
-//   return (
-
-//     onPress={() => navigation.navigate('Search')});
-// }
 
 export default JobPostingsScreen;
 
 const margin = {
-  marginTop: '5%',
-  marginRight: '5%',
-  marginLeft: '5%',
-}
+  marginLeft: moderateScale(5),
+  marginRight: moderateScale(5),
+  marginTop: moderateScale(5),
+};
 
 const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: "#eeeeee",
+    paddingTop: moderateScale(10),
+  },
   header: {
-    marginTop: '15%',
-    alignSelf: 'center',
-    fontSize: 20,
+    alignSelf: "center",
+    fontSize: 25,
+    marginBottom: moderateScale(10),
+    marginTop: moderateScale(40),
   },
   jobpost: {
-    ...margin,
-    backgroundColor: 'white',
-    borderRadius: 60,
-    borderWidth: 5,
+    backgroundColor: "#fafafa",
+    borderRadius: moderateScale(20),
+    marginBottom: moderateVerticalScale(20),
+    marginLeft: moderateScale(20),
+    marginRight: moderateScale(20),
+    shadowColor: "grey",
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
   },
   title: {
     ...margin,
-    alignSelf: 'center',
+    alignSelf: "center",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   description: {
-    marginRight: '5%',
-    marginLeft: '5%',
-    fontSize: 20,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#344955",
+    marginRight: moderateScale(10),
+    marginLeft: moderateScale(15),
   },
   text: {
-    marginRight: '5%',
-    marginLeft: '5%',
-    paddingBottom: '5%',
     fontSize: 15,
+    marginRight: moderateScale(15),
+    marginLeft: moderateScale(15),
+    paddingBottom: moderateScale(15),
   },
   button: {
-    alignSelf: 'center',
-    width: '40%',
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: "green",
-    padding: 5,
-    borderRadius: 50,
-
-
+    alignSelf: "center",
+    backgroundColor: "#f9aa33",
+    borderBottomColor: "#f9aa33",
+    paddingTop: moderateScale(5),
+    borderRadius: moderateScale(20),
+    borderBottomWidth: moderateScale(4),
+    height: moderateScale(30),
+    justifyContent: "space-evenly",
+    marginTop: moderateScale(5),
+    marginBottom: moderateScale(15),
+    padding: moderateScale(1),
+    width: moderateScale(100),
+    shadowColor: "grey",
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
   },
   buttonText: {
-
-    alignSelf: 'center',
-    fontSize: 15,
-
-
-  }
-})
+    alignSelf: "center",
+    fontSize: 18,
+  },
+});

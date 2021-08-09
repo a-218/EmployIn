@@ -24,13 +24,23 @@ import { BorderlessButton } from "react-native-gesture-handler";
 import { moderateScale } from "react-native-size-matters";
 
 function Profile({ navigation, props }) {
-  const image = { uri: "https://reactjs.org/logo-og.png" };
+  const [price, setPrice] = useState((Math.random() * 100).toFixed(2));
+
+  function liveStockUpdate() {
+    const newPrice = Math.random() * 100;
+    setPrice(newPrice.toFixed(2));
+  }
+
+  function loadStock() {
+    return price;
+  }
+
   return (
     <View>
-      <ScrollView style={{ backgroundColor: "#2d3047" }}>
+      <ScrollView style={{ backgroundColor: "#eeeeee" }}>
         <View style={styles.back}>
           <Image
-            source={require("../../assets/0042.webp")}
+            source={require("../../assets/stonks.png")}
             style={styles.icon2}
           />
         </View>
@@ -39,7 +49,7 @@ function Profile({ navigation, props }) {
             source={{ uri: "https://randomuser.me/api/portraits/lego/6.jpg" }}
             style={styles.icon}
           />
-          <Text style={{ ...styles.title, color: "#e3655b" }}>EmployIn</Text>
+          <Text style={{ ...styles.title, color: "#f9aa33" }}>EmployIn</Text>
         </View>
         <View style={styles.location}>
           <FontAwesome name="industry" style={styles.wording}>
@@ -70,10 +80,34 @@ function Profile({ navigation, props }) {
         </View>
 
         <View style={styles.location}>
+          <FontAwesome name="dollar" style={styles.wording}></FontAwesome>
+          <Text style={styles.wording}>Stock: ${loadStock()} Trillion</Text>
+        </View>
+        <View style={styles.shadow}>
+          <TouchableOpacity
+            style={styles.postButton}
+            title="Post"
+            color="#11B5E4"
+            onPress={() => liveStockUpdate()}
+          >
+            <Text
+              style={{
+                color: "#344955",
+                fontWeight: "bold",
+                textAlignVertical: "center",
+              }}
+            >
+              Live Stock Update
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.location}>
           <Text style={styles.wording}>
             We are a company that likes to employ those with super powers like
             Natasha Romanov, the strongest Avengers. We occasionally do enjoy
-            some sunny side up eggs during breakfast.
+            some sunny side up eggs during breakfast, and we like to gamble with
+            our stock prices.
           </Text>
         </View>
       </ScrollView>
@@ -106,16 +140,16 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     textAlign: "right",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#fafafa",
     width: "90%",
-    paddingBottom: 22,
+    paddingBottom: 15,
     borderRadius: moderateScale(20),
     shadowOpacity: 1,
     shadowRadius: 3.84,
     elevation: 20,
     marginTop: 20,
-    marginBottom: 30,
-    shadowColor: "tomato",
+    // marginBottom: 30,
+    shadowColor: "grey",
     shadowOffset: {
       width: 0,
       height: 3,
@@ -131,6 +165,30 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "lightblue",
     height: 200,
+  },
+  postButton: {
+    // flex: 1,
+    flexDirection: "row",
+    alignSelf: "center",
+    alignItems: "center",
+    height: 40,
+    width: "90%",
+    margin: 12,
+    marginTop: 30,
+    backgroundColor: "#f9aa33",
+    paddingLeft: moderateScale(10),
+    paddingRight: moderateScale(10),
+    borderRadius: moderateScale(40),
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  shadow: {
+    shadowColor: "grey",
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
   },
 });
 export default Profile;
