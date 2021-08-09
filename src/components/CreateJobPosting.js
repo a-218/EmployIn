@@ -1,5 +1,13 @@
-import React, { useState, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput, KeyboardAvoidingView, Button } from 'react-native';
+import React, { useState, useCallback } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TextInput,
+  KeyboardAvoidingView,
+  Button,
+} from "react-native";
 import { moderateScale } from "react-native-size-matters";
 import {
   FontAwesome5,
@@ -10,12 +18,10 @@ import {
 // Create Component
 
 const CreateJobPostingScreen = ({ navigation }) => {
-
-  const [title, setTitle] = useState('');
-  const [industry, setIndustry] = useState('');
-  const [description, setDescription] = useState('');
-  const [phone, setPhone] = useState('');
-
+  const [title, setTitle] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [description, setDescription] = useState("");
+  const [phone, setPhone] = useState("");
 
   const data = useCallback(() => {
     const jobData = {
@@ -23,42 +29,49 @@ const CreateJobPostingScreen = ({ navigation }) => {
       industry: industry,
       description: description,
       phone: phone,
-    }
-    console.log("Post job:", jobData)
-  }, [title, industry, description, phone])
+    };
+    console.log("Post job:", jobData);
+  }, [title, industry, description, phone]);
 
   const submit = async () => {
     await data();
     navigation.navigate({
       name: "Job Posting",
-      params: { title: title, industry: industry, description: description, phone: phone }
-    })
+      params: {
+        title: title,
+        industry: industry,
+        description: description,
+        phone: phone,
+      },
+    });
     setTitle("");
     setIndustry("");
     setDescription("");
     setPhone("");
-
-  }
+  };
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1}} enableKeyboardOffset={350}>
-
-      <ScrollView contentContainerStyle={{ alignItems: 'center' , backgroundColor: "#2d3047"}}>
-
+    <KeyboardAvoidingView
+      style={{ flex: 1, backgroundColor: "#2d3047" }}
+      enableKeyboardOffset={350}
+    >
+      <ScrollView
+        contentContainerStyle={{
+          alignItems: "center",
+        }}
+      >
         <View style={styles.formContainer}>
-
-
           {/* ------------------------Job Title-------------------------- */}
           <View style={styles.title}>
-            <FontAwesome name="briefcase" style={styles.icon}>
-            </FontAwesome>
+            <FontAwesome name="briefcase" style={styles.icon}></FontAwesome>
             <Text style={styles.label}>Position</Text>
           </View>
 
           <TextInput
             style={styles.position}
             returnKeyType="next"
-            multiline numberOfLines={20}
+            multiline
+            numberOfLines={20}
             value={title}
             onChangeText={(desc) => setTitle(desc)}
           />
@@ -67,15 +80,15 @@ const CreateJobPostingScreen = ({ navigation }) => {
 
           {/* ------------------------Industry-------------------------- */}
           <View style={styles.title}>
-            <FontAwesome name="industry" style={styles.icon}>
-            </FontAwesome>
+            <FontAwesome name="industry" style={styles.icon}></FontAwesome>
             <Text style={styles.label}>Industry</Text>
           </View>
 
           <TextInput
             style={styles.industry}
             returnKeyType="next"
-            multiline numberOfLines={20}
+            multiline
+            numberOfLines={20}
             value={industry}
             onChangeText={(desc) => setIndustry(desc)}
           />
@@ -84,19 +97,19 @@ const CreateJobPostingScreen = ({ navigation }) => {
 
           {/* ------------------------Description-------------------------- */}
           <View style={styles.title}>
-            <FontAwesome name="clipboard" style={styles.icon}>
-            </FontAwesome>
+            <FontAwesome name="clipboard" style={styles.icon}></FontAwesome>
             <Text style={styles.label}>Job Description</Text>
           </View>
 
-          <Text style={{ fontSize: 13, alignSelf: 'center', color: 'tomato'}}>
+          <Text style={{ fontSize: 13, alignSelf: "center", color: "tomato" }}>
             (also include salary, time and address)
           </Text>
 
           <TextInput
             style={styles.description}
             returnKeyType="next"
-            multiline numberOfLines={20}
+            multiline
+            numberOfLines={20}
             value={description}
             onChangeText={(desc) => setDescription(desc)}
           />
@@ -104,18 +117,16 @@ const CreateJobPostingScreen = ({ navigation }) => {
 
           {/* ------------------------Phone Number-------------------------- */}
           <View style={styles.title}>
-            <FontAwesome name="phone" style={styles.icon}>
-            </FontAwesome>
+            <FontAwesome name="phone" style={styles.icon}></FontAwesome>
             <Text style={styles.label}>Phone Number</Text>
           </View>
 
           <TextInput
             style={styles.phone}
             returnKeyType="next"
-            keyboardType={'phone-pad'}
+            keyboardType={"phone-pad"}
             value={phone}
-            onChangeText={(desc) => setPhone(desc)
-            }
+            onChangeText={(desc) => setPhone(desc)}
           />
           {/* ----------------------- End Phone Number ---------------------- */}
 
@@ -125,7 +136,6 @@ const CreateJobPostingScreen = ({ navigation }) => {
 
           {/* --------------------- End Submit Button ----------------------- */}
         </View>
-
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -143,7 +153,7 @@ const textareas = {
   marginLeft: moderateScale(20),
   marginRight: moderateScale(20),
   zIndex: 999,
-}
+};
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -152,8 +162,8 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 20,
-    color: 'tomato',
-    alignSelf: 'center',
+    color: "tomato",
+    alignSelf: "center",
   },
   icon: {
     fontSize: 20,
@@ -182,7 +192,6 @@ const styles = StyleSheet.create({
     height: moderateScale(45),
     marginBottom: moderateScale(42),
   },
-  
-})
+});
 
 export default CreateJobPostingScreen;
