@@ -33,11 +33,11 @@ export function SearchScreen({ user, route, navigation }) {
                 style={styles.phoneicon}
                 name="phone"
                 size={18}
-                color="black"
+                color="#344955"
               >
                 :
               </FontAwesome>
-              <Text style={(styles.phone, { color: "black" })}>
+              <Text style={(styles.phone, { color: "black" , fontWeight: 'bold'})}>
                 {user.phone_number}
               </Text>
             </View>
@@ -47,11 +47,11 @@ export function SearchScreen({ user, route, navigation }) {
                 style={styles.envelopeicon}
                 name="envelope"
                 size={17}
-                color="black"
+                color="#344955"
               >
                 :
               </FontAwesome>
-              <Text style={(styles.email, { color: "black" })}>
+              <Text style={(styles.email, { color: "black", fontWeight: 'bold'})}>
                 {user.email}
               </Text>
             </View>
@@ -60,8 +60,8 @@ export function SearchScreen({ user, route, navigation }) {
 
         {/* Other parts of resume like summary */}
         <View style={styles.resumecontent}>
-          <View style={styles.skills}>
-            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+          {/* <View style={styles.skills}>
+            <Text style={{ color: "#344955", fontSize: 18, fontWeight: "bold" }}>
               Skills:
             </Text>
             <Text
@@ -71,14 +71,14 @@ export function SearchScreen({ user, route, navigation }) {
             >
               {user.skills}
             </Text>
-          </View>
+          </View> */}
 
           <View style={styles.summary}>
-            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+            <Text style={{ color: "#344955", fontSize: 18, fontWeight: "bold" }}>
               Summary:
             </Text>
             <Text
-              numberOfLines={4}
+              numberOfLines={10}
               ellipsizeMode="tail"
               style={{ color: "black" }}
             >
@@ -87,7 +87,7 @@ export function SearchScreen({ user, route, navigation }) {
           </View>
 
           <View style={styles.experience}>
-            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+            <Text style={{ color: "#344955", fontSize: 18, fontWeight: "bold" }}>
               Experience:
             </Text>
             <Text
@@ -100,7 +100,7 @@ export function SearchScreen({ user, route, navigation }) {
           </View>
 
           <View style={styles.links}>
-            <Text style={{ color: "black", fontSize: 18, fontWeight: "bold" }}>
+            <Text style={{ color: "#344955", fontSize: 18, fontWeight: "bold" }}>
               Links:
             </Text>
             <Text
