@@ -25,7 +25,7 @@ function JobPostingsScreen({ navigation, route }) {
     {
       id: 2,
       title: 'Junior Stack Developer',
-      description: " Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.,",
+      description: "  Salary: $45,000 \n 9-5, Mon-Thurs \n Calgary, Alberta \nThe successful candidate will be someone who attacks challenges with problem solving abilities and views team collaboration as a rewarding experience. A good understanding of theming for open-source platforms and front-end language skills will help you dive into projects from the get-go, but we also look forward to helping you learn on the job.This is an entry-level position in the field of web development that will provide excellent learning and on-the-job experience to further your career.",
       industry: 'Tech/Web development',
     },
     {
