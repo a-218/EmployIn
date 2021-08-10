@@ -22,14 +22,14 @@ function JobPostingsScreen({ navigation, route }) {
       description: " Salary: $85,000 \n 9-5, Mon-Thurs \n Calgary, Alberta \nDeveloper with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.",
       industry: ' Tech/Web development',
     },
-    // {
-    //   id: 2,
-    //   title: 'Junior Stack Developer',
-    //   description: " Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.,",
-    //   industry: 'Tech/Web development',
-    // },
     {
       id: 2,
+      title: 'Junior Stack Developer',
+      description: " Developer with several years developing for the web. Must have a passion for creating responsive, user friendly web interfaces.Strong understanding of javascript (outside of a framework)-Good understanding of web application lifecycles-Experience in, React, Typescript, Node.js, Bootstrap, CSS, LESS, HTML-Development experience in C#, ASP.net core-Ability to debug and understand existing code bases.,",
+      industry: 'Tech/Web development',
+    },
+    {
+      id: 3,
       title: 'Back End Developer',
       description: " Salary: $70,000 \n 9-5, Mon-Fri \n Calgary, Alberta \nAs a backend developer on the team, you’ll be responsible for building markup functionality in our backend service written in Python and using Postgres as our database. The team is cross-functional, so there are opportunities to contribute to the web frontend (Typescript and React) as well as our Android and iOS apps. We also use Kotlin Multiplatform to implement cross-platform code in a shared library.",
       industry: ' Tech/Web development',
