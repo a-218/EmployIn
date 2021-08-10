@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from 'react';
 import {
   View,
   Text,
@@ -15,6 +15,8 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
+import { PostingContext } from '../contexts/PostingProvider';
+
 // Create Component
 
 const CreateJobPostingScreen = ({ navigation }) => {
@@ -29,14 +31,14 @@ const CreateJobPostingScreen = ({ navigation }) => {
       industry: industry,
       description: description,
       phone: phone,
-    };
-    console.log("Post job:", jobData);
-  }, [title, industry, description, phone]);
+    }
+    //console.log("Post job:", jobData)
+  }, [title, industry, description, phone])
 
   const submit = async () => {
     await data();
     navigation.navigate({
-      name: "Job Posting",
+      name: "Your Job Postings",
       params: {
         title: title,
         industry: industry,

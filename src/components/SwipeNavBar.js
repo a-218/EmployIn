@@ -10,36 +10,58 @@ import useApplicationData from '../hooks/useApplicationData'
 
 import { JobContext } from '../contexts/JobProvider'
 import BottomBar from './Bottombar'
-export default function SWipeNavBar() {
-
+export default function SWipeNavBar({ route }) {
+  console.log('postID is this', route.params)
   const [currentIndex, setCurrentIndex] = useState(0)
   const { applicantDBState } = useApplicationData()
 
-  const data = applicantDBState
+  let data = applicantDBState
+  console.log('RESETS ', data.length)
+  // const newArr = data.map(applicant => {
+  //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
+  // });
+  //NEED to mdodify newARR into 4 sections with hardcoded jobPOsting ID
+  // const newArr = data.map((applicant,i) => {
+  //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
+  // });
+  const newArr = data.map((applicant, i) => {
+    if (i < 6) {
+      return { ...applicant, jobPostingID: String(1) }
+    } else if (i < 12) {
+      return { ...applicant, jobPostingID: String(2) }
+    } else if (i < 18) {
+      return { ...applicant, jobPostingID: String(3) }
+    } else if (i < 24) {
+      return { ...applicant, jobPostingID: String(4) }
+    } else if (i < 30) {
+      return { ...applicant, jobPostingID: String(5) }
+    }
+
+  });
+
+
+  console.log('BEBEBEBEBEBEBBEBEBE the for loop', newArr)
+
+
+
+  let filteredApplicant = newArr.filter(function (currentElement) {
+    // the current value is an object, so you can check on its properties
+    return currentElement.jobPostingID === String(route.params.itemId);
+  });
+
+
+
+  // console.log('AFTER FFILTERING ', filteredApplicant)
+
+
+  // data = newArr;
+  data = filteredApplicant;
   //console.log('outside use application data', data)
   const swipesRef = useRef(null)
   //  const { applicantLinksDBState } = useApplicationData()
   //console.log(applicantLinksDBState)
 
   //console.log('the data over herer', data)
-
-
-  // function fetchUsers() {
-  //   try {
-  //     const { applicantDBState } = useApplicationData()
-  //     console.log(applicantDBState)
-  //     const { data } = applicantDBState
-  //     // setUsers(data.results)
-  //   } catch (error) {
-  //     console.log(error)
-  //     Alert.alert('Error getting users', '', [{ text: 'Retry', onPress: () => fetchUsers() }])
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchUsers()
-  // }, [])
-
 
   const job = useContext(JobContext);
 
@@ -54,11 +76,6 @@ export default function SWipeNavBar() {
 
     nextUser()
   }
-
-  // useEffect(() => {
-  //   setCandidatesState(candidates)
-
-  // }, [candidates])
 
 
   function handlePass() {

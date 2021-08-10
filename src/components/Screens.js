@@ -27,7 +27,11 @@ import {
 } from "@expo/vector-icons";
 import call from "react-native-phone-call";
 import email from "react-native-email";
-import { JobContext } from "../contexts/JobProvider";
+import { JobContext } from '../contexts/JobProvider'
+//import styles from '../styles/ScreensStyle';
+import { PostingContext } from '../contexts/PostingProvider';
+import applicant from '../hooks/getDB/applicant';
+
 // import styles from '../styles/ScreensStyle';
 const CONTENT = [
   {
@@ -40,7 +44,17 @@ const CONTENT = [
     category_name: "Job Position 2",
     subcategory: [],
   },
-];
+  {
+    isExpanded: false,
+    category_name: 'Job Position 3',
+    subcategory: [
+
+    ]
+  },
+
+]
+
+
 
 const ScreenContainer = ({ children }) => <View>{children}</View>;
 
@@ -136,14 +150,18 @@ export const Individual = ({ route, navigation, item }) => (
             </Text>
           </View>
         </View>
+
+
       </View>
     </ScreenContainer>
   </ScrollView>
 );
 
-// --------------------------------------- Expanded View --------------------------------------------------- //
 
-const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
+
+// // --------------------------------------- Expanded View --------------------------------------------------- //
+
+const ExpandableComponenet = ({ item, onClickFunction, navigation, isExpanded, applicants }) => {
   ///adding caling function from call button
   const dummyNumber = {
     number: "1234567890", // Dummy phone number, we will pass props into here
@@ -151,11 +169,13 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
   };
 
   function handlePhoneCall() {
+    //console.log('it got in here into handlephone call')
     console.log("it got in here into handlephone call");
     call(dummyNumber).catch(console.error);
   }
   ///////////////////EMAIL BUTTON
   function handleEmail() {
+    //console.log('it got in here into EMAIL MESSAGING ')
     console.log("it got in here into EMAIL MESSAGING ");
     // This is a dummy variable, we will eventually pass props into here
     const to = ["test@test.com"]; // string or array of email addresses
@@ -170,68 +190,82 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation }) => {
 
   ///////
 
-  const [layout, setlayout] = useState(0);
+
+  const [layout, setlayout] = useState(isExpanded);
 
   useEffect(() => {
-    if (item.isExpanded) {
-      setlayout(null);
-    } else {
-      setlayout(0);
-    }
-  }, [item.isExpanded]);
+    setlayout()
+  }, [isExpanded])
+
 
   return (
     <View>
-      <TouchableOpacity style={styles.dropdown} onPress={onClickFunction}>
-        <Text style={styles.jobtitle}>{item.category_name}</Text>
+      <TouchableOpacity
+        style={styles.dropdown}
+        onPress={onClickFunction}>
+        <Text style={styles.jobtitle}>
+          {item.title}
+          {/* 
+        <Text style={styles.jobtitle}>
+          {item.category_name} */}
+        </Text>
       </TouchableOpacity>
+      {isExpanded &&
+        <View>
+          {/* // style={{ */}
+          {/* //   height: layout,
+          //   overflow: 'hidden' */}
 
-      <View
-        style={{
-          height: layout,
-          overflow: "hidden",
-        }}
-      >
-        {item.subcategory.map((item, key) => (
-          <TouchableOpacity
-            key={key}
-            style={styles.individual}
-            onPress={() => navigation.navigate("Individual", item)}
-          >
-            <View style={styles.subsections}>
-              <View style={styles.imgName}>
-                <Image source={{ uri: item.img_url }} style={styles.subimage} />
+          {
+            // applicants .map((item,keyy))
+            applicants.map((item, key) => (
+              <TouchableOpacity
+                key={key}
+                style={styles.content}
+                onPress={() =>
+                  navigation.navigate("Individual", item)
+                }
+              >
+                <View style={styles.subsections}>
 
-                <Text style={styles.candidateName}>{item.name}</Text>
-              </View>
+                  <View style={styles.imgName}>
+                    <Image source={{ uri: item.img_url }} style={styles.subimage} />
 
-              <View style={styles.buttons}>
-                <TouchableOpacity
-                  style={styles.callButton}
-                  onPress={() => handlePhoneCall()}
-                >
-                  <Text style={styles.buttonText}>Call</Text>
-                </TouchableOpacity>
+                    <Text style={styles.candidateName}>
+                      {item.name}
+                    </Text>
+                  </View>
 
-                <TouchableOpacity
-                  style={styles.emailButton}
-                  onPress={() => handleEmail()}
-                >
-                  <Text style={styles.buttonText}>Email</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
+                  <View style={styles.buttons}>
 
-            <View style={styles.candidateSeparator} />
-          </TouchableOpacity>
-        ))}
-      </View>
-    </View>
-  );
-};
+                    <TouchableOpacity
+                      style={styles.callButton}
+                      onPress={() => handlePhoneCall()}  >
+                      <Text style={styles.buttonText}>Call</Text>
+                    </TouchableOpacity>
 
-// -------------------------------------------Job Candidates Page View-------------------------------------------------- //
+                    <TouchableOpacity
+                      style={styles.emailButton}
+                      onPress={() => handleEmail()}  >
+                      <Text style={styles.buttonText}>Email</Text>
+                    </TouchableOpacity>
 
+                  </View>
+                </View>
+
+                <View style={styles.candidateSeparator} />
+
+              </TouchableOpacity>
+            ))
+          }
+        </View>
+      }
+    </View >
+
+    // -------------------------------------------Job Candidates Page View-------------------------------------------------- //
+
+  )
+}
 function Candidates({ navigation }) {
   if (Platform.OS === "android") {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -241,33 +275,38 @@ function Candidates({ navigation }) {
 
   const job = useContext(JobContext);
 
-  const [multiSelect, setmultiSelect] = useState(false);
-  //const [listdata, setlistdata] = useState(CONTENT);
+  // const [multiSelect, setmultiSelect] = useState(false);
 
-  ///////Maniulating data
+  const jobPost = useContext(PostingContext)
 
-  CONTENT[0].subcategory = [];
-  for (let i = 0; i < job.Applicant.length; i++) {
-    CONTENT[0].subcategory.push(job.Applicant[i]);
-  }
+  console.log('sdfsdfsdfdsfsdfdsf', job.Applicant)
 
-  const [listdata, setlistdata] = useState(CONTENT);
+  const [expanded, setexpanded] = useState(new Array(jobPost.Posting.length).fill(false))
+
+  console.log('sdfsdfsdfdsfsdfdsf', expanded)
+
+  const [listdata, setlistdata] = useState(job.Applicant);
+
+  //const [multiSelect, setmultiSelect] = useState(expanded);
   const updateLayout = (index) => {
+
+    const expandedTmp = expanded
+    expandedTmp[index] = !expandedTmp[index]
+    console.log('ssssssssss', expandedTmp)
+    setexpanded(expandedTmp)
+
+    console.log('IN THE UPDATA LAYOUT', expanded)
+
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
     const array = [...listdata];
 
-    if (multiSelect) {
-      array[index]["isExpanded"] = !array[index]["isExpanded"];
-    } else {
-      array.map((value, placeindex) =>
-        placeindex === index
-          ? (array[placeindex]["isExpanded"] = !array[placeindex]["isExpanded"])
-          : (array[placeindex]["isExpanded"] = false)
-      );
-    }
-    setlistdata(array);
-  };
+
+    setlistdata(array)
+
+  }
+
+
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -277,20 +316,35 @@ function Candidates({ navigation }) {
         </View>
 
         <ScrollView>
-          {listdata.map((item, key) => (
-            <ExpandableComponenet
-              key={item.category_name}
-              item={item}
-              onClickFunction={() => {
-                updateLayout(key);
-              }}
-              navigation={navigation}
-              style={styles.expandableShadow}
-            />
-          ))}
+          {
+            jobPost.Posting.map((item, key) => {
+
+              const jobApplicants = job.Applicant.filter((person) => {
+
+                return person.jobPostingID == jobPost.Posting[key].id
+              })
+
+              console.log('nnnnnnnnnnn', expanded[key])
+              console.log('kkkkd', key)
+              return (
+
+                <ExpandableComponenet
+                  key={item.title}
+                  isExpanded={expanded[key]}
+                  item={item}
+                  onClickFunction={() => {
+
+                    updateLayout(key)
+                  }}
+                  applicants={jobApplicants}
+                  navigation={navigation}
+                />)
+            }
+            )}
         </ScrollView>
       </View>
-    </SafeAreaView>
+    </SafeAreaView >
+
   );
 }
 // -------------------------------------------------- Styles ----------------------------------------------------------- //

@@ -1,121 +1,26 @@
-import React from "react";
-import {
-  Text,
-  Image,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-  FlatList,
-  Button,
-} from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  FontAwesome5,
-  FontAwesome,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
-import StarCandidates from "./StarCandidates";
-import InterviewOption from "./InterviewOption";
-import {
-  scale,
-  moderateScale,
-  verticalScale,
-  moderateVerticalScale,
-} from "react-native-size-matters";
-import Tweet from "./Tweet";
+import React from 'react';
+import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
+import StarCandidates from './StarCandidates'
+import InterviewOption from './InterviewOption';
+import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
+import Tweet from './Tweet'
 
-import { createStackNavigator } from "@react-navigation/stack";
-import Candidates, {
-  Home2,
-  Details,
-  New2,
-  resumeDetails,
-  Individual,
-} from "./Screens";
+import { createStackNavigator } from '@react-navigation/stack'
+import Candidates, { Home2, Details, New2, resumeDetails, Individual } from './Screens';
 
-import useApplicationData from "../hooks/useApplicationData";
-import Profile from "./Profile";
-import { SearchScreen } from "./SwipeableImage";
-import SWipeNavBar from "./SwipeNavBar";
-import CreateJobPostingScreen from "./CreateJobPosting";
+import useApplicationData from '../hooks/useApplicationData';
+import Profile from './Profile';
+import { SearchScreen } from './SwipeableImage';
+import SWipeNavBar from './SwipeNavBar';
+import CreateJobPostingScreen from './CreateJobPosting';
 
-import { JobProvider } from "../contexts/JobProvider";
-import JobPostingsScreen from "./JobPostingsScreen";
+import { JobProvider } from '../contexts/JobProvider';
+import JobPostingsScreen from './JobPostingsScreen';
+import { PostingProvider } from '../contexts/PostingProvider';
 
-// fake data for the skills sections
-const DATA = [
-  {
-    id: 1,
-    skill: "Javascript",
-  },
-  {
-    id: 2,
-    skill: "Library ",
-  },
-  {
-    id: 3,
-    skill: "Angular",
-  },
-  {
-    id: 4,
-    skill: "Express",
-  },
-];
-
-// function SearchScreen() {
-
-//   return (
-//     <View style={styles.container}>
-//       {/* top part of the resume */}
-//       <SafeAreaView >
-//         <View style={styles.rightresume}>
-//           <Image
-//             style={styles.image} source={require("../../assets/Joey.jpeg")} />
-//           <View style={styles.personalinfo}>
-//             <Text style={styles.name}>{applicantDBState.map(applicant => {
-//               <div>{applicant.name} </div>
-//             })}</Text>
-//             <Text style={styles.phone}>{applicantDBState[0].name}</Text>
-//             <Text style={styles.email}>{ }</Text>
-//           </View>
-//         </View>
-//         {/* Other parts of resume lke summary */}
-//         <View style={styles.bottomresume}>
-//           <View style={styles.skills}>
-//             <Text>Skills: Javascript</Text>
-//             <FlatList
-//               numColumns={2}
-//               data={DATA}
-//               renderItem={({ item }) => <Text style={styles.item}>{item.skill}</Text>}
-//             />
-//           </View>
-
-//           <View style={styles.summary}>
-//             <Text numberOfLines={4} ellipsizeMode='tail'>Summary:
-//               { }
-//             </Text>
-//           </View>
-
-//           <View style={styles.experience}>
-//             <Text >Experience:</Text>
-//             <Text numberOfLines={4} ellipsizeMode='tail'>
-//               { }
-//             </Text>
-
-//           </View>
-
-//           <View style={styles.links}>
-//             <Text>External Links</Text>
-//             <Text style={styles.linkedin}></Text>
-//           </View>
-//         </View>
-
-//       </SafeAreaView>
-//     </View >
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
@@ -211,14 +116,23 @@ const CandidateScreen = () => (
   </CandidateStack.Navigator>
 );
 
+//////changed here card 2 stack
 const Card2StackScreen = () => (
   <Card2Stack.Navigator>
     <Card2Stack.Screen
-      name="Job Posting"
+      name="Your Job Postings"
       component={JobPostingsScreen}
-      options={{ headerShown: false }}
+      options={({ route, navigation }) => (
+        {
+          headerShown: false,
+          route: { route },
+          navigation: { navigation }
+        })}
+    // options={{ headerShown: false }}
     />
-    <Card2Stack.Screen
+    {/* options={
+      //   { headerShown: false }} */}
+    < Card2Stack.Screen
       name="Create Job Posting"
       component={CreateJobPostingScreen}
       options={({ route, navigation }) => ({
@@ -235,31 +149,6 @@ const Card2StackScreen = () => (
   </Card2Stack.Navigator>
 );
 
-// const NewStackScreen = () => (
-//   <NewStack.Navigator>
-//     <NewStack.Screen name="NewScreen2" component={New2} />
-//     <NewStack.Screen
-//       name="Details"
-//       component={Details}
-//       options={({ route }) => ({
-//         title: route.params.name
-//       })}
-//     />
-//   </NewStack.Navigator>
-// );
-
-// const Home2StackScreen = () => (
-//   <Home2Stack.Navigator>
-//     <Home2Stack.Screen name="Home2" component={Home2} />
-//     <Home2Stack.Screen
-//       name="Details"
-//       component={Details}
-//       options={({ route }) => ({
-//         title: route.params.name
-//       })}
-//     />
-//   </Home2Stack.Navigator>
-// );
 
 function NavTabs() {
   return (
@@ -287,13 +176,7 @@ function NavTabs() {
           ),
         }}
       />
-      {/* <Tab.Screen name="Search"
-        component={SWipeNavBar}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='briefcase' size={size} color={color} />
-        }} /> */}
+
       <Tab.Screen
         name="Applicants"
         component={CandidateScreen}
@@ -318,22 +201,7 @@ function NavTabs() {
           ),
         }}
       />
-      {/* <Tab.Screen
-        name="Create Job Posting"
-        component={CreateJobPostingScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='account' size={size} color={color} />
-        }} />
-      <Tab.Screen
-        name="Job Posting"
-        component={JobPostingsScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ size, color }) =>
-            <MaterialCommunityIcons name='account' size={size} color={color} />
-        }} /> */}
+
       <Tab.Screen
         name="Job Posting"
         component={Card2StackScreen}
@@ -352,7 +220,9 @@ function AllTabs() {
   return (
     <NavigationContainer>
       <JobProvider>
-        <NavTabs />
+        <PostingProvider>
+          <NavTabs />
+        </PostingProvider>
       </JobProvider>
     </NavigationContainer>
   );

@@ -11,7 +11,10 @@ import { FontAwesome } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { moderateScale } from "react-native-size-matters";
 
-export function SearchScreen({ user }) {
+export function SearchScreen({ user, route, navigation }) {
+
+  console.log('after i press the job posts, it i sover here')
+
   return (
     <SafeAreaView
       style={{
