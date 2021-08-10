@@ -108,7 +108,7 @@ export function SearchScreen({ user, route, navigation }) {
               ellipsizeMode="tail"
               style={{ color: "black" }}
             >
-              {user.externallinks}
+              {user.external_links.join(', ')}
             </Text>
           </View>
         </View>
