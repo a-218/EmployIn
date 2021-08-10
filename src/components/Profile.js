@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "left",
     marginLeft: 15,
+    color: '#344955'
   },
   icon2: {
     width: "100%",

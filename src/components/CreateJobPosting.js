@@ -103,7 +103,7 @@ const CreateJobPostingScreen = ({ navigation }) => {
             <Text style={styles.label}>Job Description</Text>
           </View>
 
-          <Text style={{ fontSize: 13, alignSelf: "center", color: "tomato" }}>
+          <Text style={{ fontSize: 13, alignSelf: "center", color: "orange" }}>
             (also include salary, time and address)
           </Text>
 
@@ -134,7 +134,7 @@ const CreateJobPostingScreen = ({ navigation }) => {
 
           {/* ------------------------Submit Button-------------------------- */}
 
-          <Button color="#e3655b" title="Create Posting" onPress={submit} />
+          <Button color="orange" title="Create Posting" onPress={submit} />
 
           {/* --------------------- End Submit Button ----------------------- */}
         </View>
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   icon: {
     fontSize: 20,
     textAlign: "center",
-    color: "#232f34",
+    color: "#344955",
     marginTop: moderateScale(3),
     marginRight: moderateScale(10),
   },
