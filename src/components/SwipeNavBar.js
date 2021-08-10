@@ -14,9 +14,10 @@ export default function SWipeNavBar({ route }) {
   console.log('postID is this', route.params)
   const [currentIndex, setCurrentIndex] = useState(0)
   const { applicantDBState } = useApplicationData()
-
+  const { applicantLinksDBState } = useApplicationData()
   let data = applicantDBState
-  console.log('RESETS ', data.length)
+  let links = applicantLinksDBState
+
   // const newArr = data.map(applicant => {
   //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
   // });
@@ -24,23 +25,34 @@ export default function SWipeNavBar({ route }) {
   // const newArr = data.map((applicant,i) => {
   //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
   // });
+  // const newArr = data.map((applicant, i) => {
+  //   if (i < 6) {
+  //     return { ...applicant, jobPostingID: String(1) }
+  //   } else if (i < 12) {
+  //     return { ...applicant, jobPostingID: String(2) }
+  //   } else if (i < 18) {
+  //     return { ...applicant, jobPostingID: String(3) }
+  //   } else if (i < 24) {
+  //     return { ...applicant, jobPostingID: String(4) }
+  //   } else if (i < 30) {
+  //     return { ...applicant, jobPostingID: String(5) }
+  //   }
+
+  // });
+
   const newArr = data.map((applicant, i) => {
-    if (i < 6) {
-      return { ...applicant, jobPostingID: String(1) }
-    } else if (i < 12) {
-      return { ...applicant, jobPostingID: String(2) }
-    } else if (i < 18) {
-      return { ...applicant, jobPostingID: String(3) }
-    } else if (i < 24) {
-      return { ...applicant, jobPostingID: String(4) }
-    } else if (i < 30) {
-      return { ...applicant, jobPostingID: String(5) }
+    let filteredLinks = links.filter(link => link.applicant_id === applicant.id)
+
+    let applicantLinks = filteredLinks.map(filteredLink => filteredLink.web_link)
+
+    return {
+      ...applicant, jobPostingID: String(Math.floor(i % 6) + 1),
+      external_links: applicantLinks,
     }
+  })
 
-  });
 
-
-  console.log('BEBEBEBEBEBEBBEBEBE the for loop', newArr)
+  console.log('BEBEBEBEBEBEBBEBEBE the for loop', newArr[0])
 
 
 

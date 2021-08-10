@@ -146,7 +146,7 @@ export const Individual = ({ route, navigation, item }) => (
               ellipsizeMode="tail"
               style={{ color: "black" }}
             >
-              {route.params.externallinks}
+              {route.params.external_links.join(', ')}
             </Text>
           </View>
         </View>
@@ -163,15 +163,17 @@ export const Individual = ({ route, navigation, item }) => (
 
 const ExpandableComponenet = ({ item, onClickFunction, navigation, isExpanded, applicants }) => {
   ///adding caling function from call button
-  const dummyNumber = {
-    number: "1234567890", // Dummy phone number, we will pass props into here
-    prompt: false, // Optional boolean property. Determines if the user should be prompt prior to the call
-  };
 
-  function handlePhoneCall() {
+
+  function handlePhoneCall(phone_number) {
     //console.log('it got in here into handlephone call')
     console.log("it got in here into handlephone call");
-    call(dummyNumber).catch(console.error);
+    const personNumber = {
+      number: phone_number, // Dummy phone number, we will pass props into here
+      prompt: false, // Optional boolean property. Determines if the user should be prompt prior to the call
+    };
+    call(personNumber).catch(console.error);
+
   }
   ///////////////////EMAIL BUTTON
   function handleEmail() {
@@ -240,7 +242,7 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation, isExpanded, a
 
                     <TouchableOpacity
                       style={styles.callButton}
-                      onPress={() => handlePhoneCall()}  >
+                      onPress={() => handlePhoneCall(item.phone_number)}  >
                       <Text style={styles.buttonText}>Call</Text>
                     </TouchableOpacity>
 
