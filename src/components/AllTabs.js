@@ -176,6 +176,16 @@ function NavTabs() {
           ),
         }}
       />
+      <Tab.Screen
+        name="Job Postings"
+        component={Card2StackScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="pin" size={size} color={color} />
+          ),
+        }}
+      />
 
       <Tab.Screen
         name="Applicants"
@@ -202,16 +212,6 @@ function NavTabs() {
         }}
       />
 
-      <Tab.Screen
-        name="Job Posting"
-        component={Card2StackScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ size, color }) => (
-            <MaterialCommunityIcons name="fire" size={size} color={color} />
-          ),
-        }}
-      />
     </Tab.Navigator>
   );
 }
