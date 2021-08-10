@@ -120,7 +120,7 @@ const CandidateScreen = () => (
 const Card2StackScreen = () => (
   <Card2Stack.Navigator>
     <Card2Stack.Screen
-      name="Job Posting"
+      name="Your Job Postings"
       component={JobPostingsScreen}
       options={({ route, navigation }) => (
         {
@@ -203,7 +203,7 @@ function NavTabs() {
       />
 
       <Tab.Screen
-        name="Job Posting2222"
+        name="Job Posting"
         component={Card2StackScreen}
         options={{
           headerShown: false,

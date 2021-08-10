@@ -194,6 +194,7 @@ const styles = StyleSheet.create({
     marginLeft: moderateScale(20),
   },
   textInput: {
+    backgroundColor: "#fafafa",
     flex: 1,
     height: 40,
     marginBottom: 12,
@@ -203,6 +204,12 @@ const styles = StyleSheet.create({
     paddingLeft: moderateScale(10),
     marginLeft: moderateScale(20),
     borderRadius: moderateScale(40),
+    shadowColor: "grey",
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
   },
   postButton: {
     // flex: 1,
