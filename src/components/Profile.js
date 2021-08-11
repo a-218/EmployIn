@@ -49,7 +49,7 @@ function Profile({ navigation, props }) {
             source={{ uri: "https://randomuser.me/api/portraits/lego/6.jpg" }}
             style={styles.icon}
           />
-          <Text style={{ ...styles.title, color: "#f9aa33" }}>EmployIn</Text>
+          <Text style={{ ...styles.title }}>EmployIn</Text>
         </View>
         <View style={styles.location}>
           <FontAwesome name="industry" style={styles.wording}>
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "left",
     marginLeft: 15,
-    color: '#344955'
+    color: "#344955",
   },
   icon2: {
     width: "100%",
