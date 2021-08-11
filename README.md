@@ -10,7 +10,7 @@ A tinder-like app for employers finding candidates for job positions. A user can
 
 ## Demo
 
-![[EmployIn App Navigation](https://www.youtube.com/watch?v=28jZGhbCa4Y)](https://www.youtube.com/watch?v=28jZGhbCa4Y)
+![Home Navigation](./assets/HomeNav.gif) ![Job Postings](./assets/JobPosting.gif) ![Applicant](./assets/Applicant.gif) ![Profile](./assets/Profile.gif)
 
 ## Notes
 
