@@ -16,7 +16,7 @@ A tinder-like app for employers finding candidates for job positions. A user can
 
 This app requires node version 12 or higher and runs on [expo](https://expo.dev).
 
-This app is also emulated through an Android phone, some iPhone simulations may work but it is not a guaranteed.
+This app is simulated through an iPhone, Android emulation may not portray the same styling.
 
 ## Warnings
 
