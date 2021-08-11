@@ -1,6 +1,6 @@
 # EmployIn
 
-A tinder-like app for employers finding candidates for job positions. A user can navigate to specific pages through the navigation bar. They can create new posts, swipe on qualified candidates for a job posting, view/call/email candidate profiles, and view personal business profile as well.
+A React Native app for employers finding candidates for job positions. A user can navigate to specific pages through the navigation bar. They can create new posts, swipe on qualified candidates for a job posting, view/call/email candidate profiles, and view personal business profile as well.
 
 ## Contributors
 
