@@ -10,10 +10,7 @@ A tinder-like app for employers finding candidates for job positions. A user can
 
 ## Demo
 
-<img src="./assets/HomeNav.gif" alt="Home Navigation" width="200"/>
-<img src="./assets/JobPosting.gif" alt="Job Posting Navigation" width="200"/>
-<img src="./assets/Applicant.gif" alt="Applicant Navigation" width="200"/>
-<img src="./assets/Profile.gif" alt="Profile Navigation" width="200"/>
+<img src="./assets/HomeNav.gif" alt="Home Navigation" width="200"/><img src="./assets/JobPosting.gif" alt="Job Posting Navigation" width="200"/><img src="./assets/Applicant.gif" alt="Applicant Navigation" width="200"/><img src="./assets/Profile.gif" alt="Profile Navigation" width="200"/>
 
 ## Notes
 
