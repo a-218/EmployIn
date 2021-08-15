@@ -13,7 +13,7 @@ import { moderateScale } from "react-native-size-matters";
 
 export function SearchScreen({ user, route, navigation }) {
 
-  console.log('after i press the job posts, it i sover here')
+
 
   return (
     <SafeAreaView
@@ -37,7 +37,7 @@ export function SearchScreen({ user, route, navigation }) {
               >
                 :
               </FontAwesome>
-              <Text style={(styles.phone, { color: "black" , fontWeight: 'bold'})}>
+              <Text style={(styles.phone, { color: "black", fontWeight: 'bold' })}>
                 {user.phone_number}
               </Text>
             </View>
@@ -51,7 +51,7 @@ export function SearchScreen({ user, route, navigation }) {
               >
                 :
               </FontAwesome>
-              <Text style={(styles.email, { color: "black", fontWeight: 'bold'})}>
+              <Text style={(styles.email, { color: "black", fontWeight: 'bold' })}>
                 {user.email}
               </Text>
             </View>

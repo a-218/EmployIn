@@ -65,7 +65,7 @@ export const Individual = ({ route, navigation, item }) => (
     <ScreenContainer>
       <View style={styles.resumecontainer}>
         <View style={styles.identity}>
-          {/* {console.log(route.params.img_url)} */}
+
           <Image source={{ uri: route.params.img_url }} style={styles.image} />
 
           <View style={styles.personalinfo}>
@@ -166,8 +166,7 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation, isExpanded, a
 
 
   function handlePhoneCall(phone_number) {
-    //console.log('it got in here into handlephone call')
-    console.log("it got in here into handlephone call");
+
     const personNumber = {
       number: phone_number, // Dummy phone number, we will pass props into here
       prompt: false, // Optional boolean property. Determines if the user should be prompt prior to the call
@@ -177,8 +176,7 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation, isExpanded, a
   }
   ///////////////////EMAIL BUTTON
   function handleEmail() {
-    //console.log('it got in here into EMAIL MESSAGING ')
-    console.log("it got in here into EMAIL MESSAGING ");
+
     // This is a dummy variable, we will eventually pass props into here
     const to = ["test@test.com"]; // string or array of email addresses
     email(to, {
@@ -277,27 +275,27 @@ function Candidates({ navigation }) {
 
   const job = useContext(JobContext);
 
-  // const [multiSelect, setmultiSelect] = useState(false);
+
 
   const jobPost = useContext(PostingContext)
 
-  console.log('sdfsdfsdfdsfsdfdsf', job.Applicant)
+
 
   const [expanded, setexpanded] = useState(new Array(jobPost.Posting.length).fill(false))
 
-  console.log('sdfsdfsdfdsfsdfdsf', expanded)
+
 
   const [listdata, setlistdata] = useState(job.Applicant);
 
-  //const [multiSelect, setmultiSelect] = useState(expanded);
+
   const updateLayout = (index) => {
 
     const expandedTmp = expanded
     expandedTmp[index] = !expandedTmp[index]
-    console.log('ssssssssss', expandedTmp)
+
     setexpanded(expandedTmp)
 
-    console.log('IN THE UPDATA LAYOUT', expanded)
+
 
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
@@ -326,8 +324,7 @@ function Candidates({ navigation }) {
                 return person.jobPostingID == jobPost.Posting[key].id
               })
 
-              console.log('nnnnnnnnnnn', expanded[key])
-              console.log('kkkkd', key)
+
               return (
 
                 <ExpandableComponenet

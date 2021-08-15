@@ -69,7 +69,7 @@ function JobPostingsScreen({ navigation, route }) {
     newJobPost.setPosting(newState);
   }
 
-  console.log("beofre top");
+
 
   useEffect(() => {
     addNewJobPost();
@@ -116,7 +116,7 @@ function JobPostingsScreen({ navigation, route }) {
     return loadJobPosts;
   }
 
-  console.log("after the top");
+
   return (
     <View style={{ flex: 1 }}>
       <View>

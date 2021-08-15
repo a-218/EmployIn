@@ -11,7 +11,7 @@ import useApplicationData from '../hooks/useApplicationData'
 import { JobContext } from '../contexts/JobProvider'
 import BottomBar from './Bottombar'
 export default function SWipeNavBar({ route }) {
-  console.log('postID is this', route.params)
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const { applicantDBState } = useApplicationData()
   const { applicantLinksDBState } = useApplicationData()
@@ -52,7 +52,7 @@ export default function SWipeNavBar({ route }) {
   })
 
 
-  console.log('BEBEBEBEBEBEBBEBEBE the for loop', newArr[0])
+
 
 
 
@@ -63,17 +63,14 @@ export default function SWipeNavBar({ route }) {
 
 
 
-  // console.log('AFTER FFILTERING ', filteredApplicant)
+
 
 
   // data = newArr;
   data = filteredApplicant;
-  //console.log('outside use application data', data)
-  const swipesRef = useRef(null)
-  //  const { applicantLinksDBState } = useApplicationData()
-  //console.log(applicantLinksDBState)
 
-  //console.log('the data over herer', data)
+  const swipesRef = useRef(null)
+
 
   const job = useContext(JobContext);
 
@@ -103,7 +100,7 @@ export default function SWipeNavBar({ route }) {
   }
 
   function handleLikePress() {
-    console.log('2')
+
     swipesRef.current.openLeft()
 
   }
