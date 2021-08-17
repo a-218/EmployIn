@@ -4,24 +4,11 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import {
-  FontAwesome5,
-  FontAwesome,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-
+import { MaterialCommunityIcons, } from "@expo/vector-icons";
 import { PostingContext } from "../contexts/PostingProvider";
-import {
-  scale,
-  moderateScale,
-  verticalScale,
-  moderateVerticalScale,
-} from "react-native-size-matters";
+import { moderateScale, moderateVerticalScale } from "react-native-size-matters";
 
 function JobPostingsScreen({ navigation, route }) {
   const [jobPosts, setJobPosts] = useState([

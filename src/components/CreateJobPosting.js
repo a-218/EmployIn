@@ -9,13 +9,8 @@ import {
   Button,
 } from "react-native";
 import { moderateScale } from "react-native-size-matters";
-import {
-  FontAwesome5,
-  FontAwesome,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { FontAwesome, } from "@expo/vector-icons";
 
-import { PostingContext } from '../contexts/PostingProvider';
 
 // Create Component
 

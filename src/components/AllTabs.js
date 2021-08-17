@@ -1,22 +1,15 @@
 import React from 'react';
-import { Text, Image, View, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { FontAwesome5, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
-import StarCandidates from './StarCandidates'
-import InterviewOption from './InterviewOption';
-import { scale, moderateScale, verticalScale, moderateVerticalScale } from 'react-native-size-matters'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { scale, moderateScale, verticalScale } from 'react-native-size-matters'
 import Tweet from './Tweet'
-
 import { createStackNavigator } from '@react-navigation/stack'
-import Candidates, { Home2, Details, New2, resumeDetails, Individual } from './Screens';
-
-import useApplicationData from '../hooks/useApplicationData';
+import Candidates, { Individual } from './Screens';
 import Profile from './Profile';
-import { SearchScreen } from './SwipeableImage';
 import SWipeNavBar from './SwipeNavBar';
 import CreateJobPostingScreen from './CreateJobPosting';
-
 import { JobProvider } from '../contexts/JobProvider';
 import JobPostingsScreen from './JobPostingsScreen';
 import { PostingProvider } from '../contexts/PostingProvider';

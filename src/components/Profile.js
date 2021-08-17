@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Text,
   Image,
   View,
   StyleSheet,
   TouchableOpacity,
-  SafeAreaView,
-  FlatList,
-  Button,
   ScrollView,
-  TextComponent,
-  LayoutAnimation,
-  Platform,
-  UIManager,
-  ImageBackground,
 } from "react-native";
-import {
-  FontAwesome5,
-  FontAwesome,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
-import { BorderlessButton } from "react-native-gesture-handler";
+import { FontAwesome, } from "@expo/vector-icons";
 import { moderateScale } from "react-native-size-matters";
 
 function Profile({ navigation, props }) {

@@ -18,28 +18,6 @@ export default function SWipeNavBar({ route }) {
   let data = applicantDBState
   let links = applicantLinksDBState
 
-  // const newArr = data.map(applicant => {
-  //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
-  // });
-  //NEED to mdodify newARR into 4 sections with hardcoded jobPOsting ID
-  // const newArr = data.map((applicant,i) => {
-  //   return { ...applicant, jobPostingID: String((Math.floor(Math.random() * 3)) + 1) }
-  // });
-  // const newArr = data.map((applicant, i) => {
-  //   if (i < 6) {
-  //     return { ...applicant, jobPostingID: String(1) }
-  //   } else if (i < 12) {
-  //     return { ...applicant, jobPostingID: String(2) }
-  //   } else if (i < 18) {
-  //     return { ...applicant, jobPostingID: String(3) }
-  //   } else if (i < 24) {
-  //     return { ...applicant, jobPostingID: String(4) }
-  //   } else if (i < 30) {
-  //     return { ...applicant, jobPostingID: String(5) }
-  //   }
-
-  // });
-
   const newArr = data.map((applicant, i) => {
     let filteredLinks = links.filter(link => link.applicant_id === applicant.id)
 
@@ -51,22 +29,11 @@ export default function SWipeNavBar({ route }) {
     }
   })
 
-
-
-
-
-
   let filteredApplicant = newArr.filter(function (currentElement) {
     // the current value is an object, so you can check on its properties
     return currentElement.jobPostingID === String(route.params.itemId);
   });
 
-
-
-
-
-
-  // data = newArr;
   data = filteredApplicant;
 
   const swipesRef = useRef(null)

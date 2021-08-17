@@ -4,9 +4,6 @@ import Swipeable from 'react-native-gesture-handler/Swipeable'
 import { RectButton } from 'react-native-gesture-handler'
 import SwipeableImage from './SwipeableImage'
 
-//export default function Swipes({ data, currentIndex, handleLike, handlePass, swipesRef }) {
-
-//make another on swipes, or make new key on swipe on everyapplicant that swipe: true / false
 
 function Swipes({ data, currentIndex, handleLike, handlePass, swipesRef }) {
   const [willLike, setWillLike] = useState(false)

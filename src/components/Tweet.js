@@ -6,21 +6,10 @@ import {
   StyleSheet,
   TouchableOpacity,
   SafeAreaView,
-  FlatList,
-  Button,
   ScrollView,
-  TextComponent,
-  LayoutAnimation,
-  Platform,
-  UIManager,
   TextInput,
 } from "react-native";
-import {
-  scale,
-  moderateScale,
-  verticalScale,
-  moderateVerticalScale,
-} from "react-native-size-matters";
+import { moderateScale, moderateVerticalScale, } from "react-native-size-matters";
 
 function Tweet({ navigation, props }) {
   const [text, onChangeText] = useState("");

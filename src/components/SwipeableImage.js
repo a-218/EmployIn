@@ -5,15 +5,12 @@ import {
   StyleSheet,
   Text,
   SafeAreaView,
-  ImageBackground,
+
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { moderateScale } from "react-native-size-matters";
 
 export function SearchScreen({ user, route, navigation }) {
-
-
 
   return (
     <SafeAreaView
@@ -58,20 +55,7 @@ export function SearchScreen({ user, route, navigation }) {
           </View>
         </View>
 
-        {/* Other parts of resume like summary */}
         <View style={styles.resumecontent}>
-          {/* <View style={styles.skills}>
-            <Text style={{ color: "#344955", fontSize: 18, fontWeight: "bold" }}>
-              Skills:
-            </Text>
-            <Text
-              numberOfLines={4}
-              ellipsizeMode="tail"
-              style={{ color: "black" }}
-            >
-              {user.skills}
-            </Text>
-          </View> */}
 
           <View style={styles.summary}>
             <Text style={{ color: "#344955", fontSize: 18, fontWeight: "bold" }}>

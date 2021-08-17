@@ -6,31 +6,18 @@ import {
   StyleSheet,
   TouchableOpacity,
   SafeAreaView,
-  FlatList,
-  Button,
   ScrollView,
-  TextComponent,
   LayoutAnimation,
   Platform,
   UIManager,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  moderateScale,
-  moderateVerticalScale,
-} from "react-native-size-matters";
-import {
-  FontAwesome5,
-  FontAwesome,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { moderateScale, moderateVerticalScale } from "react-native-size-matters";
+import { FontAwesome, } from "@expo/vector-icons";
 import call from "react-native-phone-call";
 import email from "react-native-email";
 import { JobContext } from '../contexts/JobProvider'
-//import styles from '../styles/ScreensStyle';
 import { PostingContext } from '../contexts/PostingProvider';
-import applicant from '../hooks/getDB/applicant';
+
 
 // import styles from '../styles/ScreensStyle';
 const CONTENT = [
@@ -162,8 +149,6 @@ export const Individual = ({ route, navigation, item }) => (
 // // --------------------------------------- Expanded View --------------------------------------------------- //
 
 const ExpandableComponenet = ({ item, onClickFunction, navigation, isExpanded, applicants }) => {
-  ///adding caling function from call button
-
 
   function handlePhoneCall(phone_number) {
 
@@ -174,22 +159,14 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation, isExpanded, a
     call(personNumber).catch(console.error);
 
   }
-  ///////////////////EMAIL BUTTON
-  function handleEmail() {
 
-    // This is a dummy variable, we will eventually pass props into here
-    const to = ["test@test.com"]; // string or array of email addresses
+  function handleEmail() {
+    const to = ["test@test.com"];
     email(to, {
-      // Optional additional arguments
-      // cc: ["test@test.com", "test@test.com"], // string or array of email addresses
-      // bcc: "test@test.com", // string or array of email addresses
       subject: "Show how to use",
       body: "Some body right here",
     }).catch(console.error);
   }
-
-  ///////
-
 
   const [layout, setlayout] = useState(isExpanded);
 
@@ -205,19 +182,11 @@ const ExpandableComponenet = ({ item, onClickFunction, navigation, isExpanded, a
         onPress={onClickFunction}>
         <Text style={styles.jobtitle}>
           {item.title}
-          {/* 
-        <Text style={styles.jobtitle}>
-          {item.category_name} */}
         </Text>
       </TouchableOpacity>
       {isExpanded &&
         <View>
-          {/* // style={{ */}
-          {/* //   height: layout,
-          //   overflow: 'hidden' */}
-
           {
-            // applicants .map((item,keyy))
             applicants.map((item, key) => (
               <TouchableOpacity
                 key={key}
@@ -275,15 +244,9 @@ function Candidates({ navigation }) {
 
   const job = useContext(JobContext);
 
-
-
   const jobPost = useContext(PostingContext)
 
-
-
   const [expanded, setexpanded] = useState(new Array(jobPost.Posting.length).fill(false))
-
-
 
   const [listdata, setlistdata] = useState(job.Applicant);
 
@@ -295,8 +258,6 @@ function Candidates({ navigation }) {
 
     setexpanded(expandedTmp)
 
-
-
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
     const array = [...listdata];
@@ -305,8 +266,6 @@ function Candidates({ navigation }) {
     setlistdata(array)
 
   }
-
-
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -323,10 +282,7 @@ function Candidates({ navigation }) {
 
                 return person.jobPostingID == jobPost.Posting[key].id
               })
-
-
               return (
-
                 <ExpandableComponenet
                   key={item.title}
                   isExpanded={expanded[key]}
