@@ -141,15 +141,20 @@ const CreateJobPostingScreen = ({ navigation }) => {
 // styles
 
 const textareas = {
+  flex: 1,
+
   backgroundColor: "#f5f5f5",
   borderColor: "#ccc",
   borderWidth: moderateScale(2),
   borderRadius: moderateScale(20),
-  fontSize: 22,
-  marginBottom: moderateScale(35),
+  fontSize: 20,
+  marginTop: moderateScale(20),
+  marginBottom: moderateScale(20),
   marginLeft: moderateScale(20),
   marginRight: moderateScale(20),
+  paddingLeft: 10,
   zIndex: 999,
+
 };
 
 const styles = StyleSheet.create({
@@ -176,11 +181,11 @@ const styles = StyleSheet.create({
   },
   position: {
     ...textareas,
-    height: moderateScale(45),
+    height: moderateScale(35),
   },
   industry: {
     ...textareas,
-    height: moderateScale(45),
+    height: moderateScale(35),
   },
   description: {
     ...textareas,
@@ -188,7 +193,7 @@ const styles = StyleSheet.create({
   },
   phone: {
     ...textareas,
-    height: moderateScale(45),
+    height: moderateScale(35),
     marginBottom: moderateScale(42),
   },
 });
